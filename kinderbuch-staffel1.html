@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta name="google-site-verification" content="6Atqb-QEQbFNjF5s1w-CIpkFZ9yjlRt1UflH0hwADZM" />
+    <meta property="og:title" content="Staffel 1 – Uhu Waldemar · Heribert Lange" />
+    <meta property="og:description" content="Die erste Staffel der Kinderbuchreihe Uhu Waldemar – spannende Abenteuer im Wald." />
+    <meta property="og:image" content="https://www.heribert-berlin.de/images/og-kinderbuch.jpg" />
+    <meta property="og:url" content="https://www.heribert-berlin.de/kinderbuch-staffel1.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Heribert Lange" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://www.heribert-berlin.de/images/og-kinderbuch.jpg" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PZ23P54P1D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PZ23P54P1D');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staffel 1 – Uhu Waldemar und die Tiere des Waldes</title>
+  <style>
+    :root {
+      --bg: #0e1a0c;
+      --card: #162814;
+      --text: #dff0d8;
+      --text-muted: #7aa870;
+      --accent: #50a050;
+      --header-bg: #091408;
+      --border: rgba(80,160,80,0.25);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    header { background: var(--header-bg); color: var(--accent); padding: 40px 20px; text-align: center; border-bottom: 1px solid var(--border); letter-spacing: 2px; }
+    header h1 { font-size: 2.2rem; font-weight: normal; }
+    header p { color: var(--text-muted); margin-top: 8px; font-size: 0.95rem; letter-spacing: 3px; }
+
+    .lang-buttons { position: fixed; right: 18px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 16px; z-index: 100; }
+    .lang-btn { width: 56px; height: 56px; border-radius: 8px; overflow: hidden; border: 2px solid rgba(255,255,255,0.15); box-shadow: 0 3px 12px rgba(0,0,0,0.5); transition: transform 0.2s, border-color 0.2s; text-decoration: none; display: block; position: relative; }
+    .lang-btn:hover { transform: scale(1.08); border-color: var(--accent); }
+    .lang-note { color: var(--text-muted); font-size: 0.7rem; letter-spacing: 1px; text-align: center; margin-top: 6px; line-height: 1.4; max-width: 60px; }
+    .flag-en { background: #012169; position: relative; }
+    .flag-en svg { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+    .flag-cn { background: #DE2910; position: relative; display: flex; align-items: center; justify-content: center; }
+    .flag-cn .stars { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 22px; color: #FFDE00; }
+    .flag-cn .small-stars { position: absolute; top: 6px; right: 6px; font-size: 9px; color: #FFDE00; display: flex; flex-direction: column; gap: 1px; align-items: center; }
+
+    .container { padding: 40px 100px 60px 20px; max-width: 1400px; margin: 0 auto; }
+
+    .detail-card { background: var(--card); padding: 30px 36px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid var(--border); }
+
+    /* Trailer */
+    .trailer-wrap { text-align: center; margin-bottom: 32px; }
+    .trailer-wrap h3 { color: var(--accent); font-size: 1rem; font-weight: normal; letter-spacing: 2px; margin-bottom: 14px; }
+    .trailer-thumb { display: inline-block; position: relative; max-width: 860px; width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); text-decoration: none; }
+    .trailer-thumb img { width: 100%; display: block; }
+    .play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 72px; height: 72px; background: rgba(204,0,0,0.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; transition: background 0.2s; }
+    .trailer-thumb:hover .play-overlay { background: rgba(170,0,0,1); }
+
+    /* Beschreibungstext */
+    .beschreibung { text-align: center; color: var(--text-muted); font-size: 1.05rem; line-height: 1.9; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; }
+
+    /* Kacheln */
+    .staffel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+
+    .staffel-kachel { background: #0e1a0c; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; transition: border-color 0.2s; display: block; }
+    .staffel-kachel:hover { border-color: var(--accent); }
+    .staffel-kachel img { width: 100%; display: block; }
+    .staffel-kachel-text { padding: 16px 20px; color: var(--accent); font-size: 1rem; letter-spacing: 1px; text-align: center; }
+
+    .staffel-kachel.inaktiv { opacity: 0.5; cursor: default; pointer-events: none; }
+    .staffel-kachel.inaktiv .staffel-kachel-text { color: var(--text-muted); font-style: italic; }
+
+    /* Buttons */
+    .btn-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .back-btn { display: inline-block; padding: 12px 28px; border: 1px solid var(--border); color: var(--text-muted); border-radius: 5px; text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; transition: border-color 0.2s, color 0.2s; font-family: Georgia, serif; }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    @media (max-width: 600px) { .staffel-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Heribert Lange</h1>
+  <p>Kinderbücher · Uhu Waldemar</p>
+</header>
+
+<div class="lang-buttons">
+  <div>
+    <a href="home-eng.html" class="lang-btn flag-en" title="English">
+      <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+        <rect width="56" height="56" fill="#012169"/>
+        <line x1="0" y1="0" x2="56" y2="56" stroke="white" stroke-width="10"/>
+        <line x1="56" y1="0" x2="0" y2="56" stroke="white" stroke-width="10"/>
+        <line x1="0" y1="0" x2="56" y2="56" stroke="#CC0000" stroke-width="6"/>
+        <line x1="56" y1="0" x2="0" y2="56" stroke="#CC0000" stroke-width="6"/>
+        <rect x="22" width="12" height="56" fill="white"/>
+        <rect y="22" width="56" height="12" fill="white"/>
+        <rect x="24" width="8" height="56" fill="#CC0000"/>
+        <rect y="24" width="56" height="8" fill="#CC0000"/>
+      </svg>
+    </a>
+    <p class="lang-note">Nur auf Deutsch</p>
+  </div>
+  <div>
+    <a href="home-chi.html" class="lang-btn flag-cn" title="中文">
+      <div class="stars">★</div>
+      <div class="small-stars"><span style="font-size:8px">★</span><span style="font-size:8px">★</span><span style="font-size:8px">★</span><span style="font-size:8px">★</span></div>
+    </a>
+    <p class="lang-note">仅提供德文</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="detail-card">
+
+    <!-- Trailer -->
+    <div class="trailer-wrap">
+      <h3>▶ Trailer</h3>
+      <a href="https://youtu.be/rvbuNj5MGYk" target="_blank" class="trailer-thumb">
+        <img src="WAL01-00-PIC.jpg" alt="Trailer – Uhu Waldemar">
+        <div class="play-overlay">▶</div>
+      </a>
+    </div>
+
+    <!-- Beschreibung -->
+    <p class="beschreibung">
+      Hier entsteht eine Kinderbuchserie in geplanten 10 Staffeln, ein Lebenswerk.
+    </p>
+
+    <!-- Staffel-Kacheln -->
+    <div class="staffel-grid">
+
+      <a href="kinderbuch-staffel1-detail.html" class="staffel-kachel">
+        <img src="WAL-STA-01PIC.jpg" alt="Staffel 1 – Uhu Waldemar und die Tiere des Waldes">
+        <div class="staffel-kachel-text">▶ Staffel 1 – Uhu Waldemar und die Tiere des Waldes</div>
+      </a>
+
+      <div class="staffel-kachel inaktiv">
+        <img src="WAL-STA-01PIC.jpg" alt="Staffel 2 – coming soon" style="filter:grayscale(1);opacity:0.4;">
+        <div class="staffel-kachel-text">Später wird es hier den Link zur zweiten Staffel geben.</div>
+      </div>
+
+    </div>
+
+    <div class="btn-row">
+      <a href="kinderbuch.html" class="back-btn">← Zur Kinderbuch-Seite</a>
+      <a href="home.html" class="back-btn">⌂ Zur Hauptseite</a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

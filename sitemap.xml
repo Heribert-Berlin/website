@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ===== ROOT / STARTSEITE ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/index.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+  <!-- ===== HOME (mehrsprachig) ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/home.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/home.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/home.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/home-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/home-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/home-eng.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/home.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/home.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/home-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/home-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/home-chi.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/home.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/home.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/home-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/home-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+  <!-- ===== AUTOR (mehrsprachig) ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/autor.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/autor.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/autor.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/autor-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/autor-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/autor-eng.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/autor.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/autor.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/autor-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/autor-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/autor-chi.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/autor.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/autor.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/autor-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/autor-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+  <!-- ===== ROMAN (mehrsprachig) ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/roman.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/roman.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/roman.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/roman-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/roman-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/roman-eng.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/roman.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/roman.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/roman-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/roman-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/roman-chi.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/roman.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/roman.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/roman-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/roman-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+  <!-- ===== ROMAN DETAIL (DE + EN) ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/roman-deu-detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/roman-deu-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/roman-deu-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/roman-eng-detail.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/roman-eng-detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/roman-deu-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/roman-deu-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/roman-eng-detail.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+  <!-- ===== ROMAN HÖRBUCH (DE + EN) ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/roman-hoerbuch.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/roman-hoerbuch.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/roman-hoerbuch.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/roman-eng-hoerbuch.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/roman-eng-hoerbuch.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/roman-hoerbuch.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/roman-hoerbuch.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/roman-eng-hoerbuch.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+  <!-- ===== PAKISTAN ÜBERSICHT (EN + ZH, kein DE) ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/pakistan-eng.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/pakistan-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/pakistan-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/pakistan-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/pakistan-chi.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/pakistan-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/pakistan-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/pakistan-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+  <!-- ===== PAKISTAN DETAIL (DE + EN + ZH) ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/pakistan-deu-detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/pakistan-deu-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/pakistan-deu-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/pakistan-eng-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/pakistan-chi-detail.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/pakistan-eng-detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/pakistan-deu-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/pakistan-deu-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/pakistan-eng-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/pakistan-chi-detail.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/pakistan-chi-detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/pakistan-deu-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/pakistan-deu-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/pakistan-eng-detail.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/pakistan-chi-detail.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+  <!-- ===== KINDERBUCH (nur Deutsch) ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/kinderbuch.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/kinderbuch-staffel1.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/kinderbuch-staffel1-detail.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/kinderbuch-01-01.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/kinderbuch-01-02.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/kinderbuch-01-03.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/kinderbuch-01-04.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+  <!-- ===== KONTAKT (mehrsprachig) ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/kontakt.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/kontakt-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/kontakt-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/kontakt-eng.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/kontakt-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/kontakt-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/kontakt-chi.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/kontakt-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/kontakt-chi.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+  <!-- ===== NEWSLETTER (nur Deutsch) ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/newsletter.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+  <!-- ===== YOUTUBE REISE ASIEN (nur Deutsch) ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/youtube-reise-asien.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+  <!-- ===== IMPRESSUM (mehrsprachig) ===== -->
+  <url>
+    <loc>https://www.heribert-berlin.de/impressum.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/impressum-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/impressum-chi.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/impressum-eng.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/impressum-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/impressum-chi.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.heribert-berlin.de/impressum-chi.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heribert-berlin.de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="de"        href="https://www.heribert-berlin.de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.heribert-berlin.de/impressum-eng.html"/>
+    <xhtml:link rel="alternate" hreflang="zh"        href="https://www.heribert-berlin.de/impressum-chi.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+
+</urlset>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta name="google-site-verification" content="6Atqb-QEQbFNjF5s1w-CIpkFZ9yjlRt1UflH0hwADZM" />
+    <meta property="og:title" content="Hörbuch – Ein letzter Cà phê · Heribert Lange" />
+    <meta property="og:description" content="Das kostenlose Hörbuch zu Ein letzter Cà phê – in 13 Sprachen verfügbar." />
+    <meta property="og:image" content="https://www.heribert-berlin.de/images/og-roman.jpg" />
+    <meta property="og:url" content="https://www.heribert-berlin.de/roman-hoerbuch.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Heribert Lange" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://www.heribert-berlin.de/images/og-roman.jpg" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PZ23P54P1D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PZ23P54P1D');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ein letzter Cà phê – Hörbuch</title>
+  <style>
+    :root { --bg: #1e1a14; --card: #2e2820; --text: #e8dcc8; --text-muted: #a89880; --accent: #c8a96e; --header-bg: #12100c; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { background: var(--header-bg); color: var(--accent); padding: 40px 20px; text-align: center; border-bottom: 1px solid #3a3020; letter-spacing: 2px; }
+    header h1 { font-size: 2.2rem; font-weight: normal; }
+    header p { color: var(--text-muted); margin-top: 8px; font-size: 0.95rem; letter-spacing: 3px; }
+    .lang-buttons { position: fixed; right: 18px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 16px; z-index: 100; }
+    .lang-btn { width: 56px; height: 56px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid rgba(255,255,255,0.15); box-shadow: 0 3px 12px rgba(0,0,0,0.5); transition: transform 0.2s, border-color 0.2s; text-decoration: none; display: block; position: relative; }
+    .lang-btn:hover { transform: scale(1.08); border-color: var(--accent); }
+    .flag-cn { background: #DE2910; position: relative; display: flex; align-items: center; justify-content: center; }
+    .flag-cn .stars { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 22px; color: #FFDE00; }
+    .flag-cn .small-stars { position: absolute; top: 6px; right: 6px; font-size: 9px; color: #FFDE00; display: flex; flex-direction: column; gap: 1px; align-items: center; }
+    .flag-en-us { background: #012169; }
+    .flag-en-us svg { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+    .container { padding: 40px 100px 60px 20px; max-width: 1400px; margin: 0 auto; }
+    .detail-card { background: var(--card); padding: 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; }
+    .detail-card h2 { text-align: center; color: var(--accent); font-size: 1.4rem; font-weight: normal; letter-spacing: 1px; margin-bottom: 30px; }
+
+    /* Folgen-Reihe */
+    .folgen-row { display: flex; gap: 30px; margin-bottom: 36px; flex-wrap: wrap; }
+
+    /* Einzelne Folge */
+    .folge { flex: 1; min-width: 280px; }
+    .folge h3 { color: var(--accent); font-size: 1rem; font-weight: normal; letter-spacing: 2px; margin-bottom: 14px; text-align: center; }
+
+    /* Trailer/Folge Thumb */
+    .thumb-wrap { display: block; position: relative; width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid #3a3020; text-decoration: none; }
+    .thumb-wrap img { width: 100%; display: block; }
+    .play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 72px; height: 72px; background: rgba(204,0,0,0.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; transition: background 0.2s; }
+    .thumb-wrap:hover .play-overlay { background: rgba(170,0,0,1); }
+
+    /* Platzhalter */
+    .placeholder { width: 100%; aspect-ratio: 16/9; background: #1a1510; border: 1px dashed #4a3a28; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+    .placeholder .ph-icon { font-size: 2.5rem; opacity: 0.4; }
+    .placeholder .ph-text { color: var(--text-muted); font-size: 0.9rem; letter-spacing: 2px; text-align: center; line-height: 1.8; }
+    .placeholder .ph-date { color: var(--accent); font-size: 0.85rem; letter-spacing: 1px; margin-top: 4px; opacity: 0.7; }
+
+    .fortsetzung { text-align: center; color: var(--text-muted); font-size: 0.9rem; letter-spacing: 3px; margin: 8px 0 36px; font-style: italic; }
+
+    /* Playlist */
+    .playlist-wrap { text-align: center; margin-bottom: 10px; }
+    .playlist-wrap h3 { color: var(--accent); font-size: 1rem; font-weight: normal; letter-spacing: 2px; margin-bottom: 14px; }
+    .playlist-thumb { display: inline-block; position: relative; max-width: 720px; width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid #3a3020; text-decoration: none; }
+    .playlist-thumb img { width: 100%; display: block; }
+    .playlist-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: rgba(0,0,0,0.6); border: 2px solid var(--accent); border-radius: 8px; padding: 10px 24px; color: var(--accent); font-size: 1rem; letter-spacing: 2px; transition: background 0.2s; }
+    .playlist-thumb:hover .playlist-overlay { background: rgba(200,169,110,0.2); }
+
+    .back-btn { display: inline-block; margin-top: 30px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s; }
+    .back-btn:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Heribert Lange</h1>
+  <p>Autor · Berlin · Deutschland</p>
+</header>
+<div class="lang-buttons">
+  <a href="roman-eng-hoerbuch.html" class="lang-btn flag-en-us" title="English">
+    <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+      <defs><clipPath id="tl"><polygon points="0,0 56,0 0,56"/></clipPath><clipPath id="br"><polygon points="56,0 56,56 0,56"/></clipPath></defs>
+      <g clip-path="url(#tl)">
+        <rect x="0" y="0" width="56" height="56" fill="#B22234"/>
+        <rect x="0" y="4.3" width="56" height="4.3" fill="white"/><rect x="0" y="12.9" width="56" height="4.3" fill="white"/><rect x="0" y="21.5" width="56" height="4.3" fill="white"/><rect x="0" y="30.1" width="56" height="4.3" fill="white"/><rect x="0" y="38.7" width="56" height="4.3" fill="white"/><rect x="0" y="47.3" width="56" height="4.3" fill="white"/>
+        <rect x="0" y="0" width="22" height="24" fill="#3C3B6E"/>
+        <text x="1" y="7" font-size="4.5" fill="white">★★★★</text><text x="3" y="11" font-size="4.5" fill="white">★★★</text><text x="1" y="15" font-size="4.5" fill="white">★★★★</text><text x="3" y="19" font-size="4.5" fill="white">★★★</text><text x="1" y="23" font-size="4.5" fill="white">★★★★</text>
+      </g>
+      <g clip-path="url(#br)">
+        <rect x="0" y="0" width="56" height="56" fill="#012169"/>
+        <line x1="0" y1="0" x2="56" y2="56" stroke="white" stroke-width="10"/><line x1="56" y1="0" x2="0" y2="56" stroke="white" stroke-width="10"/>
+        <line x1="0" y1="0" x2="56" y2="56" stroke="#CC0000" stroke-width="5"/><line x1="56" y1="0" x2="0" y2="56" stroke="#CC0000" stroke-width="5"/>
+        <rect x="23" y="0" width="10" height="56" fill="white"/><rect x="0" y="23" width="56" height="10" fill="white"/>
+        <rect x="25" y="0" width="6" height="56" fill="#CC0000"/><rect x="0" y="25" width="56" height="6" fill="#CC0000"/>
+      </g>
+      <line x1="0" y1="56" x2="56" y2="0" stroke="rgba(200,169,110,0.8)" stroke-width="1.5"/>
+    </svg>
+  </a>
+  <a href="roman-chi-hoerbuch.html" class="lang-btn flag-cn" title="中文">
+    <div class="stars">★</div>
+    <div class="small-stars"><span style="font-size:8px">★</span><span style="font-size:8px">★</span><span style="font-size:8px">★</span><span style="font-size:8px">★</span></div>
+  </a>
+</div>
+
+<div class="container">
+  <div class="detail-card">
+    <h2>🎧 Ein letzter Cà phê – Hörbuch</h2>
+
+    <div class="folgen-row">
+
+      <!-- Teil 1 -->
+      <div class="folge">
+        <h3>Teil 1 · Wie alles begann · 30.04.2026</h3>
+        <a href="https://youtu.be/dN-DtmW7TxA" target="_blank" class="thumb-wrap">
+          <img src="ELC-DEU-HB-1-PIC.jpg" alt="Teil 1 – Wie alles begann">
+          <div class="play-overlay">▶</div>
+        </a>
+      </div>
+
+      <!-- Teil 2 Platzhalter -->
+      <div class="folge">
+        <h3>Teil 2 · erscheint ab 30.05.2026</h3>
+        <div class="placeholder">
+          <div class="ph-icon">🎧</div>
+          <div class="ph-text">Demnächst verfügbar</div>
+          <div class="ph-date">ab 30.05.2026</div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="fortsetzung">… wird weiter fortgesetzt</p>
+
+    <!-- Playlist -->
+    <div class="playlist-wrap">
+      <h3>▶ Zur vollständigen Playlist</h3>
+      <a href="https://www.youtube.com/playlist?list=PLaKbrqClKddWp4y1HhH8sZ9EliO8qYD7a" target="_blank" class="playlist-thumb">
+        <img src="ELC-DEU-PLA-PIC.png" alt="Playlist – Ein letzter Cà phê">
+        <div class="playlist-overlay">▶ Playlist öffnen</div>
+      </a>
+    </div>
+
+    <a href="roman.html" class="back-btn">← Zum Buch</a>
+    <a href="home.html" class="back-btn">⌂ Zur Hauptseite</a>
+  </div>
+</div>
+</body>
+</html>
