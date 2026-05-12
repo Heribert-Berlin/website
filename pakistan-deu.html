@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
-<html lang="zh">
+<!DOCTYPE html>
+<html lang="de">
 <head>
     <meta name="google-site-verification" content="6Atqb-QEQbFNjF5s1w-CIpkFZ9yjlRt1UflH0hwADZM" />
-    <meta property="og:title" content="巴基斯坦 – 1993年旅行报告 · Heribert Lange" />
-    <meta property="og:description" content="1993年巴基斯坦之旅的真实个人游记，充满惊喜、挑战与邂逅。" />
-    <meta property="og:image" content="https://www.heribert-berlin.de/images/og-pakistan.jpg" />
-    <meta property="og:url" content="https://www.heribert-berlin.de/pakistan-chi.html" />
+    <meta property="og:title" content="Heribert Lange – Autor & Videoproduzent · Berlin" />
+    <meta property="og:description" content="Romane, Reiseberichte und Kinderbücher von Heribert Lange aus Berlin." />
+    <meta property="og:image" content="https://www.heribert-berlin.de/images/og-home.jpg" />
+    <meta property="og:url" content="https://www.heribert-berlin.de/pakistan-deu.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Heribert Lange" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://www.heribert-berlin.de/images/og-pakistan.jpg" />
+    <meta name="twitter:image" content="https://www.heribert-berlin.de/images/og-home.jpg" />
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" href="favicon.png">
 <!-- Google tag (gtag.js) -->
@@ -22,21 +22,22 @@
   gtag('config', 'G-PZ23P54P1D');
 </script>
   <meta charset="UTF-8">
-  <title>赫里伯特·蘭格 – 作者</title>
+  <title>Heribert Lange – Autor</title>
   <style>
     :root {
-      --bg: #1a1010;
-      --card: #2a1a1a;
-      --text: #f0e0d0;
-      --text-muted: #c09080;
-      --accent: #e8a040;
-      --header-bg: #0f0808;
+      --bg: #1e1a14;
+      --bg2: #2a2419;
+      --card: #2e2820;
+      --text: #e8dcc8;
+      --text-muted: #a89880;
+      --accent: #c8a96e;
+      --header-bg: #12100c;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Noto Serif SC', 'SimSun', Georgia, serif;
+      font-family: Georgia, 'Times New Roman', serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
@@ -47,11 +48,14 @@
       color: var(--accent);
       padding: 40px 20px;
       text-align: center;
-      border-bottom: 2px solid #8B1A1A;
-      letter-spacing: 4px;
+      border-bottom: 1px solid #3a3020;
+      letter-spacing: 2px;
     }
 
-    header h1 { font-size: 2.2rem; font-weight: normal; }
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: normal;
+    }
 
     header p {
       color: var(--text-muted);
@@ -60,6 +64,7 @@
       letter-spacing: 3px;
     }
 
+    /* Language buttons - fixed right side */
     .lang-buttons {
       position: fixed;
       right: 18px;
@@ -85,11 +90,25 @@
       position: relative;
     }
 
-    .lang-btn:hover { transform: scale(1.08); border-color: var(--accent); }
+    .lang-btn:hover {
+      transform: scale(1.08);
+      border-color: var(--accent);
+    }
 
-    .flag-en-us { background: #012169; position: relative; }
-    .flag-en-us svg { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+    /* Diagonal split: English (top-left) + USA (bottom-right) */
+    .flag-en-us {
+      background: #012169;
+      position: relative;
+    }
 
+    .flag-en-us svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0; left: 0;
+    }
+
+    /* Chinese flag */
     .flag-cn {
       background: #DE2910;
       position: relative;
@@ -100,19 +119,18 @@
 
     .flag-cn .stars {
       position: absolute;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
       font-size: 22px;
       line-height: 1;
       color: #FFDE00;
     }
 
-    
-    .flag-de { background: #000; position: relative; }
-    .flag-de svg { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
     .flag-cn .small-stars {
       position: absolute;
-      top: 6px; right: 6px;
+      top: 6px;
+      right: 6px;
       font-size: 9px;
       color: #FFDE00;
       display: flex;
@@ -131,8 +149,8 @@
       background: var(--card);
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
-      border: 1px solid #5a1a1a;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      border: 1px solid #3a3020;
     }
 
     .book h2 {
@@ -140,7 +158,7 @@
       color: var(--accent);
       font-size: 1.4rem;
       font-weight: normal;
-      letter-spacing: 3px;
+      letter-spacing: 1px;
       margin-bottom: 20px;
     }
 
@@ -150,12 +168,22 @@
       align-items: flex-start;
     }
 
-    .book-cover { flex: 1; }
-    .book-cover img { width: 100%; border-radius: 8px; display: block; }
-    .book-text { flex: 1; }
+    .book-cover {
+      flex: 1;
+    }
+
+    .book-cover img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .book-text {
+      flex: 1;
+    }
 
     .book p {
-      line-height: 2;
+      line-height: 1.8;
       color: var(--text);
       margin-bottom: 14px;
       font-size: 0.97rem;
@@ -171,13 +199,16 @@
       border-radius: 5px;
       cursor: pointer;
       font-size: 15px;
-      font-family: inherit;
-      letter-spacing: 2px;
+      font-family: Georgia, serif;
+      letter-spacing: 1px;
       transition: background 0.2s, color 0.2s;
       width: fit-content;
     }
 
-    .mehr-btn:hover { background: var(--accent); color: #0f0808; }
+    .mehr-btn:hover {
+      background: var(--accent);
+      color: #12100c;
+    }
 
     .back-btn {
       display: inline-block;
@@ -189,31 +220,36 @@
       transition: color 0.2s;
     }
 
-    .back-btn:hover { color: var(--accent); }
+    .back-btn:hover {
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>赫里伯特·蘭格</h1>
-  <p><a href="autor.html" style="color: var(--text-muted); text-decoration: underline; letter-spacing: 3px; font-size: 0.95rem;">作者</a> · 柏林 · 德國</p>
+  <h1>Heribert Lange</h1>
+  <p><a href="autor.html" style="color: var(--text-muted); text-decoration: underline; letter-spacing: 3px; font-size: 0.95rem;">Autor</a> · Berlin · Deutschland</p>
 </header>
 
+<!-- Language buttons fixed right -->
 <div class="lang-buttons">
-  <a href="pakistan-deu.html" class="lang-btn flag-de" title="Deutsch">
-    <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="56" height="19" fill="#000000"/>
-      <rect x="0" y="19" width="56" height="19" fill="#DD0000"/>
-      <rect x="0" y="38" width="56" height="18" fill="#FFCE00"/>
-    </svg>
-  </a>
+
+  <!-- English/USA diagonal split flag -->
   <a href="pakistan-eng.html" class="lang-btn flag-en-us" title="English">
     <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <clipPath id="top-left"><polygon points="0,0 56,0 0,56"/></clipPath>
-        <clipPath id="bot-right"><polygon points="56,0 56,56 0,56"/></clipPath>
+        <clipPath id="top-left">
+          <polygon points="0,0 56,0 0,56"/>
+        </clipPath>
+        <clipPath id="bot-right">
+          <polygon points="56,0 56,56 0,56"/>
+        </clipPath>
       </defs>
+
+      <!-- USA top-left triangle -->
       <g clip-path="url(#top-left)">
+        <!-- Stripes -->
         <rect x="0" y="0" width="56" height="56" fill="#B22234"/>
         <rect x="0" y="4.3" width="56" height="4.3" fill="white"/>
         <rect x="0" y="8.6" width="56" height="4.3" fill="#B22234"/>
@@ -227,68 +263,99 @@
         <rect x="0" y="43.0" width="56" height="4.3" fill="#B22234"/>
         <rect x="0" y="47.3" width="56" height="4.3" fill="white"/>
         <rect x="0" y="51.6" width="56" height="4.3" fill="#B22234"/>
+        <!-- Blue canton -->
         <rect x="0" y="0" width="22" height="24" fill="#3C3B6E"/>
+        <!-- Stars (simplified) -->
         <text x="1" y="7"  font-size="4.5" fill="white">★★★★</text>
         <text x="3" y="11" font-size="4.5" fill="white">★★★</text>
         <text x="1" y="15" font-size="4.5" fill="white">★★★★</text>
         <text x="3" y="19" font-size="4.5" fill="white">★★★</text>
         <text x="1" y="23" font-size="4.5" fill="white">★★★★</text>
       </g>
+
+      <!-- UK bottom-right triangle -->
       <g clip-path="url(#bot-right)">
+        <!-- Blue background -->
         <rect x="0" y="0" width="56" height="56" fill="#012169"/>
+        <!-- White diagonals -->
         <line x1="0" y1="0" x2="56" y2="56" stroke="white" stroke-width="10"/>
         <line x1="56" y1="0" x2="0" y2="56" stroke="white" stroke-width="10"/>
+        <!-- Red diagonals -->
         <line x1="0" y1="0" x2="56" y2="56" stroke="#CC0000" stroke-width="5"/>
         <line x1="56" y1="0" x2="0" y2="56" stroke="#CC0000" stroke-width="5"/>
+        <!-- White cross -->
         <rect x="23" y="0" width="10" height="56" fill="white"/>
         <rect x="0" y="23" width="56" height="10" fill="white"/>
+        <!-- Red cross -->
         <rect x="25" y="0" width="6" height="56" fill="#CC0000"/>
         <rect x="0" y="25" width="56" height="6" fill="#CC0000"/>
       </g>
-      <line x1="0" y1="56" x2="56" y2="0" stroke="rgba(232,160,64,0.8)" stroke-width="1.5"/>
+
+      <!-- Diagonal dividing line -->
+      <line x1="0" y1="56" x2="56" y2="0" stroke="rgba(200,169,110,0.8)" stroke-width="1.5"/>
     </svg>
   </a>
+
+  <!-- Chinese flag -->
+  <a href="pakistan-chi.html" class="lang-btn flag-cn" title="中文">
+    <div class="stars">★</div>
+    <div class="small-stars">
+      <span style="font-size:8px">★</span>
+      <span style="font-size:8px">★</span>
+      <span style="font-size:8px">★</span>
+      <span style="font-size:8px">★</span>
+    </div>
+  </a>
+
 </div>
 
 <div class="container">
   <div class="book">
-    <h2>遊記：1993 年的巴基斯坦</h2>
+    <h2>Reisebericht: Pakistan 1993</h2>
     <div class="book-inner">
       <div class="book-cover">
-        <img src="PAK-CHI-Cover.jpg" alt="封面">
+        <img src="PAK-DEU-Cover.jpg" alt="Buchcover">
       </div>
       <div class="book-text">
         <p>
-          這本書既不是典型的旅遊指南，也不是冒險小說，更不是政治報告。相反地，它是一部真摯的個人遊記，記錄了 1993 年巴基斯坦之旅的片段，那是一段充滿驚喜、挑戰與際遇的旅程。
+          Dieses Buch ist kein klassischer Reiseführer, kein Abenteuerroman und auch kein politischer Bericht.
+          Es ist vielmehr ein ehrlicher, persönlicher Reisebericht, eine Momentaufnahme einer Reise durch Pakistan im Jahr 1993,
+          die voller Überraschungen, Herausforderungen und Begegnungen war.
         </p>
 
         <p>
-          我為何踏上這段旅程？原因很簡單：我的朋友沃爾特（Walter）當時對我們說：「食宿全包，司機已備好，隨時可以去探索這裡的風土人情。」這份邀請發給了 21 位朋友，我很慶幸只有我們兩人有勇氣接受。畢竟，若 21 人全都去了，恐怕不是所有人都能平安歸來。
+          Warum ich diese Reise unternommen habe? Ganz einfach: Mein Freund Walter sagte damals zu uns:
+          „Unterkunft und Verpflegung sind da, und ein Fahrer steht bereit, um Land und Leute zu erkunden."
+          Diese Einladung ging an 21 Freunde, und ich bin froh, dass nur wir beide den Mut hatten, sie anzunehmen.
+          Sicherlich wären nicht alle 21 wieder nach Hause gekommen.
         </p>
 
         <p>
-          此外，我的任務原本是為一場工作坊製作紀錄，但不幸的是，由於當地的情況，這項計畫最終化為烏有。
+          Außerdem war es meine Aufgabe, eine Dokumentation über einen Workshop zu erstellen,
+          der sich leider aufgrund der Umstände vor Ort in Luft aufgelöst hat.
         </p>
 
         <p>
-          在接下來的篇章中，我將帶您前往鮮有遊客踏足之地，去見證那些在傳統與變革之間掙扎的人們，以及那些深深觸動我的時刻。
+          Auf den folgenden Seiten nehme ich Sie mit zu Orten, die kaum ein Tourist betritt,
+          zu Menschen, die mit ihrem Alltag zwischen Tradition und Wandel kämpfen,
+          und zu Momenten, die mir tief ins Herz gegangen sind.
         </p>
 
         <p>
-          這本書是一份邀請，邀請您帶著敞開的雙眼與心扉，不僅遊歷遠方異域，更深入探索內心的體驗。
+          Dieses Buch ist eine Einladung, mit offenen Augen und offenem Herzen auf Reisen zu gehen,
+          nicht nur in ferne Länder, sondern auch in die Tiefe der eigenen Erfahrungen.
         </p>
 
         <p>
-          我希望它能觸動您並引發思考，就像它曾經改變了我一樣。
+          Ich hoffe, es berührt Sie und regt zum Nachdenken an,
+          genauso wie es mich verändert hat.
         </p>
 
-        <p style="text-align: right; color: var(--accent); font-style: italic;">赫里伯特·蘭格 (Heribert Lange)</p>
-
-        <button class="mehr-btn" onclick="window.location.href='pakistan-chi-detail.html'">
-          了解更多
+        <button class="mehr-btn" onclick="window.location.href='pakistan-deu-detail.html'">
+          Mehr erfahren
         </button>
-        <a href="home-chi.html" class="back-btn">← 返回</a>
-        <a href="home-chi.html" class="back-btn">⌂ 首頁</a>
+        <a href="home.html" class="back-btn">← Zurück</a>
+        <a href="home.html" class="back-btn">⌂ Zur Hauptseite</a>
       </div>
     </div>
   </div>
@@ -296,7 +363,7 @@
 
 
 <footer style="border-top: 1px solid var(--border); padding: 20px; text-align: center; margin-top: 32px;">
-  <a href="datenschutz-chi.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;">&#x96B1;&#x79C1;&#x653F;&#x7B56;</a>
+  <a href="datenschutz.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;">Datenschutz</a>
 </footer>
 </body>
 </html>
