@@ -47,65 +47,26 @@
 
     .band-titel { text-align: center; color: var(--accent); font-size: 1.4rem; font-weight: normal; letter-spacing: 2px; padding: 20px 30px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 36px; }
 
-    .vorankuendigung-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 36px;
-      margin-bottom: 36px;
-    }
+    .inhalt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
 
-    .cover-wrapper {
-      position: relative;
-      max-width: 600px;
-      width: 100%;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    .cover-wrapper img {
-      width: 100%;
-      display: block;
-      filter: grayscale(100%) brightness(0.35);
-    }
-    .cover-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 20px;
-      text-align: center;
-    }
-    .cover-overlay .kalender { font-size: 3rem; }
-    .cover-overlay .erscheint-text {
-      color: var(--text-muted);
-      font-size: 1rem;
-      letter-spacing: 2px;
-    }
-    .cover-overlay .datum {
-      color: var(--accent);
-      font-size: 2rem;
-      letter-spacing: 3px;
-    }
+    .inhalt-block { background: #0e1a0c; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .inhalt-block h3 { color: var(--accent); font-size: 1rem; font-weight: normal; letter-spacing: 2px; padding: 16px 20px; border-bottom: 1px solid var(--border); text-align: center; }
 
-    .info-text {
-      max-width: 600px;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.9;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 24px 30px;
-    }
-    .info-text strong { color: var(--accent); }
+    .buch-bild { width: 100%; display: block; }
+
+    .video-text { padding: 16px 20px; color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; }
+
+    .buch-info { padding: 16px 20px; }
+    .isbn { color: var(--text-muted); font-size: 0.82rem; letter-spacing: 1px; margin-bottom: 10px; }
+    .preis { font-size: 1.5rem; color: var(--accent); margin-bottom: 16px; }
+    .kauf-link { display: block; text-align: center; padding: 10px 16px; border-radius: 5px; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; border: 1px solid var(--accent); color: var(--accent); background: transparent; }
+    .kauf-link:hover { background: var(--accent); color: #091408; }
 
     .btn-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
     .back-btn { display: inline-block; padding: 12px 28px; border: 1px solid var(--border); color: var(--text-muted); border-radius: 5px; text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; transition: border-color 0.2s, color 0.2s; font-family: Georgia, serif; }
     .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    @media (max-width: 650px) { .inhalt-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -146,35 +107,42 @@
 
     <div class="band-titel">Band 01-05 · Der Fuchs, seine Familie und die Birke</div>
 
-    <div class="vorankuendigung-box">
+    <div class="inhalt-grid">
 
-      <div class="cover-wrapper">
-        <img src="WAL-01-05-PIC.png" alt="Der Fuchs, seine Familie und die Birke">
-        <div class="cover-overlay">
-          <div class="kalender">🗓</div>
-          <div class="erscheint-text">Erscheint ab</div>
-          <div class="datum">01. Juli 2026, 15:00 Uhr</div>
+      <!-- Video-Vorschau -->
+      <div class="inhalt-block">
+        <h3>▶ Video-Vorschau</h3>
+        <div style="position:relative;">
+          <img src="WAL-01-05-VID-PIC.jpg" alt="Video – Band 01-05" style="width:100%;display:block;filter:grayscale(100%) brightness(0.35);">
+          <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center;">
+            <div style="font-size:3rem;opacity:0.6;">▶</div>
+            <div style="color:var(--accent);font-size:0.95rem;letter-spacing:2px;line-height:1.6;">Video folgt<br>ab 01.07.2026, 15:00 Uhr</div>
+          </div>
+        </div>
+        <div class="video-text">
+          <p>„Der Fuchs, seine Familie und die Birke" erzählt die liebevolle Geschichte des schlauen Fuchses Rusty, seiner sanften Frau Cleo und ihres neugierigen kleinen Sohnes Fünkchen. Gemeinsam erlebt die fröhliche Fuchsfamilie viele kleine Abenteuer am Rand eines großen Waldes und entdeckt dabei die besondere Bedeutung ihrer alten Birke.</p>
+          <br>
+          <p>Im Laufe der Jahreszeiten lernen Kinder spielerisch die Natur kennen: summende Bienen im Frühling, kühlen Schatten im Sommer, goldenes Herbstlaub und funkelnden Schnee im Winter. Die Birke wird dabei zu einem sicheren Zuhause, einem Spielplatz und einer treuen Freundin der ganzen Fuchsfamilie.</p>
+          <br>
+          <p>Die warmherzige Geschichte verbindet ruhige Vorlesemomente mit kindgerechtem Wissen über Tiere, Wald und Jahreszeiten. Liebevolle Bilder und sanfte Sprache machen das Buch zu einer gemütlichen Vorlesegeschichte über Familie, Freundschaft und die Wunder der Natur.</p>
         </div>
       </div>
 
-      <!-- Video-Platzhalter (Video noch nicht verfügbar) -->
-      <div style="max-width:600px;width:100%;border:1px solid var(--border);border-radius:8px;overflow:hidden;">
-        <div style="padding:14px 20px;border-bottom:1px solid var(--border);color:var(--accent);font-size:1rem;letter-spacing:2px;text-align:center;">▶ Video-Vorschau</div>
-        <div style="aspect-ratio:16/9;background:#091408;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;">
-          <div style="font-size:3rem;opacity:0.4;">🎬</div>
-          <div style="color:var(--accent);font-size:0.95rem;letter-spacing:2px;text-align:center;line-height:1.6;">Video folgt<br>ab 01.07.2026, 15:00 Uhr</div>
+      <!-- Buch -->
+      <div class="inhalt-block">
+        <h3>📖 Buch</h3>
+        <div style="position:relative;">
+          <img src="WAL-01-05-PIC.png" alt="Der Fuchs, seine Familie und die Birke" class="buch-bild" style="filter:grayscale(100%) brightness(0.35);">
+          <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;text-align:center;">
+            <div style="font-size:3rem;">🗓</div>
+            <div style="color:var(--text-muted);font-size:1rem;letter-spacing:2px;">Erscheint ab</div>
+            <div style="color:var(--accent);font-size:2rem;letter-spacing:3px;">01. Juli 2026<br>15:00 Uhr</div>
+          </div>
         </div>
-      </div>
-
-      <!-- Inhaltstext -->
-      <div class="info-text" style="text-align:left;max-width:600px;">
-        <p>„Der Fuchs, seine Familie und die Birke" erzählt die liebevolle Geschichte des schlauen Fuchses Rusty, seiner sanften Frau Cleo und ihres neugierigen kleinen Sohnes Fünkchen. Gemeinsam erlebt die fröhliche Fuchsfamilie viele kleine Abenteuer am Rand eines großen Waldes und entdeckt dabei die besondere Bedeutung ihrer alten Birke.</p>
-        <br>
-        <p>Im Laufe der Jahreszeiten lernen Kinder spielerisch die Natur kennen: summende Bienen im Frühling, kühlen Schatten im Sommer, goldenes Herbstlaub und funkelnden Schnee im Winter. Die Birke wird dabei zu einem sicheren Zuhause, einem Spielplatz und einer treuen Freundin der ganzen Fuchsfamilie.</p>
-        <br>
-        <p>Die warmherzige Geschichte verbindet ruhige Vorlesemomente mit kindgerechtem Wissen über Tiere, Wald und Jahreszeiten. Liebevolle Bilder und sanfte Sprache machen das Buch zu einer gemütlichen Vorlesegeschichte über Familie, Freundschaft und die Wunder der Natur.</p>
-        <br>
-        <p style="text-align:center;color:var(--accent);">ISBN und Bestellmöglichkeit folgen ab dem <strong>01. Juli 2026, 15:00 Uhr</strong>.</p>
+        <div class="buch-info">
+          <p class="isbn">ISBN und Bestellmöglichkeit folgen ab dem 01. Juli 2026, 15:00 Uhr</p>
+          <div class="kauf-link" style="opacity:0.55;cursor:default;">Bestelllink folgt ab 01.07.2026</div>
+        </div>
       </div>
 
     </div>

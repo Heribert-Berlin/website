@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta name="google-site-verification" content="6Atqb-QEQbFNjF5s1w-CIpkFZ9yjlRt1UflH0hwADZM" />
@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Band 01-04 – Eichhörnchen, Familie und die Eiche – Vorankündigung</title>
+  <title>Band 01-04 – Eichhörnchen, Familie und die Eiche</title>
   <style>
     :root {
       --bg: #0e1a0c;
@@ -47,72 +47,33 @@
 
     .band-titel { text-align: center; color: var(--accent); font-size: 1.4rem; font-weight: normal; letter-spacing: 2px; padding: 20px 30px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 36px; }
 
-    .vorankuendigung-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 36px;
-      margin-bottom: 36px;
-    }
+    .inhalt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
 
-    .cover-wrapper {
-      position: relative;
-      max-width: 600px;
-      width: 100%;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    .cover-wrapper img {
-      width: 100%;
-      display: block;
-      filter: grayscale(100%) brightness(0.35);
-    }
-    .cover-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 20px;
-      text-align: center;
-    }
-    .cover-overlay .kalender { font-size: 3rem; }
-    .cover-overlay .erscheint-text {
-      color: var(--text-muted);
-      font-size: 1rem;
-      letter-spacing: 2px;
-    }
-    .cover-overlay .datum {
-      color: var(--accent);
-      font-size: 2rem;
-      letter-spacing: 3px;
-    }
+    .inhalt-block { background: #0e1a0c; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .inhalt-block h3 { color: var(--accent); font-size: 1rem; font-weight: normal; letter-spacing: 2px; padding: 16px 20px; border-bottom: 1px solid var(--border); text-align: center; }
 
-    .info-text {
-      max-width: 600px;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.9;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 24px 30px;
-    }
-    .info-text strong { color: var(--accent); }
+    .buch-bild { width: 100%; display: block; }
+
+    .video-text { padding: 16px 20px; color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; }
+
+    .buch-info { padding: 16px 20px; }
+    .isbn { color: var(--text-muted); font-size: 0.82rem; letter-spacing: 1px; margin-bottom: 10px; }
+    .preis { font-size: 1.5rem; color: var(--accent); margin-bottom: 16px; }
+    .kauf-link { display: block; text-align: center; padding: 10px 16px; border-radius: 5px; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; border: 1px solid var(--accent); color: var(--accent); background: transparent; }
+    .kauf-link:hover { background: var(--accent); color: #091408; }
 
     .btn-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
     .back-btn { display: inline-block; padding: 12px 28px; border: 1px solid var(--border); color: var(--text-muted); border-radius: 5px; text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; transition: border-color 0.2s, color 0.2s; font-family: Georgia, serif; }
     .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    @media (max-width: 650px) { .inhalt-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
 <header>
   <h1>Heribert Lange</h1>
-  <p>Kinderbücher · Band 01-04 · Vorankündigung</p>
+  <p>Kinderbücher · Band 01-04</p>
 </header>
 
 <div class="lang-buttons">
@@ -146,41 +107,41 @@
 
     <div class="band-titel">Band 01-04 · Eichhörnchen, Familie und die Eiche</div>
 
-    <div class="vorankuendigung-box">
+    <div class="inhalt-grid">
 
-      <div class="cover-wrapper">
-        <img src="WAL-01-04-PIC.jpg" alt="Eichhörnchen, Familie und die Eiche">
-        <div class="cover-overlay">
-          <div class="kalender">🗓</div>
-          <div class="erscheint-text">Erscheint ab</div>
-          <div class="datum">01. Juni 2026, 15:00 Uhr</div>
+      <!-- Video -->
+      <div class="inhalt-block">
+        <h3>▶ Video</h3>
+        <a href="https://youtu.be/e3U7brfxsro" target="_blank" style="display:block;position:relative;text-decoration:none;">
+          <img src="WAL-01-04-VID-PIC.jpg" alt="Video – Band 01-04" style="width:100%;display:block;">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(204,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;color:white;">▶</div>
+        </a>
+        <div class="video-text">
+          <p>„Eichhörnchen, Familie und die Eiche" erzählt die liebevolle Geschichte des Eichhörnchens Finn, seiner Frau Fanny und ihres kleinen Sohnes Finnick. Hoch oben in einer alten Eiche erlebt die kleine Familie gemeinsam den Wandel der Jahreszeiten – vom frischen Frühling bis zum verschneiten Winter. Dabei entdecken Kinder spielerisch, wie Eichhörnchen leben, Vorräte sammeln und sich im Wald sicher bewegen.</p>
+          <br>
+          <p>Die Geschichte verbindet spannende Naturbeobachtungen mit warmen Familienmomenten und vermittelt kindgerecht Wissen über die wichtige Rolle der Eiche im Wald. Kinder lernen, wie Tiere sich auf den Winter vorbereiten, warum Eicheln so wertvoll sind und wie eng Tiere und Bäume miteinander verbunden leben.</p>
+          <br>
+          <p>Mit ruhiger Sprache, liebevollen Bildern und einer gemütlichen Atmosphäre eignet sich das Buch wunderbar zum Vorlesen und gemeinsamen Entdecken der Natur. Eine herzerwärmende Geschichte über Familie, Zusammenhalt und das Leben im Rhythmus der Jahreszeiten.</p>
         </div>
       </div>
 
-      <!-- Video-Thumbnail -->
-      <div style="max-width:600px;width:100%;border:1px solid var(--border);border-radius:8px;overflow:hidden;">
-        <div style="padding:14px 20px;border-bottom:1px solid var(--border);color:var(--accent);font-size:1rem;letter-spacing:2px;text-align:center;">▶ Video-Vorschau</div>
-        <div style="position:relative;">
-          <img src="WAL-01-04-VID-PIC.jpg" alt="Video – Band 01-04" style="width:100%;display:block;filter:brightness(0.6);">
-          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:10px 20px;border:1px solid var(--accent);border-radius:4px;color:var(--accent);font-size:0.85rem;letter-spacing:2px;background:rgba(9,20,8,0.7);">Video ab 01.06.2026, 15:00 Uhr</div>
+      <!-- Buch -->
+      <div class="inhalt-block">
+        <h3>📖 Buch</h3>
+        <img src="WAL-01-04-PIC.jpg" alt="Eichhörnchen, Familie und die Eiche" class="buch-bild">
+        <div class="buch-info">
+          <p class="isbn">Über den Buchhandel zu beziehen unter ISBN 978-3-696-38132-5</p>
+          <div class="preis">29,99 €</div>
+          <!-- TODO BoD-URL: Nach Veröffentlichung pruefen und ggf. einsetzen. Vermutung: https://buchshop.bod.de/eichhoernchen-familie-und-die-eiche-heribert-lange-9783696381325 -->
+          <div class="kauf-link" style="opacity:0.55;cursor:default;">Bestelllink folgt in Kürze</div>
         </div>
-      </div>
-
-      <!-- Inhaltstext -->
-      <div class="info-text" style="text-align:left;max-width:600px;">
-        <p>„Eichhörnchen, Familie und die Eiche" erzählt die liebevolle Geschichte des Eichhörnchens Finn, seiner Frau Fanny und ihres kleinen Sohnes Finnick. Hoch oben in einer alten Eiche erlebt die kleine Familie gemeinsam den Wandel der Jahreszeiten – vom frischen Frühling bis zum verschneiten Winter. Dabei entdecken Kinder spielerisch, wie Eichhörnchen leben, Vorräte sammeln und sich im Wald sicher bewegen.</p>
-        <br>
-        <p>Die Geschichte verbindet spannende Naturbeobachtungen mit warmen Familienmomenten und vermittelt kindgerecht Wissen über die wichtige Rolle der Eiche im Wald. Kinder lernen, wie Tiere sich auf den Winter vorbereiten, warum Eicheln so wertvoll sind und wie eng Tiere und Bäume miteinander verbunden leben.</p>
-        <br>
-        <p>Mit ruhiger Sprache, liebevollen Bildern und einer gemütlichen Atmosphäre eignet sich das Buch wunderbar zum Vorlesen und gemeinsamen Entdecken der Natur. Eine herzerwärmende Geschichte über Familie, Zusammenhalt und das Leben im Rhythmus der Jahreszeiten.</p>
-        <br>
-        <p style="text-align:center;color:var(--accent);">ISBN und Bestellmöglichkeit folgen ab dem <strong>01. Juni 2026, 15:00 Uhr</strong>.</p>
       </div>
 
     </div>
 
     <div class="btn-row">
       <a href="kinderbuch-01-03.html" class="back-btn">← Band 01-03</a>
+      <a href="kinderbuch-01-05.html" class="back-btn">Band 01-05 →</a>
       <a href="kinderbuch-staffel1-detail.html" class="back-btn">← Zur Staffel 1</a>
       <a href="home.html" class="back-btn">⌂ Zur Hauptseite</a>
     </div>
