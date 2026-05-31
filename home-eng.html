@@ -53,7 +53,9 @@
     .card { position: relative; border-radius: 12px; overflow: hidden; cursor: pointer; text-decoration: none; display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; min-height: 220px; border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; }
     .card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.6); }
     .card-1 { background: linear-gradient(135deg, #221a0c 0%, #342810 50%, #221608 100%); }
-    .card-2 { background: linear-gradient(135deg, #0c1a24 0%, #102230 50%, #0c1a28 100%); }
+    .card-2 { background: linear-gradient(135deg, #0c1a24 0%, #102230 50%, #0c1a28 100%); justify-content: flex-start; padding-bottom: 52px; }
+    @keyframes badge-pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(100,150,200,0.5); } 50% { opacity: 0.3; box-shadow: none; } }
+    .neu-badge { position: absolute; bottom: 16px; left: 32px; background: rgba(100,150,200,0.12); border: 1px solid rgba(100,150,200,0.55); color: #a8d0f0; font-size: 0.72rem; padding: 5px 12px; border-radius: 20px; letter-spacing: 1px; animation: badge-pulse 1.5s ease-in-out infinite; pointer-events: none; white-space: nowrap; }
     .card-3 { background: linear-gradient(135deg, #0e1a0c 0%, #162814 50%, #0e1a0a 100%); }
     .card-4 { background: linear-gradient(135deg, #220c10 0%, #341018 50%, #220810 100%); }
     .card::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s; }
@@ -123,6 +125,7 @@
     </a>
     <a href="roman-eng.html" class="card card-2">
       <div class="card-border-accent"></div>
+      <div class="neu-badge">🎧 Part 2 Audiobook now online</div>
       <img src="Buchfächer-Roman.png" style="position:absolute;top:16px;right:16px;width:96px;height:96px;object-fit:cover;border-radius:6px;opacity:0.7;pointer-events:none;">
       <span class="card-icon">📖</span>
       <div class="card-title">Novels as Book <svg width="22" height="14" viewBox="0 0 5 3" style="vertical-align:middle;margin-left:4px;border-radius:2px;"><rect width="5" height="3" fill="#000"/><rect y="1" width="5" height="1" fill="#D00"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg><svg width="22" height="14" viewBox="0 0 60 30" style="vertical-align:middle;margin-left:2px;border-radius:2px;"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg></div>
