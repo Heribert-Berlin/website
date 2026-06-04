@@ -225,7 +225,7 @@
 
     .card-1 { background: linear-gradient(135deg, #221a0c 0%, #342810 50%, #221608 100%); }
     .card-2 { background: linear-gradient(135deg, #0c1a24 0%, #102230 50%, #0c1a28 100%); justify-content: flex-start; padding-bottom: 52px; }
-    .card-3 { background: linear-gradient(135deg, #0e1a0c 0%, #162814 50%, #0e1a0a 100%); }
+    .card-3 { background: linear-gradient(135deg, #0e1a0c 0%, #162814 50%, #0e1a0a 100%); justify-content: flex-start; padding-bottom: 52px; }
     .card-4 { background: linear-gradient(135deg, #220c10 0%, #341018 50%, #220810 100%); }
 
     .card::before {
@@ -310,6 +310,34 @@
     @keyframes badge-pulse {
       0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(100,150,200,0.5); }
       50% { opacity: 0.3; box-shadow: none; }
+    }
+    @keyframes badge-bounce {
+      0%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-5px); }
+      60% { transform: translateY(-3px); }
+    }
+    @keyframes star-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+    .neu-badge-green {
+      position: absolute;
+      bottom: 16px;
+      left: 32px;
+      background: rgba(80,160,80,0.15);
+      border: 1px solid rgba(80,160,80,0.6);
+      color: #90d890;
+      font-size: 0.72rem;
+      padding: 5px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      animation: badge-bounce 1.2s ease-in-out infinite;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .neu-badge-green .blink-star {
+      display: inline-block;
+      animation: star-blink 0.8s ease-in-out infinite;
     }
     .neu-badge {
       position: absolute;
@@ -450,6 +478,7 @@
     <!-- Kinderbücher -->
     <a href="kinderbuch.html" class="card card-3">
       <div class="card-border-accent"></div>
+      <div class="neu-badge-green"><span class="blink-star">★</span> Band 01-04 ist erschienen</div>
       <img src="Buchfächer-Kinderbuch.jpg" style="position:absolute;top:16px;right:16px;width:96px;height:96px;object-fit:cover;border-radius:6px;opacity:0.7;pointer-events:none;">
       <span class="card-icon">🦉</span>
       <div class="card-title">Kinderbücher</div>
