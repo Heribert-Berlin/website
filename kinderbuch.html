@@ -54,8 +54,12 @@
     .content-text p strong { color: var(--text); font-weight: normal; font-style: italic; }
 
     .btn-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 28px; }
-    .mehr-btn { display: inline-block; padding: 12px 28px; border: 1px solid var(--accent); color: var(--accent); border-radius: 5px; text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; font-family: Georgia, serif; }
-    .mehr-btn:hover { background: var(--accent); color: #091408; }
+    @keyframes btn-glow {
+      0%, 100% { box-shadow: 0 0 6px rgba(80,160,80,0.4); border-color: var(--accent); color: var(--accent); }
+      50% { box-shadow: 0 0 16px rgba(80,160,80,0.9); border-color: #90d890; color: #90d890; }
+    }
+    .mehr-btn { display: inline-block; padding: 12px 28px; border: 1px solid var(--accent); color: var(--accent); border-radius: 5px; text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; font-family: Georgia, serif; animation: btn-glow 1.8s ease-in-out infinite; }
+    .mehr-btn:hover { background: var(--accent); color: #091408; animation: none; }
     .back-btn { display: inline-block; padding: 12px 28px; border: 1px solid var(--border); color: var(--text-muted); border-radius: 5px; text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; transition: border-color 0.2s, color 0.2s; font-family: Georgia, serif; }
     .back-btn:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -120,7 +124,7 @@
       <p>Schauen Sie sich um, entdecken Sie die aktuellen Titel und lassen Sie uns am ersten des nächsten Monats gemeinsam das nächste Kapitel aufschlagen.</p>
 
       <div class="btn-row">
-        <a href="kinderbuch-staffel1.html" class="mehr-btn">▶ Mehr erfahren</a>
+        <a href="kinderbuch-staffel1.html" class="mehr-btn">▶ Zu den Videos und Büchern</a>
         <a href="home.html" class="back-btn">⌂ Zur Hauptseite</a>
       </div>
     </div>
