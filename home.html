@@ -105,12 +105,18 @@
       text-transform: uppercase;
     }
 
+    @keyframes subtitle-blink {
+      0%, 100% { color: var(--text-muted); }
+      50% { color: var(--accent); }
+    }
     header .subtitle a {
       color: var(--text-muted);
       text-decoration: underline;
       text-underline-offset: 3px;
       transition: color 0.2s;
+      animation: subtitle-blink 2s ease-in-out infinite;
     }
+    header .subtitle a:hover { animation: none; }
 
     header .subtitle a:hover { color: var(--accent); }
 

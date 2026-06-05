@@ -28,8 +28,9 @@
     .header-deco-diamond { width: 8px; height: 8px; background: var(--accent); transform: rotate(45deg); }
     header h1 { font-family: 'Cinzel', serif; font-size: 3rem; font-weight: 400; color: var(--accent); letter-spacing: 6px; line-height: 1.1; }
     header .subtitle { margin-top: 10px; font-size: 0.85rem; letter-spacing: 4px; color: var(--text-muted); text-transform: uppercase; }
-    header .subtitle a { color: var(--text-muted); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
-    header .subtitle a:hover { color: var(--accent); }
+    @keyframes subtitle-blink { 0%, 100% { color: var(--text-muted); } 50% { color: var(--accent); } }
+    header .subtitle a { color: var(--text-muted); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; animation: subtitle-blink 2s ease-in-out infinite; }
+    header .subtitle a:hover { color: var(--accent); animation: none; }
     header .location { margin-top: 8px; font-size: 0.75rem; letter-spacing: 4px; color: var(--text-muted); opacity: 0.6; text-transform: uppercase; }
     .lang-buttons { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 16px; z-index: 100; }
     .lang-btn { width: 56px; height: 56px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid rgba(255,255,255,0.12); box-shadow: 0 4px 16px rgba(0,0,0,0.6); transition: transform 0.2s, border-color 0.2s; text-decoration: none; display: block; position: relative; }
