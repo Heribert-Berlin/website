@@ -37,8 +37,9 @@
     .book-cover img { width: 100%; border-radius: 8px; display: block; }
     .book-text { flex: 1; }
     .book p { line-height: 1.8; color: var(--text); margin-bottom: 14px; font-size: 0.97rem; }
-    .mehr-btn { display: block; margin: 24px auto 0; background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 12px 28px; border-radius: 5px; cursor: pointer; font-size: 15px; font-family: Georgia, serif; letter-spacing: 1px; transition: background 0.2s, color 0.2s; width: fit-content; text-decoration: none; }
-    .mehr-btn:hover { background: var(--accent); color: #12100c; }
+    @keyframes btn-glow { 0%, 100% { box-shadow: 0 0 6px rgba(200,169,110,0.4); border-color: var(--accent); color: var(--accent); } 50% { box-shadow: 0 0 16px rgba(200,169,110,0.9); border-color: #e8c888; color: #e8c888; } }
+    .mehr-btn { display: block; margin: 24px auto 0; background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 12px 28px; border-radius: 5px; cursor: pointer; font-size: 15px; font-family: Georgia, serif; letter-spacing: 1px; transition: background 0.2s, color 0.2s; width: fit-content; text-decoration: none; animation: btn-glow 1.8s ease-in-out infinite; }
+    .mehr-btn:hover { background: var(--accent); color: #12100c; animation: none; }
     .back-btn { display: inline-block; margin-top: 14px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s; }
     .back-btn:hover { color: var(--accent); }
   </style>
@@ -86,7 +87,7 @@
         <p>Eine Geschichte über Gerechtigkeit und Verbrechen, über Kulturen die aufeinanderprallen und sich verbinden, über Berlin und Saigon, London und New York. Und über die universelle Kraft der Liebe, die keine Grenzen kennt – auch nicht die zwischen zwei Männern.</p>
         <p style="text-align:right;color:var(--accent);font-style:italic;">Kim Collins zwischen Liebe und Mord.</p>
         <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
-          <a href="roman-deu-detail.html" class="mehr-btn" style="margin-top:0;">Mehr erfahren &amp; Bestellen</a>
+          <a href="roman-deu-detail.html" class="mehr-btn" style="margin-top:0;">▶ Zum Trailer und den Büchern</a>
           <a href="roman-hoerbuch.html" class="mehr-btn" style="margin-top:0;">🎧 Zum kostenlosen Hörbuch</a>
         </div>
         <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px;flex-wrap:wrap;">
