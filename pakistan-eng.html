@@ -179,6 +179,10 @@
       font-size: 0.97rem;
     }
 
+    @keyframes btn-glow {
+      0%, 100% { box-shadow: 0 0 6px rgba(200,169,110,0.4); border-color: var(--accent); color: var(--accent); }
+      50% { box-shadow: 0 0 16px rgba(200,169,110,0.9); border-color: #e8c888; color: #e8c888; }
+    }
     .mehr-btn {
       display: block;
       margin: 24px auto 0;
@@ -193,11 +197,13 @@
       letter-spacing: 1px;
       transition: background 0.2s, color 0.2s;
       width: fit-content;
+      animation: btn-glow 1.8s ease-in-out infinite;
     }
 
     .mehr-btn:hover {
       background: var(--accent);
       color: #12100c;
+      animation: none;
     }
 
     .back-btn {
@@ -287,7 +293,7 @@
         <p style="text-align: right; color: var(--accent); font-style: italic;">Heribert Lange</p>
 
         <button class="mehr-btn" onclick="window.location.href='pakistan-eng-detail.html'">
-          Learn more
+          ▶ To the Trailer and Books
         </button>
         <a href="home-eng.html" class="back-btn">← Back</a>
         <a href="home-eng.html" class="back-btn">⌂ Home</a>

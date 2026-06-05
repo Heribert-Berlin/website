@@ -152,6 +152,10 @@
       font-size: 0.97rem;
     }
 
+    @keyframes btn-glow {
+      0%, 100% { box-shadow: 0 0 6px rgba(200,169,110,0.4); border-color: var(--accent); color: var(--accent); }
+      50% { box-shadow: 0 0 16px rgba(200,169,110,0.9); border-color: #e8c888; color: #e8c888; }
+    }
     .mehr-btn {
       display: block;
       margin: 24px auto 0;
@@ -166,9 +170,10 @@
       letter-spacing: 2px;
       transition: background 0.2s, color 0.2s;
       width: fit-content;
+      animation: btn-glow 1.8s ease-in-out infinite;
     }
 
-    .mehr-btn:hover { background: var(--accent); color: #0f0808; }
+    .mehr-btn:hover { background: var(--accent); color: #0f0808; animation: none; }
 
     .back-btn {
       display: inline-block;
@@ -276,7 +281,7 @@
         <p style="text-align: right; color: var(--accent); font-style: italic;">赫里伯特·蘭格 (Heribert Lange)</p>
 
         <button class="mehr-btn" onclick="window.location.href='pakistan-chi-detail.html'">
-          了解更多
+          ▶ 前往预告片与书籍
         </button>
         <a href="home-chi.html" class="back-btn">← 返回</a>
         <a href="home-chi.html" class="back-btn">⌂ 首頁</a>
