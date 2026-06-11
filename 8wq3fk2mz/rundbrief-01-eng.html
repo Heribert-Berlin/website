@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Newsletter No. 01 – June 2026 · Heribert Lange</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#393023; --text:#ede0c8; --text-muted:#a8987a; --accent:#d4b87a;
+      --header-bg:#352918; --border:rgba(212,184,122,0.25); --card:#453217;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family:'Cormorant Garamond','Noto Serif TC',Georgia,serif;
+      background:var(--bg); color:var(--text); min-height:100vh; line-height:1.85;
+    }
+    body::before {
+      content:''; position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events:none; z-index:0; opacity:0.4;
+    }
+    header {
+      position:relative; z-index:10; background:var(--header-bg);
+      border-bottom:1px solid var(--border); padding:44px 20px 28px; text-align:center;
+    }
+    .header-deco { display:flex; align-items:center; justify-content:center; gap:20px; margin-bottom:16px; }
+    .header-deco-line { flex:1; max-width:120px; height:1px; background:linear-gradient(90deg,transparent,var(--accent)); }
+    .header-deco-line.right { background:linear-gradient(90deg,var(--accent),transparent); }
+    .header-deco-diamond { width:8px; height:8px; background:var(--accent); transform:rotate(45deg); }
+    header h1 { font-family:'Cinzel',serif; font-size:2.2rem; font-weight:400; color:var(--accent); letter-spacing:5px; }
+    header .subtitle { margin-top:10px; font-size:0.78rem; letter-spacing:3px; color:var(--text-muted); text-transform:uppercase; }
+    .lang-switch { display:flex; justify-content:center; gap:10px; margin-top:22px; flex-wrap:wrap; }
+    .lang-switch a, .lang-switch span {
+      padding:6px 16px; border:1px solid var(--border); border-radius:20px;
+      font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:2px;
+      text-decoration:none; color:var(--text-muted); transition:border-color .2s,color .2s;
+    }
+    .lang-switch a:hover { border-color:var(--accent); color:var(--accent); }
+    .lang-switch .active { background:var(--accent); color:var(--header-bg); border-color:var(--accent); }
+    .main { position:relative; z-index:1; padding:56px 28px 40px; max-width:720px; margin:0 auto; }
+    .letter-title { font-family:'Cinzel',serif; font-size:1.7rem; font-weight:400; color:var(--accent); text-align:center; letter-spacing:1px; margin-bottom:10px; }
+    .letter-sub { text-align:center; color:var(--text-muted); font-style:italic; font-size:1.1rem; margin-bottom:14px; }
+    .letter-date { text-align:center; font-size:0.74rem; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted); opacity:0.8; margin-bottom:40px; }
+    .letter-body p { font-size:1.12rem; margin-bottom:22px; }
+    .letter-body h2 {
+      font-family:'Cinzel',serif; font-size:1.15rem; font-weight:600; color:var(--accent);
+      letter-spacing:1px; margin:38px 0 14px;
+    }
+    .signature { margin-top:36px; font-style:italic; color:var(--text); }
+    .signature .name { font-family:'Cinzel',serif; font-style:normal; color:var(--accent); letter-spacing:2px; display:block; margin-top:4px; }
+    .section-divider { width:80px; height:1px; background:var(--border); margin:56px auto 38px; }
+    .novel-teaser { text-align:center; margin:0 0 30px; }
+    .teaser-badge {
+      display:inline-block; font-family:'Cinzel',serif; font-size:0.9rem;
+      letter-spacing:3px; text-transform:uppercase; font-weight:600;
+      color:#fff; background:#d93a2b; border:1px solid #ff6b5a;
+      border-radius:22px; padding:11px 26px;
+      animation:teaserBlink 1s ease-in-out infinite;
+    }
+    @keyframes teaserBlink {
+      0%,100% { opacity:1; background:#e8412f; box-shadow:0 0 26px rgba(232,65,47,0.95); transform:scale(1.04); }
+      50%     { opacity:0.3; background:#5e1a12; box-shadow:0 0 0 rgba(232,65,47,0); transform:scale(1); }
+    }
+    .kim-portrait {
+      display:block; width:210px; height:210px; object-fit:cover;
+      border-radius:14px; margin:6px auto 30px;
+      border:1px solid var(--border); box-shadow:0 8px 26px rgba(0,0,0,0.55);
+    }
+    @media (prefers-reduced-motion: reduce) { .teaser-badge { animation:none; } }
+    details.changelog {
+      margin-top:48px; background:var(--card); border:1px solid var(--border);
+      border-radius:10px; padding:0 26px; overflow:hidden;
+    }
+    details.changelog summary {
+      cursor:pointer; list-style:none; padding:22px 0; font-family:'Cinzel',serif;
+      font-size:0.92rem; letter-spacing:2px; color:var(--accent); display:flex;
+      align-items:center; justify-content:space-between;
+    }
+    details.changelog summary::-webkit-details-marker { display:none; }
+    details.changelog summary .chev { transition:transform .25s; font-size:1.1rem; }
+    details.changelog[open] summary .chev { transform:rotate(90deg); }
+    .changelog-inner { padding:4px 0 28px; border-top:1px solid var(--border); }
+    .changelog-inner h3 { font-family:'Cinzel',serif; font-size:0.86rem; color:var(--text); letter-spacing:1px; margin:22px 0 8px; }
+    .changelog-inner ul { list-style:none; padding:0; margin:0 0 4px; }
+    .changelog-inner li { position:relative; padding-left:20px; font-size:1.0rem; color:var(--text-muted); margin-bottom:7px; line-height:1.6; }
+    .changelog-inner li::before { content:'·'; position:absolute; left:6px; color:var(--accent); }
+    .back-btn-wrap { text-align:center; margin-top:48px; }
+    .back-btn {
+      display:inline-block; padding:10px 26px; border:1px solid var(--border); border-radius:22px;
+      color:var(--text-muted); text-decoration:none; font-family:'Cinzel',serif;
+      font-size:0.78rem; letter-spacing:2px; text-transform:uppercase; transition:border-color .2s,color .2s;
+    }
+    .back-btn:hover { border-color:var(--accent); color:var(--accent); }
+    footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:24px; text-align:center; margin-top:56px; }
+    .footer-copy { font-size:0.75rem; color:var(--text-muted); letter-spacing:1px; opacity:0.6; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
+    header { animation:fadeUp .6s ease both; }
+    .main { animation:fadeUp .6s ease .1s both; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-deco">
+    <div class="header-deco-line"></div>
+    <div class="header-deco-diamond"></div>
+    <div class="header-deco-line right"></div>
+  </div>
+  <h1>Heribert Lange</h1>
+  <p class="subtitle">Newsletter No. 01</p>
+  <div class="lang-switch">
+    <a href="rundbrief-01.html">Deutsch</a>
+    <span class="active">English</span>
+    <a href="rundbrief-01-chi.html">繁體中文</a>
+  </div>
+</header>
+
+<main class="main">
+  <h2 class="letter-title">News in June 2026</h2>
+  <p class="letter-sub">What's happened on heribert-berlin.de since the end of May</p>
+  <p class="letter-date">June 15, 2026</p>
+
+  <div class="letter-body">
+    <p>Dear readers,</p>
+    <p>May is barely over, and there's already plenty to tell. The short version: two new releases, a refreshed website, and a promise for the future. The slightly longer version follows here.</p>
+
+    <h2>More children's books: Season 1, Volume 04</h2>
+    <p>Anyone who has stopped by the homepage in recent days could hardly have missed it: a green star is bouncing there, announcing the news. Volume 04 of the first children's book season is out and available to order right now through Books on Demand. The matching video is waiting on YouTube as always – the link is ready on the children's book page.</p>
+
+    <h2>Kim Collins for your ears, now in English too</h2>
+    <p>The audiobook for the novel "One Last Cà phê" is growing as well: Part 2 is out – and in two versions at once, in German and in English. The audiobook stays free and is released piece by piece; around 36 parts are planned. So feel free to get just a little addicted. And if the suspense gets to be too much while you're out and about, you don't have to wait for the final part: the book and the eBook already know the ending today.</p>
+
+    <h2>Behind the scenes of the website</h2>
+    <p>More has changed around the edges than meets the eye. The author page was rewritten from scratch and translated into all three languages of the site; if you'd like to know why Vietnam became my second home, you'll find the answer there. The Pakistan pages now lead, with a golden shimmer, straight to the trailer and the books; quite a few images were shrunk so everything loads faster; and the sign-up form for this very newsletter is finally visible in full, with no scrolling at all. So if you know someone who's still missing here, spreading the word just got even easier.</p>
+    <p>On the subject of privacy, there's a piece of news that sounds almost exotic these days: this website uses no cookies and no tracking. No one is reading over your shoulder. Since the beginning of June, that's stated in black and white in the privacy policy as well.</p>
+
+    <h2>And what's next?</h2>
+    <p>The new author page hides a hint that attentive readers shouldn't skip past: the sequel to the novel already has a name. It will be called "One More Cà phê." I won't reveal more just yet – a good Cà phê needs its time, after all.</p>
+
+    <p class="signature">Thank you for being part of this. Until next time!<br>
+      Yours,
+      <span class="name">Heribert Lange</span>
+    </p>
+  </div>
+
+  <div class="section-divider"></div>
+  <div class="novel-teaser">
+    <span class="teaser-badge">✦ Explosive details from the novel ✦</span>
+  </div>
+
+  <h2 class="letter-title">May I introduce:<br>Kim Collins</h2>
+  <p class="letter-sub">A letter to my readers</p>
+  <img class="kim-portrait" src="kim-collins.jpg" alt="Kim Collins – portrait">
+
+  <div class="letter-body">
+    <p>Dear readers,</p>
+    <p>before my novel "One Last Cà phê" makes its way into your hands, I'd like to introduce the character with whom it all begins: my narrator, Kim Collins.</p>
+    <p>Kim is 23, born as Kim Nguyễn in Mũi Né on the Vietnamese coast, where his mother runs a small family café. He grew up in Berlin, and to this day he lives between these two worlds. He owes the surname Collins to his American adoptive father; how that came about, the novel tells better than I could here. The title, by the way, comes from Kim himself: a cà phê sữa đá – coffee with sweet condensed milk over ice – is the last thing he drinks before he has to leave Vietnam yet again.</p>
+    <p>In Berlin, Kim works as a detective. The agency is housed in a rented three-room apartment, and no one there is getting rich. No one needs to, either – they work for the love of it. His boss models himself on Sherlock Holmes, Olga at the front desk grew up on TV crime dramas, and Kim himself? "I was always James Bond," he says, "I just never had his luck with women." Around the office everyone calls him Casey, because at some point his initials K. C. turned into the name of the "sleeping prophet" Edgar Cayce.</p>
+    <p>Kim observes closely, asks questions faster than the person across from him can think, and stays calm long after others have started to sweat. At the same time, he brings Olga flowers and holds their standing Monday date at the Thai place around the corner sacred. In only one thing is this man, who otherwise misses nothing, astonishingly blind: his own feelings. What he discovers after his vacation, while sorting through his pictures, throws him off course more than any case ever could. I won't reveal more here.</p>
+    <p>Speaking of cases: two of them land on his desk right at the start. A suspected affair and an abduction in which something is off from the very first page. Where it all leads, no one at the agency suspects. Kim least of all.</p>
+    <p class="signature">Come along with him for a while. It's worth it.<br>
+      Yours,
+      <span class="name">Heribert Lange</span>
+    </p>
+  </div>
+
+  <details class="changelog">
+    <summary>What changed in detail <span class="chev">›</span></summary>
+    <div class="changelog-inner">
+      <p style="color:var(--text-muted);font-style:italic;margin:14px 0 4px;">For those who'd like every detail – the technical change log from June 5, 2026.</p>
+
+      <h3>1. Children's book Volume 01-04 – release &amp; order link</h3>
+      <ul>
+        <li>New YouTube URL and Books on Demand order link for Volume 04 are live</li>
+        <li>Volume 01-04 enabled as an active link in the season overview</li>
+        <li>Homepage: bouncing green star badge "Volume 01-04 is out"</li>
+        <li>Children's book page: button "To the videos and books" with a glow animation</li>
+      </ul>
+
+      <h3>2. Google Search Console – SEO fixes</h3>
+      <ul>
+        <li>Canonical tag added – duplicate issue (/ vs. /home.html) resolved</li>
+        <li>Remaining notices will clear up on their own; Google indexes automatically</li>
+      </ul>
+
+      <h3>3. Pakistan pages – buttons with a golden shimmer (DE/EN/ZH)</h3>
+      <ul>
+        <li>"Learn more" became "To the Trailer and Books" – with a gold glow</li>
+        <li>Done in all three languages</li>
+      </ul>
+
+      <h3>4. Main pages – gently blinking subtitle</h3>
+      <ul>
+        <li>The subtitle link now blinks softly on a 2-second cycle in the accent color</li>
+        <li>In all three languages (DE/EN/ZH)</li>
+      </ul>
+
+      <h3>5. Author pages – heading &amp; new text</h3>
+      <ul>
+        <li>New heading "About the author &amp; video producer"</li>
+        <li>Completely new author text: Vietnam as a second home, debut novel, the sequel "One More Cà phê," YouTube mission</li>
+        <li>Fully translated into English and Chinese</li>
+      </ul>
+
+      <h3>6. Privacy policy – GDPR (DE/EN/ZH)</h3>
+      <ul>
+        <li>A privacy expert's recommendations fully implemented</li>
+        <li>New: section "No cookies / no tracking"</li>
+        <li>Legal bases added (GitHub Pages, Formspree, rapidmail – with double opt-in and retention periods)</li>
+        <li>Responsible supervisory authority named, with address and link</li>
+      </ul>
+
+      <h3>7. Newsletter – form fully visible</h3>
+      <ul>
+        <li>Height of the sign-up form increased – now fully visible without scrolling</li>
+      </ul>
+
+      <h3>8. Image optimization – faster load times</h3>
+      <ul>
+        <li>7 PNG files replaced with smaller JPG versions</li>
+        <li>All references updated, old files removed</li>
+      </ul>
+
+      <h3>9. Novel pages – layout &amp; consistency</h3>
+      <ul>
+        <li>Buttons span the full card width, with a glow animation</li>
+        <li>Taglines added: "Kim Collins – Between Love and Murder."</li>
+        <li>Two-line header with blink animation and "Author &amp; video producer"</li>
+      </ul>
+
+      <h3>10. Preview images &amp; delivery</h3>
+      <ul>
+        <li>6 new German preview images (light design, full page view)</li>
+        <li>8 new language-specific images for EN and ZH</li>
+        <li>Freshness marker on every page so the images reload reliably</li>
+        <li>A deployment issue was identified and fixed</li>
+      </ul>
+    </div>
+  </details>
+
+  <div class="back-btn-wrap">
+    <a href="index-eng.html" class="back-btn">← Back to overview</a>
+  </div>
+</main>
+
+<footer>
+  <p class="footer-copy">© 2026 Heribert Lange · Berlin</p>
+</footer>
+</body>
+</html>
