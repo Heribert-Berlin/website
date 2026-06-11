@@ -56,6 +56,15 @@
     .letter-arrow { color:var(--accent); font-size:1.4rem; }
     footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:24px; text-align:center; margin-top:60px; }
     .footer-copy { font-size:0.78rem; color:var(--text-muted); letter-spacing:1px; opacity:0.6; }
+    .home-exit { margin-bottom:22px; }
+    .home-btn {
+      display:inline-block; padding:10px 26px; border:1px solid var(--border); border-radius:22px;
+      color:var(--text-muted); text-decoration:none; font-family:'Cinzel','Noto Serif TC',serif;
+      font-size:0.84rem; letter-spacing:2px; transition:border-color .2s,color .2s;
+    }
+    .home-btn:hover { border-color:var(--accent); color:var(--accent); }
+    .exit-note { max-width:440px; margin:14px auto 0; font-size:0.86rem; color:var(--text-muted); opacity:0.72; line-height:1.7; }
+    .exit-note strong { color:var(--accent); opacity:0.9; }
     @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
     header { animation:fadeUp .6s ease both; }
     .letter-card { animation:fadeUp .5s ease both; }
@@ -100,6 +109,10 @@
 </main>
 
 <footer>
+  <div class="home-exit">
+    <a href="../home-chi.html" class="home-btn">前往首頁 →</a>
+    <p class="exit-note"><strong>單行道：</strong>從首頁無法回到這個專屬頁面。建議您將本頁加入書籤。</p>
+  </div>
   <p class="footer-copy">© 2026 Heribert Lange · Berlin</p>
 </footer>
 </body>

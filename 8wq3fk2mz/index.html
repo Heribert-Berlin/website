@@ -56,6 +56,15 @@
     .letter-arrow { color:var(--accent); font-size:1.4rem; }
     footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:24px; text-align:center; margin-top:60px; }
     .footer-copy { font-size:0.75rem; color:var(--text-muted); letter-spacing:1px; opacity:0.6; }
+    .home-exit { margin-bottom:22px; }
+    .home-btn {
+      display:inline-block; padding:10px 26px; border:1px solid var(--border); border-radius:22px;
+      color:var(--text-muted); text-decoration:none; font-family:'Cinzel',serif;
+      font-size:0.78rem; letter-spacing:2px; text-transform:uppercase; transition:border-color .2s,color .2s;
+    }
+    .home-btn:hover { border-color:var(--accent); color:var(--accent); }
+    .exit-note { max-width:440px; margin:14px auto 0; font-size:0.82rem; color:var(--text-muted); opacity:0.72; line-height:1.6; }
+    .exit-note strong { color:var(--accent); font-style:italic; opacity:0.9; }
     @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
     header { animation:fadeUp .6s ease both; }
     .letter-card { animation:fadeUp .5s ease both; }
@@ -100,6 +109,10 @@
 </main>
 
 <footer>
+  <div class="home-exit">
+    <a href="../home.html" class="home-btn">Zur Homepage →</a>
+    <p class="exit-note"><strong>Einbahnstraße:</strong> Von der Homepage führt kein Weg zurück zu diesem Archiv. Speichere dir diese Seite am besten als Lesezeichen.</p>
+  </div>
   <p class="footer-copy">© 2026 Heribert Lange · Berlin</p>
 </footer>
 </body>
