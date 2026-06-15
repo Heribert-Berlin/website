@@ -85,9 +85,51 @@
     .card:nth-child(2) { animation: fadeUp 0.6s ease 0.2s both; }
     .card:nth-child(3) { animation: fadeUp 0.6s ease 0.3s both; }
     .card:nth-child(4) { animation: fadeUp 0.6s ease 0.4s both; }
+    /* Newsletter-Banner (oben, wegklickbar) */
+    .nl-banner {
+      position:relative; z-index:60;
+      display:flex; align-items:center; justify-content:center; gap:18px;
+      flex-wrap:wrap; text-align:center;
+      background:var(--header-bg);
+      border-bottom:1px solid var(--accent);
+      padding:13px 52px 13px 20px;
+    }
+    .nl-banner p { margin:0; color:var(--text); font-size:1.05rem; }
+    .nl-banner .nl-cta {
+      display:inline-block; padding:8px 22px; border-radius:22px;
+      background:var(--accent); color:var(--header-bg);
+      text-decoration:none; font-weight:600; font-size:0.95rem;
+      letter-spacing:1px; white-space:nowrap;
+      transition:transform .15s, box-shadow .15s;
+      animation:nlCtaPulse 1.3s ease-in-out infinite;
+    }
+    .nl-banner .nl-cta:hover { animation:none; transform:translateY(-1px); box-shadow:0 5px 16px rgba(0,0,0,0.4); }
+    @keyframes nlCtaPulse {
+      0%,100% { box-shadow:0 0 0 0 rgba(0,0,0,0); transform:scale(1); }
+      50%     { box-shadow:0 0 16px 3px var(--accent); transform:scale(1.06); }
+    }
+    @media (prefers-reduced-motion: reduce) { .nl-banner .nl-cta { animation:none; } }
+    .nl-banner .nl-close {
+      position:absolute; right:16px; top:50%; transform:translateY(-50%);
+      background:none; border:none; color:var(--text);
+      opacity:0.55; cursor:pointer; font-size:1.4rem; line-height:1; padding:4px;
+    }
+    .nl-banner .nl-close:hover { opacity:1; color:var(--accent); }
+    @media (max-width:560px) {
+      .nl-banner { flex-direction:column; gap:10px; padding:12px 40px; }
+      .nl-banner p { font-size:0.98rem; }
+    }
   </style>
 </head>
 <body>
+<div class="nl-banner" id="nlBanner">
+  <p>📬 新書與故事，直接送進您的信箱。</p>
+  <a href="newsletter.html" class="nl-cta">訂閱電子報 →</a>
+  <button class="nl-close" type="button" onclick="closeNlBanner()" aria-label="關閉橫幅">×</button>
+</div>
+<script>
+  function closeNlBanner(){ var b=document.getElementById('nlBanner'); if(b) b.style.display='none'; }
+</script>
 <header>
   <div class="header-deco">
     <div class="header-deco-line"></div>
