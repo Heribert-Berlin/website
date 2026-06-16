@@ -238,6 +238,29 @@
       text-transform: uppercase;
     }
 
+    /* Hinweis: Bestätigungsmail / Newsletter landet im Spam */
+    .spam-note {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      text-align: left;
+      background: rgba(212,184,122,0.08);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 28px;
+    }
+    .spam-note .spam-icon { font-size: 1.5rem; line-height: 1.4; flex-shrink: 0; }
+    .spam-note .spam-text { font-size: 0.92rem; line-height: 1.65; color: var(--text); }
+    .spam-note .spam-text strong { color: var(--accent); }
+    .spam-note .spam-lang { display: block; }
+    .spam-note .spam-lang + .spam-lang {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+    }
+    .spam-note .spam-zh { color: var(--text-muted); }
+
     .divider {
       width: 60px;
       height: 1px;
@@ -411,6 +434,15 @@
   <!-- Formular-Bereich -->
   <div class="form-card" id="anmeldung">
     <h2>Jetzt anmelden · Sign up · 立即订阅</h2>
+
+    <div class="spam-note">
+      <span class="spam-icon">📬</span>
+      <div class="spam-text">
+        <span class="spam-lang"><strong>Bitte den Spam-Ordner prüfen:</strong> Nach der Anmeldung erhalten Sie eine Bestätigungs-E-Mail. Sie landet derzeit häufig im Spam- oder Werbe-Ordner. Bitte bestätigen Sie dort Ihre Anmeldung und verschieben Sie die Nachricht in den Posteingang (bzw. „Kein Spam“), damit auch der Newsletter ankommt. Tipp: Fügen Sie <strong>newsletter@heribert-berlin.de</strong> zu Ihren Kontakten hinzu.</span>
+        <span class="spam-lang"><strong>Please check your spam folder:</strong> After signing up you’ll receive a confirmation email. It currently often lands in the spam or promotions folder. Please confirm your subscription there and move the message to your inbox (mark as “Not spam”) so the newsletter reaches you too. Tip: add <strong>newsletter@heribert-berlin.de</strong> to your contacts.</span>
+        <span class="spam-lang spam-zh"><strong>请检查垃圾邮件文件夹：</strong>订阅后您会收到一封确认邮件，目前常被归入垃圾邮件或广告文件夹。请在那里确认订阅，并将邮件移至收件箱（标记为“非垃圾邮件”），以便您能顺利收到通讯。小提示：请将 <strong>newsletter@heribert-berlin.de</strong> 添加到您的联系人。</span>
+      </div>
+    </div>
 
     <iframe src="https://t9e08910e.emailsys1a.net/248/3035/6256a51c54/subscribe/form.html?_g=1778501917" frameborder="0" width="100%" height="900"></iframe>
 
