@@ -325,6 +325,16 @@
 
     @media (max-width: 700px) {
       .lang-columns { grid-template-columns: 1fr; }
+      .main { padding: 40px 12px; }
+      .form-card { padding: 32px 12px; }
+      /* Formular bricht den Innenrand durch → volle Breite fürs Captcha */
+      .form-card iframe { margin-left: -12px; margin-right: -12px; width: calc(100% + 24px); }
+    }
+    @media (max-width: 380px) {
+      .main { padding: 32px 6px; }
+      .form-card { padding: 24px 6px; }
+      .spam-note { padding: 14px 12px; }
+      .form-card iframe { margin-left: -6px; margin-right: -6px; width: calc(100% + 12px); }
     }
   </style>
 </head>
