@@ -73,6 +73,14 @@
     .back-btn { display: inline-block; padding: 12px 28px; border: 1px solid var(--border); color: var(--text-muted); border-radius: 5px; text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; transition: border-color 0.2s, color 0.2s; font-family: Georgia, serif; }
     .back-btn:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* Trailer-/Staffel-Links oben (Umrandung + Blink-Glow) */
+    @keyframes btn-glow {
+      0%, 100% { box-shadow: 0 0 6px rgba(80,160,80,0.4); border-color: var(--accent); color: var(--accent); }
+      50% { box-shadow: 0 0 16px rgba(80,160,80,0.9); border-color: #80d080; color: #80d080; }
+    }
+    .mehr-btn { display: inline-block; padding: 8px 20px; border: 1px solid var(--accent); color: var(--accent); border-radius: 5px; text-decoration: none; font-size: 1rem; letter-spacing: 1px; font-family: Georgia, serif; animation: btn-glow 1.8s ease-in-out infinite; }
+    .mehr-btn:hover { background: var(--accent); color: var(--header-bg); animation: none; }
+
     @media (max-width: 600px) { .staffel-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -114,7 +122,10 @@
 
     <!-- Trailer -->
     <div class="trailer-wrap">
-      <h3>▶ Trailer</h3>
+      <h3 style="display:flex;justify-content:center;gap:10px 22px;flex-wrap:wrap;">
+        <a href="https://youtu.be/rvbuNj5MGYk" target="_blank" class="mehr-btn">▶ Trailer</a>
+        <a href="kinderbuch-staffel1-detail.html" class="mehr-btn">▶ Staffel 1 – Uhu Waldemar und die Tiere des Waldes</a>
+      </h3>
       <a href="https://youtu.be/rvbuNj5MGYk" target="_blank" class="trailer-thumb">
         <img src="WAL01-00-PIC.jpg" alt="Trailer – Uhu Waldemar">
         <div class="play-overlay">▶</div>
