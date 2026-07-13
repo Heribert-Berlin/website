@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Newsletter No. 02 – July 2026 · Heribert Lange</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#393023; --text:#ede0c8; --text-muted:#a8987a; --accent:#d4b87a;
+      --header-bg:#352918; --border:rgba(212,184,122,0.25); --card:#453217;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family:'Cormorant Garamond','Noto Serif TC',Georgia,serif;
+      background:var(--bg); color:var(--text); min-height:100vh; line-height:1.85;
+    }
+    body::before {
+      content:''; position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events:none; z-index:0; opacity:0.4;
+    }
+    header {
+      position:relative; z-index:10; background:var(--header-bg);
+      border-bottom:1px solid var(--border); padding:44px 20px 28px; text-align:center;
+    }
+    .header-deco { display:flex; align-items:center; justify-content:center; gap:20px; margin-bottom:16px; }
+    .header-deco-line { flex:1; max-width:120px; height:1px; background:linear-gradient(90deg,transparent,var(--accent)); }
+    .header-deco-line.right { background:linear-gradient(90deg,var(--accent),transparent); }
+    .header-deco-diamond { width:8px; height:8px; background:var(--accent); transform:rotate(45deg); }
+    header h1 { font-family:'Cinzel',serif; font-size:2.2rem; font-weight:400; color:var(--accent); letter-spacing:5px; }
+    header .subtitle { margin-top:10px; font-size:0.78rem; letter-spacing:3px; color:var(--text-muted); text-transform:uppercase; }
+    .lang-switch { display:flex; justify-content:center; gap:10px; margin-top:22px; flex-wrap:wrap; }
+    .lang-switch a, .lang-switch span {
+      padding:6px 16px; border:1px solid var(--border); border-radius:20px;
+      font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:2px;
+      text-decoration:none; color:var(--text-muted); transition:border-color .2s,color .2s;
+    }
+    .lang-switch a:hover { border-color:var(--accent); color:var(--accent); }
+    .lang-switch .active { background:var(--accent); color:var(--header-bg); border-color:var(--accent); }
+    .main { position:relative; z-index:1; padding:56px 28px 40px; max-width:720px; margin:0 auto; }
+    .letter-title { font-family:'Cinzel',serif; font-size:1.7rem; font-weight:400; color:var(--accent); text-align:center; letter-spacing:1px; margin-bottom:10px; }
+    .letter-sub { text-align:center; color:var(--text-muted); font-style:italic; font-size:1.1rem; margin-bottom:14px; }
+    .letter-date { text-align:center; font-size:0.74rem; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted); opacity:0.8; margin-bottom:40px; }
+    .letter-body p { font-size:1.12rem; margin-bottom:22px; }
+    .letter-body h2 {
+      font-family:'Cinzel',serif; font-size:1.15rem; font-weight:600; color:var(--accent);
+      letter-spacing:1px; margin:38px 0 14px;
+    }
+    .letter-body a { color:var(--accent); text-decoration:none; border-bottom:1px solid var(--border); }
+    .letter-body a:hover { border-bottom-color:var(--accent); }
+    .signature { margin-top:36px; font-style:italic; color:var(--text); }
+    .signature .name { font-family:'Cinzel',serif; font-style:normal; color:var(--accent); letter-spacing:2px; display:block; margin-top:4px; }
+    /* Second letter – subtle lead-in */
+    .section-divider { width:80px; height:1px; background:var(--border); margin:56px auto 38px; }
+    .lead-in {
+      text-align:center; font-style:italic; font-size:1.15rem;
+      color:var(--text-muted); margin:0 0 34px; letter-spacing:0.5px;
+    }
+    .kim-portrait {
+      display:block; width:210px; height:210px; object-fit:cover;
+      border-radius:14px; margin:6px auto 30px;
+      border:1px solid var(--border); box-shadow:0 8px 26px rgba(0,0,0,0.55);
+    }
+    /* Collapsible change log */
+    details.changelog {
+      margin-top:48px; background:var(--card); border:1px solid var(--border);
+      border-radius:10px; padding:0 26px; overflow:hidden;
+    }
+    details.changelog summary {
+      cursor:pointer; list-style:none; padding:22px 0; font-family:'Cinzel',serif;
+      font-size:0.92rem; letter-spacing:2px; color:var(--accent); display:flex;
+      align-items:center; justify-content:space-between;
+    }
+    details.changelog summary::-webkit-details-marker { display:none; }
+    details.changelog summary .chev { transition:transform .25s; font-size:1.1rem; }
+    details.changelog[open] summary .chev { transform:rotate(90deg); }
+    .changelog-inner { padding:4px 0 28px; border-top:1px solid var(--border); }
+    .changelog-inner h3 { font-family:'Cinzel',serif; font-size:0.86rem; color:var(--text); letter-spacing:1px; margin:22px 0 8px; }
+    .changelog-inner ul { list-style:none; padding:0; margin:0 0 4px; }
+    .changelog-inner li { position:relative; padding-left:20px; font-size:1.0rem; color:var(--text-muted); margin-bottom:7px; line-height:1.6; }
+    .changelog-inner li::before { content:'·'; position:absolute; left:6px; color:var(--accent); }
+    .changelog-inner code { font-family:'Courier New',monospace; font-size:0.82rem; color:var(--accent); opacity:0.85; }
+    .back-btn-wrap { text-align:center; margin-top:48px; display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+    .back-btn {
+      display:inline-block; padding:10px 26px; border:1px solid var(--border); border-radius:22px;
+      color:var(--text-muted); text-decoration:none; font-family:'Cinzel',serif;
+      font-size:0.78rem; letter-spacing:2px; text-transform:uppercase; transition:border-color .2s,color .2s;
+    }
+    .back-btn:hover { border-color:var(--accent); color:var(--accent); }
+    footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:24px; text-align:center; margin-top:56px; }
+    .footer-copy { font-size:0.75rem; color:var(--text-muted); letter-spacing:1px; opacity:0.6; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
+    header { animation:fadeUp .6s ease both; }
+    .main { animation:fadeUp .6s ease .1s both; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-deco">
+    <div class="header-deco-line"></div>
+    <div class="header-deco-diamond"></div>
+    <div class="header-deco-line right"></div>
+  </div>
+  <h1>Heribert Lange</h1>
+  <p class="subtitle">Newsletter No. 02</p>
+  <div class="lang-switch">
+    <a href="rundbrief-02.html">Deutsch</a>
+    <span class="active">English</span>
+    <a href="rundbrief-02-chi.html">繁體中文</a>
+  </div>
+</header>
+
+<main class="main">
+  <h2 class="letter-title">News in July 2026</h2>
+  <p class="letter-sub">What's happened on heribert-berlin.de since mid-June</p>
+  <p class="letter-date">July 15, 2026</p>
+
+  <div class="letter-body">
+    <p>Dear readers,</p>
+    <p>right on time for the middle of the month, the newsletter is back. The premiere is slowly becoming a good habit, so this time the news comes at an easy pace: a new children's book, a new audiobook part, a fixed weekly rhythm on YouTube – and a website that's now easier to find your way around.</p>
+
+    <h2>Waldemar the Owl: Volume 05 is here</h2>
+    <p>The first children's book season has grown by one volume: "The Fox, His Family and the Birch" is out and available to order right now through Books on Demand. The matching video is waiting on YouTube as always – the link is ready on the children's book page. And the rhythm holds: things continue on the first day of every month – the next volume arrives on August 1. (The children's books are available in German.)</p>
+
+    <h2>Audiobook: Part 3 is online</h2>
+    <p>Kim Collins isn't taking a break either. Part 3 of the free audiobook for the novel "One Last Cà phê" is online – "Date at the Thai Place" – once again in German and in English. If you're just joining in or missed a part, you'll find everything gathered in the YouTube playlist, with subtitles in 13 languages. Part 4 is already announced: from July 30. And as always: if you'd rather not wait that long, reach for the book or the eBook – they already know the ending today.</p>
+
+    <h2>New three times a week: Shorts on YouTube</h2>
+    <p>New is a fixed beat for short videos on YouTube: Wednesdays for the children's books, Fridays for the Pakistan travel diary, and Sundays for the novel. Three dates, three worlds – one subscription to the channel is all it takes, and you won't miss any of them. And if you prefer to spend your time elsewhere: we've recently arrived on <a href="https://www.tiktok.com/@heribert_berlin" rel="noopener">TikTok</a>, <a href="https://www.instagram.com/heribert_berlin/" rel="noopener">Instagram</a> and <a href="https://www.facebook.com/profile.php?id=61591273392761" rel="noopener">Facebook</a> as well.</p>
+
+    <h2>Little signposts on the website</h2>
+    <p>Things have been happening around the edges, too. Every subpage now carries a little house symbol next to the language flags – one click, and you're back on the homepage. The most important buttons no longer sit only at the bottom of the page but right up top under the heading; no more endless scrolling on your phone. And the Pakistan pages now lead straight to the complete video playlist on YouTube – so the travel diary can now be watched as well as read.</p>
+
+    <h2>And what's next?</h2>
+    <p>The sequel, "One More Cà phê," is being written. I won't reveal more just yet – a good Cà phê needs its time, after all.</p>
+
+    <p class="signature">Thank you for being part of this. Until next time!<br>
+      Yours,
+      <span class="name">Heribert Lange</span>
+    </p>
+  </div>
+
+  <div class="section-divider"></div>
+  <p class="lead-in">And now, allow me to show the boss in …</p>
+
+  <h2 class="letter-title">May I introduce:<br>Eduard "Eddi" von Duckstein</h2>
+  <p class="letter-sub">A letter to my readers</p>
+  <img class="kim-portrait" src="eddi-von-duckstein.jpg" alt="Eddi von Duckstein – portrait">
+
+  <div class="letter-body">
+    <p>Dear readers,</p>
+    <p>if you've read my letter about Kim, you already know him by hearsay: the boss who models himself on Sherlock Holmes. Today he gets his own entrance. Eduard von Duckstein, 37, known to everyone simply as Eddi, head of the small agency where my novel makes its home.</p>
+    <p>Eddi's office says it all, really. On the desk lies a pipe, although he doesn't smoke; his idol did, after all. Next to it an old globe, on the wall books of which, as Kim suspects, he has read very few – and the only picture hanging there, neatly framed, is the street map of Berlin. Eddi grew up with Holmes and Watson and feels called to higher things. Kim certifies that he would have cut a fine figure at Vienna's Burgtheater, and that is at most half in jest: when Eddi puts on a disguise or stages a scene, every performance lands. Only when two new cases flutter onto his desk and he generously lets Kim choose which one he'd like to take does he have to ask, sheepishly, afterwards, which one the second one actually was.</p>
+    <p>His first big entrance in the novel, however, belongs to his phone. Eddi is chewing Kim out for not answering his calls twenty times, holds up his own phone as proof – and at exactly that moment it rings out from it, through the entire office: "Little Curly-Tail, why do you keep calling me? You know I'm at the hairdresser's and can't pick up!"</p>
+    <p>Which brings us to his greatest weakness: Eddi is permanently in love. This time, however – and this is new – the love is apparently returned. Her name is Emona, his "Pearl of the Adriatic." He buys roses for his rose, fails to notice a new hairstyle, but has learned to admire it extensively anyway, just to be safe.</p>
+    <p>Don't underestimate him for it. When things get serious, Eddi holds the shop together, plans, assigns roles and keeps the overview – and his theatrical blood will prove very useful in this novel. So should you ever come across a road worker in Berlin who spends a remarkably long time tinkering with a street lamp: give him my regards.</p>
+    <p class="signature">Yours,
+      <span class="name">Heribert Lange</span>
+    </p>
+  </div>
+
+  <details class="changelog">
+    <summary>What changed in detail <span class="chev">›</span></summary>
+    <div class="changelog-inner">
+      <p style="color:var(--text-muted);font-style:italic;margin:14px 0 4px;">For those who'd like every detail – the technical change log since the last newsletter.</p>
+
+      <h3>1. Reader archive – this very page</h3>
+      <ul>
+        <li>Trilingual newsletter archive set up (DE/EN/ZH), reachable only via the link in the newsletter email – deliberately invisible to search engines</li>
+        <li>Newsletter No. 02 added, Eddi's portrait uploaded</li>
+      </ul>
+
+      <h3>2. Newsletter – banner &amp; sign-up</h3>
+      <ul>
+        <li>All three homepages now invite you to subscribe with a banner and "Subscribe" button (dismissible via ×)</li>
+        <li>Sign-up page: note added that the confirmation email may land in the spam folder – with the tip to add newsletter@heribert-berlin.de to your contacts</li>
+        <li>Sign-up form fixed on narrow phones – subscribing now works on mobile without a cut-off captcha</li>
+      </ul>
+
+      <h3>3. Children's book – Volume 05 released</h3>
+      <ul>
+        <li>"The Fox, His Family and the Birch" published on July 1, Books on Demand order link and YouTube video live</li>
+        <li>Homepage: star badge first shown as an announcement, then switched to "Volume 01-05 is out"</li>
+      </ul>
+
+      <h3>4. Audiobook – Part 3 "Date at the Thai Place"</h3>
+      <ul>
+        <li>Part 3 released in German (June 30) and English (June 29), Part 4 announced for the end of July</li>
+        <li>Audiobook pages DE and EN expanded to four episodes and brought in line</li>
+        <li>Homepages: audiobook badge switched to "Part 3 · Now online"</li>
+      </ul>
+
+      <h3>5. Pakistan – videos bundled</h3>
+      <ul>
+        <li>Detail pages (DE/EN/ZH): new block "All Videos on YouTube" links straight to the travel diary's complete playlist</li>
+      </ul>
+
+      <h3>6. Navigation – shorter paths</h3>
+      <ul>
+        <li>New house symbol next to the language flags on 33 subpages: one click back to the homepage in the respective language</li>
+        <li>Novel, children's book and Pakistan pages: the main buttons now also sit up top under the title – no more long scrolling</li>
+      </ul>
+
+      <h3>7. YouTube &amp; social media</h3>
+      <ul>
+        <li>Fixed Shorts rhythm: Wednesday children's books · Friday Pakistan travel diary · Sunday novel</li>
+        <li>New channels opened on TikTok, Instagram and Facebook</li>
+      </ul>
+    </div>
+  </details>
+
+  <div class="back-btn-wrap">
+    <a href="rundbrief-01-eng.html" class="back-btn">← No. 01 · June</a>
+    <a href="index-eng.html" class="back-btn">Back to overview</a>
+  </div>
+</main>
+
+<footer>
+  <p class="footer-copy">© 2026 Heribert Lange · Berlin</p>
+</footer>
+</body>
+</html>

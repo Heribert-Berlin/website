@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Rundbrief Nr. 02 – Juli 2026 · Heribert Lange</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#393023; --text:#ede0c8; --text-muted:#a8987a; --accent:#d4b87a;
+      --header-bg:#352918; --border:rgba(212,184,122,0.25); --card:#453217;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family:'Cormorant Garamond','Noto Serif TC',Georgia,serif;
+      background:var(--bg); color:var(--text); min-height:100vh; line-height:1.85;
+    }
+    body::before {
+      content:''; position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events:none; z-index:0; opacity:0.4;
+    }
+    header {
+      position:relative; z-index:10; background:var(--header-bg);
+      border-bottom:1px solid var(--border); padding:44px 20px 28px; text-align:center;
+    }
+    .header-deco { display:flex; align-items:center; justify-content:center; gap:20px; margin-bottom:16px; }
+    .header-deco-line { flex:1; max-width:120px; height:1px; background:linear-gradient(90deg,transparent,var(--accent)); }
+    .header-deco-line.right { background:linear-gradient(90deg,var(--accent),transparent); }
+    .header-deco-diamond { width:8px; height:8px; background:var(--accent); transform:rotate(45deg); }
+    header h1 { font-family:'Cinzel',serif; font-size:2.2rem; font-weight:400; color:var(--accent); letter-spacing:5px; }
+    header .subtitle { margin-top:10px; font-size:0.78rem; letter-spacing:3px; color:var(--text-muted); text-transform:uppercase; }
+    .lang-switch { display:flex; justify-content:center; gap:10px; margin-top:22px; flex-wrap:wrap; }
+    .lang-switch a, .lang-switch span {
+      padding:6px 16px; border:1px solid var(--border); border-radius:20px;
+      font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:2px;
+      text-decoration:none; color:var(--text-muted); transition:border-color .2s,color .2s;
+    }
+    .lang-switch a:hover { border-color:var(--accent); color:var(--accent); }
+    .lang-switch .active { background:var(--accent); color:var(--header-bg); border-color:var(--accent); }
+    .main { position:relative; z-index:1; padding:56px 28px 40px; max-width:720px; margin:0 auto; }
+    .letter-title { font-family:'Cinzel',serif; font-size:1.7rem; font-weight:400; color:var(--accent); text-align:center; letter-spacing:1px; margin-bottom:10px; }
+    .letter-sub { text-align:center; color:var(--text-muted); font-style:italic; font-size:1.1rem; margin-bottom:14px; }
+    .letter-date { text-align:center; font-size:0.74rem; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted); opacity:0.8; margin-bottom:40px; }
+    .letter-body p { font-size:1.12rem; margin-bottom:22px; }
+    .letter-body h2 {
+      font-family:'Cinzel',serif; font-size:1.15rem; font-weight:600; color:var(--accent);
+      letter-spacing:1px; margin:38px 0 14px;
+    }
+    .letter-body a { color:var(--accent); text-decoration:none; border-bottom:1px solid var(--border); }
+    .letter-body a:hover { border-bottom-color:var(--accent); }
+    .signature { margin-top:36px; font-style:italic; color:var(--text); }
+    .signature .name { font-family:'Cinzel',serif; font-style:normal; color:var(--accent); letter-spacing:2px; display:block; margin-top:4px; }
+    /* Zweiter Brief – dezenter Übergang */
+    .section-divider { width:80px; height:1px; background:var(--border); margin:56px auto 38px; }
+    .lead-in {
+      text-align:center; font-style:italic; font-size:1.15rem;
+      color:var(--text-muted); margin:0 0 34px; letter-spacing:0.5px;
+    }
+    .kim-portrait {
+      display:block; width:210px; height:210px; object-fit:cover;
+      border-radius:14px; margin:6px auto 30px;
+      border:1px solid var(--border); box-shadow:0 8px 26px rgba(0,0,0,0.55);
+    }
+    /* Aufklappbare Änderungsliste */
+    details.changelog {
+      margin-top:48px; background:var(--card); border:1px solid var(--border);
+      border-radius:10px; padding:0 26px; overflow:hidden;
+    }
+    details.changelog summary {
+      cursor:pointer; list-style:none; padding:22px 0; font-family:'Cinzel',serif;
+      font-size:0.92rem; letter-spacing:2px; color:var(--accent); display:flex;
+      align-items:center; justify-content:space-between;
+    }
+    details.changelog summary::-webkit-details-marker { display:none; }
+    details.changelog summary .chev { transition:transform .25s; font-size:1.1rem; }
+    details.changelog[open] summary .chev { transform:rotate(90deg); }
+    .changelog-inner { padding:4px 0 28px; border-top:1px solid var(--border); }
+    .changelog-inner h3 { font-family:'Cinzel',serif; font-size:0.86rem; color:var(--text); letter-spacing:1px; margin:22px 0 8px; }
+    .changelog-inner ul { list-style:none; padding:0; margin:0 0 4px; }
+    .changelog-inner li { position:relative; padding-left:20px; font-size:1.0rem; color:var(--text-muted); margin-bottom:7px; line-height:1.6; }
+    .changelog-inner li::before { content:'·'; position:absolute; left:6px; color:var(--accent); }
+    .changelog-inner code { font-family:'Courier New',monospace; font-size:0.82rem; color:var(--accent); opacity:0.85; }
+    .back-btn-wrap { text-align:center; margin-top:48px; display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+    .back-btn {
+      display:inline-block; padding:10px 26px; border:1px solid var(--border); border-radius:22px;
+      color:var(--text-muted); text-decoration:none; font-family:'Cinzel',serif;
+      font-size:0.78rem; letter-spacing:2px; text-transform:uppercase; transition:border-color .2s,color .2s;
+    }
+    .back-btn:hover { border-color:var(--accent); color:var(--accent); }
+    footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:24px; text-align:center; margin-top:56px; }
+    .footer-copy { font-size:0.75rem; color:var(--text-muted); letter-spacing:1px; opacity:0.6; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
+    header { animation:fadeUp .6s ease both; }
+    .main { animation:fadeUp .6s ease .1s both; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-deco">
+    <div class="header-deco-line"></div>
+    <div class="header-deco-diamond"></div>
+    <div class="header-deco-line right"></div>
+  </div>
+  <h1>Heribert Lange</h1>
+  <p class="subtitle">Rundbrief Nr. 02</p>
+  <div class="lang-switch">
+    <span class="active">Deutsch</span>
+    <a href="rundbrief-02-eng.html">English</a>
+    <a href="rundbrief-02-chi.html">繁體中文</a>
+  </div>
+</header>
+
+<main class="main">
+  <h2 class="letter-title">Neuigkeiten im Juli 2026</h2>
+  <p class="letter-sub">Was sich seit Mitte Juni auf heribert-berlin.de getan hat</p>
+  <p class="letter-date">15. Juli 2026</p>
+
+  <div class="letter-body">
+    <p>Liebe Leserinnen und Leser,</p>
+    <p>pünktlich zur Monatsmitte meldet sich der Rundbrief zurück. Aus der Premiere wird langsam eine gute Gewohnheit, und so gibt es diesmal Neuigkeiten in aller Ruhe: ein neues Kinderbuch, ein neuer Hörbuch-Teil, ein fester Wochenrhythmus auf YouTube – und eine Website, auf der man sich jetzt leichter bewegt.</p>
+
+    <h2>Uhu Waldemar: Band 05 ist da</h2>
+    <p>Die erste Kinderbuch-Staffel ist um einen Band reicher: „Der Fuchs, seine Familie und die Birke" ist erschienen und ab sofort über Books on Demand bestellbar. Das passende Video wartet wie gewohnt auf YouTube, der Link steht auf der Kinderbuchseite bereit. Und der Rhythmus hält: Am ersten Tag jedes Monats geht es weiter – der nächste Band erscheint am 1. August.</p>
+
+    <h2>Hörbuch: Teil 3 ist online</h2>
+    <p>Auch Kim Collins macht keine Pause. Teil 3 des kostenlosen Hörbuchs zum Roman „Ein letzter Cà phê" ist online, „Date beim Thai" – wieder auf Deutsch und auf Englisch. Wer neu einsteigt oder einen Teil verpasst hat, findet alles gesammelt in der YouTube-Playlist, mit Untertiteln in 13 Sprachen. Teil 4 ist bereits angekündigt: ab dem 30. Juli. Und wie immer gilt: Wer nicht so lange warten möchte, greift zu Buch oder eBook, die kennen das Ende schon heute.</p>
+
+    <h2>Dreimal die Woche neu: Shorts auf YouTube</h2>
+    <p>Neu ist ein fester Takt für kurze Videos auf YouTube: mittwochs zu den Kinderbüchern, freitags zum Reisetagebuch Pakistan und sonntags zum Roman. Drei Termine, drei Welten – ein Abonnement des Kanals genügt, und Sie verpassen keinen davon. Und wer lieber woanders unterwegs ist: Seit Kurzem sind wir auch auf <a href="https://www.tiktok.com/@heribert_berlin" rel="noopener">TikTok</a>, <a href="https://www.instagram.com/heribert_berlin/" rel="noopener">Instagram</a> und <a href="https://www.facebook.com/profile.php?id=61591273392761" rel="noopener">Facebook</a> vertreten.</p>
+
+    <h2>Kleine Wegweiser auf der Website</h2>
+    <p>Auch drumherum hat sich etwas getan. Alle Unterseiten tragen jetzt neben den Sprachflaggen ein kleines Häuschen – ein Klick, und Sie sind zurück auf der Startseite. Die wichtigsten Knöpfe stehen nicht mehr nur am Seitenende, sondern gleich oben unter der Überschrift; das lange Scrollen am Handy entfällt. Und die Pakistan-Seiten führen nun direkt zur kompletten Video-Playlist auf YouTube – das Reisetagebuch gibt es damit auch zum Anschauen.</p>
+
+    <h2>Und was kommt als Nächstes?</h2>
+    <p>An der Fortsetzung „Noch ein Cà phê" wird geschrieben. Mehr verrate ich noch nicht – ein guter Cà phê braucht schließlich seine Zeit.</p>
+
+    <p class="signature">Danke, dass Sie dabei sind. Bis zum nächsten Mal!<br>
+      Ihr
+      <span class="name">Heribert Lange</span>
+    </p>
+  </div>
+
+  <div class="section-divider"></div>
+  <p class="lead-in">Und nun bitte ich den Chef persönlich herein …</p>
+
+  <h2 class="letter-title">Darf ich vorstellen:<br>Eduard „Eddi" von Duckstein</h2>
+  <p class="letter-sub">Ein Brief an meine Leser</p>
+  <img class="kim-portrait" src="eddi-von-duckstein.jpg" alt="Eddi von Duckstein – Porträt">
+
+  <div class="letter-body">
+    <p>Liebe Leserinnen und Leser,</p>
+    <p>wenn Sie meinen Brief über Kim gelesen haben, kennen Sie ihn schon vom Hörensagen: der Chef, der Sherlock Holmes nacheifert. Heute bekommt er seinen eigenen Auftritt. Eduard von Duckstein, 37, von allen nur Eddi genannt, Chef der kleinen Kanzlei, in der mein Roman zu Hause ist.</p>
+    <p>Eddis Büro sagt im Grunde schon alles. Auf dem Schreibtisch liegt eine Pfeife, obwohl er nicht raucht; sein Idol rauchte schließlich auch. Daneben ein alter Globus, an der Wand Bücher, von denen er, wie Kim vermutet, die wenigsten gelesen hat, und als einziges Bild hängt dort, sauber gerahmt, der Stadtplan von Berlin. Eddi ist mit Holmes und Watson aufgewachsen und fühlt sich zu Höherem berufen. Kim bescheinigt ihm, er hätte auch am Wiener Burgtheater eine gute Rolle abgegeben, und das ist höchstens halb gespottet: Wenn Eddi sich verkleidet oder eine Szene inszeniert, sitzt jeder Auftritt. Nur als ihm zwei neue Fälle auf den Tisch flattern und er Kim großzügig die Wahl lässt, welchen er übernehmen möchte, muss er hinterher kleinlaut fragen, welcher denn eigentlich der zweite sei.</p>
+    <p>Seinen ersten großen Auftritt im Roman hat allerdings sein Handy. Eddi staucht Kim zusammen, er sei zwanzigmal nicht ans Telefon gegangen, hält ihm zum Beweis das eigene entgegen, und genau in diesem Moment schallt es daraus durch das ganze Büro: „Ringelschwänzchen, warum rufst du mich laufend an? Du weißt doch, ich bin beim Friseur und kann nicht rangehen!"</p>
+    <p>Womit wir bei seiner größten Schwäche wären: Eddi ist ständig verliebt. Diesmal allerdings, und das ist neu, wird offenbar zurückgeliebt. Emona heißt sie, seine „Perle der Adria". Er kauft Rosen für die Rose, bemerkt zwar keine neue Frisur, hat aber gelernt, sie zur Sicherheit trotzdem ausgiebig zu bewundern.</p>
+    <p>Unterschätzen Sie ihn deshalb nicht. Wenn es ernst wird, hält Eddi den Laden zusammen, plant, verteilt Rollen und behält den Überblick, und sein Theaterblut wird in diesem Roman noch sehr nützlich sein. Sollte Ihnen also in Berlin ein Straßenarbeiter begegnen, der auffallend lange an einer Laterne schraubt: Grüßen Sie ihn von mir.</p>
+    <p class="signature">Ihr
+      <span class="name">Heribert Lange</span>
+    </p>
+  </div>
+
+  <details class="changelog">
+    <summary>Was sich genau geändert hat <span class="chev">›</span></summary>
+    <div class="changelog-inner">
+      <p style="color:var(--text-muted);font-style:italic;margin:14px 0 4px;">Für alle, die es ganz genau wissen möchten – die technische Änderungsliste seit dem letzten Rundbrief.</p>
+
+      <h3>1. Leser-Archiv – diese Seite hier</h3>
+      <ul>
+        <li>Dreisprachiges Rundbrief-Archiv eingerichtet (DE/EN/ZH), erreichbar nur über den Link aus der Newsletter-Mail – bewusst unauffindbar für Suchmaschinen</li>
+        <li>Rundbrief Nr. 02 ergänzt, Eddis Porträt hochgeladen</li>
+      </ul>
+
+      <h3>2. Newsletter – Banner &amp; Anmeldung</h3>
+      <ul>
+        <li>Auf allen drei Startseiten lädt jetzt ein Banner mit „Abonnieren"-Button zur Anmeldung ein (per × ausblendbar)</li>
+        <li>Anmeldeseite: Hinweis ergänzt, dass die Bestätigungs-Mail im Spam-Ordner landen kann – mit Tipp, newsletter@heribert-berlin.de zu den Kontakten hinzuzufügen</li>
+        <li>Anmeldeformular auf schmalen Handys repariert – die Anmeldung funktioniert jetzt auch mobil ohne abgeschnittenes Captcha</li>
+      </ul>
+
+      <h3>3. Kinderbuch – Band 05 erschienen</h3>
+      <ul>
+        <li>„Der Fuchs, seine Familie und die Birke" am 1. Juli veröffentlicht, BoD-Bestelllink und YouTube-Video live</li>
+        <li>Startseite: Stern-Badge erst als Ankündigung, dann auf „Band 01-05 ist erschienen" umgestellt</li>
+      </ul>
+
+      <h3>4. Hörbuch – Teil 3 „Date beim Thai"</h3>
+      <ul>
+        <li>Teil 3 auf Deutsch (30.06.) und Englisch (29.06.) freigeschaltet, Teil 4 für Ende Juli angekündigt</li>
+        <li>Hörbuch-Seiten DE und EN auf vier Folgen erweitert und angeglichen</li>
+        <li>Startseiten: Hörbuch-Badge auf „Teil 3 · Jetzt online" umgestellt</li>
+      </ul>
+
+      <h3>5. Pakistan – Videos gebündelt</h3>
+      <ul>
+        <li>Detailseiten (DE/EN/ZH): neuer Block „Alle Videos auf YouTube" verlinkt direkt zur kompletten Playlist des Reisetagebuchs</li>
+      </ul>
+
+      <h3>6. Navigation – kürzere Wege</h3>
+      <ul>
+        <li>Neues Häuschen-Symbol neben den Sprachflaggen auf 33 Unterseiten: ein Klick zurück zur Startseite der jeweiligen Sprache</li>
+        <li>Roman-, Kinderbuch- und Pakistan-Seiten: die Haupt-Buttons stehen jetzt zusätzlich oben unter dem Titel – kein langes Scrollen mehr</li>
+      </ul>
+
+      <h3>7. YouTube &amp; Social Media</h3>
+      <ul>
+        <li>Fester Shorts-Rhythmus: Mittwoch Kinderbücher · Freitag Reisetagebuch Pakistan · Sonntag Roman</li>
+        <li>Neue Kanäle auf TikTok, Instagram und Facebook eröffnet</li>
+      </ul>
+    </div>
+  </details>
+
+  <div class="back-btn-wrap">
+    <a href="rundbrief-01.html" class="back-btn">← Nr. 01 · Juni</a>
+    <a href="index.html" class="back-btn">Zur Übersicht</a>
+  </div>
+</main>
+
+<footer>
+  <p class="footer-copy">© 2026 Heribert Lange · Berlin</p>
+</footer>
+</body>
+</html>
