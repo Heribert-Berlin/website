@@ -45,6 +45,8 @@
     .flag-cn .small-stars { position: absolute; top: 6px; right: 6px; font-size: 9px; color: #FFDE00; display: flex; flex-direction: column; gap: 1px; align-items: center; }
     .main { position: relative; z-index: 1; padding: 60px 100px 60px 40px; max-width: 1400px; margin: 0 auto; }
     .section-title { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 5px; color: var(--text-muted); text-align: center; margin-bottom: 40px; text-transform: uppercase; }
+    .lesetipps-line { display: block; font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 4px; color: var(--text-muted); text-align: center; text-transform: uppercase; text-decoration: none; margin-top: 40px; transition: color 0.2s; }
+    .lesetipps-line:hover { color: var(--accent); }
     .cards-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 24px; min-height: 500px; }
     @media (max-width: 900px) {
       .cards-grid { grid-template-columns: 1fr; grid-template-rows: auto; min-height: unset; gap: 16px; }
@@ -273,9 +275,12 @@
       <span class="card-arrow">→</span>
     </a>
   </div>
+
+  <a href="lesetipps.html" class="lesetipps-line"><span style="font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif;">✒️</span> Reading Tips · Authors I Recommend →</a>
 </main>
 <footer>
   <a href="newsletter.html" class="footer-btn">Newsletter</a>
+  <a href="lesetipps.html" class="footer-btn">Reading Tips</a>
   <a href="impressum-eng.html" class="footer-btn">Imprint</a>
   <a href="kontakt-eng.html" class="footer-btn">Contact</a>
   <a href="datenschutz-eng.html" class="footer-btn">Privacy Policy</a>

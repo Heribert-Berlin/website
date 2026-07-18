@@ -180,6 +180,20 @@
       text-transform: uppercase;
     }
 
+    .lesetipps-line {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 4px;
+      color: var(--text-muted);
+      text-align: center;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: 40px;
+      transition: color 0.2s;
+    }
+    .lesetipps-line:hover { color: var(--accent); }
+
     .cards-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -627,10 +641,13 @@
     </a>
 
   </div>
+
+  <a href="lesetipps.html" class="lesetipps-line"><span style="font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif;">✒️</span> Lesetipps · Autoren, die ich empfehle →</a>
 </main>
 
 <footer>
   <a href="newsletter.html" class="footer-btn">Newsletter</a>
+  <a href="lesetipps.html" class="footer-btn">Lesetipps</a>
   <a href="impressum.html" class="footer-btn">Impressum</a>
   <a href="kontakt.html" class="footer-btn">Kontakt</a>
   <a href="datenschutz.html" class="footer-btn">Datenschutz</a>

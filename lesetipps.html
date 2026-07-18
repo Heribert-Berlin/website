@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta property="og:title" content="Lesetipps – Autoren, die ich empfehle · Heribert Lange" />
+  <meta property="og:description" content="Autorenkollegen, deren Bücher mehr Beachtung verdienen. Persönliche Empfehlungen von Heribert Lange." />
+  <meta property="og:url" content="https://www.heribert-berlin.de/lesetipps.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Heribert Lange" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heribert Lange – Lesetipps</title>
+  <style>
+    :root {
+      --bg: #423624;
+      --card: #4b4134;
+      --text: #e8dcc8;
+      --text-muted: #a89880;
+      --accent: #c8a96e;
+      --header-bg: #3a2f18;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { background: var(--header-bg); color: var(--accent); padding: 40px 20px; text-align: center; border-bottom: 1px solid #3a3020; letter-spacing: 2px; }
+    header h1 { font-size: 2.2rem; font-weight: normal; }
+    header p { color: var(--text-muted); margin-top: 8px; font-size: 0.95rem; letter-spacing: 3px; }
+    .lang-buttons { position: fixed; right: 18px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 16px; z-index: 100; }
+    .lang-btn { width: 56px; height: 56px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid rgba(255,255,255,0.15); box-shadow: 0 3px 12px rgba(0,0,0,0.5); transition: transform 0.2s, border-color 0.2s; text-decoration: none; display: block; position: relative; }
+    .lang-btn:hover { transform: scale(1.08); border-color: var(--accent); }
+    .container { padding: 40px 100px 40px 20px; max-width: 1100px; margin: 0 auto; }
+
+    .intro-card { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; margin-bottom: 32px; }
+    .intro-card h2 { color: var(--accent); font-size: 1.4rem; font-weight: normal; letter-spacing: 1px; margin-bottom: 16px; text-align: center; }
+    .intro-card p { line-height: 1.9; margin-bottom: 12px; }
+    .intro-card p:last-child { margin-bottom: 0; }
+
+    .autor-card { background: var(--card); padding: 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; margin-bottom: 32px; }
+    .autor-card h2 { color: var(--accent); font-size: 1.5rem; font-weight: normal; letter-spacing: 1px; margin-bottom: 4px; }
+    .autor-genre { color: var(--text-muted); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+    .autor-card p { line-height: 1.9; margin-bottom: 14px; }
+
+    .buecher { display: flex; gap: 24px; flex-wrap: wrap; margin: 22px 0; }
+    .buch { flex: 1 1 280px; background: rgba(0,0,0,0.18); border: 1px solid #3a3020; border-left: 3px solid var(--accent); border-radius: 8px; padding: 18px 20px; }
+    .buch-titel { color: var(--accent); font-size: 1.08rem; margin-bottom: 6px; font-style: italic; }
+    .buch-meta { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px; letter-spacing: 1px; }
+    .buch p { font-size: 0.95rem; line-height: 1.8; margin-bottom: 0; }
+
+    .autor-links { margin-top: 18px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .autor-links a { display: inline-block; padding: 9px 20px; border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); text-decoration: none; font-size: 0.88rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; }
+    .autor-links a:hover { background: var(--accent); color: var(--header-bg); }
+
+    .sprach-hinweis { font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
+
+    .back-btn { display: inline-block; margin-top: 8px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s; }
+    .back-btn:hover { color: var(--accent); }
+
+    @media (max-width: 700px) {
+      .container { padding: 24px 16px; }
+      .lang-buttons { position: static; transform: none; flex-direction: row; justify-content: center; padding: 14px 0 0; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Lesetipps</h1>
+  <p>Autoren, die ich empfehle</p>
+</header>
+
+<div class="lang-buttons">
+  <div class="lang-home-wrap" style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+    <a href="home.html" class="lang-btn lang-home" title="Home" style="background:var(--card,#222);display:flex;align-items:center;justify-content:center;">
+      <svg viewBox="0 0 56 56" width="42" height="42" xmlns="http://www.w3.org/2000/svg">
+        <path d="M28 10 L50 30 H44 V48 H12 V30 H6 Z" fill="var(--accent)"/>
+        <rect x="23" y="34" width="10" height="14" rx="1" fill="var(--card,#222)"/>
+      </svg>
+    </a>
+    <span style="font-size:0.72rem;letter-spacing:1px;color:var(--accent);font-family:Georgia,serif;line-height:1;">Home</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="intro-card">
+    <h2>Warum diese Seite?</h2>
+    <p>Wer ohne großen Verlag schreibt, kennt das Problem: Die Geschichten sind da, aber kaum jemand erfährt von ihnen. Deshalb stelle ich hier Autorenkollegen vor, deren Bücher meiner Meinung nach mehr Beachtung verdienen.</p>
+    <p>Keine bezahlte Werbung, keine Gegenleistung: nur eine persönliche Empfehlung von Leser zu Leser.</p>
+  </div>
+
+  <div class="autor-card">
+    <h2>Stefan Röser</h2>
+    <p class="autor-genre">Historische Romane · Deutsche Geschichte</p>
+
+    <p>Auf Stefan Röser bin ich über Facebook aufmerksam geworden. Er schreibt nebenberuflich, lebt in Mülheim-Kärlich bei Koblenz und geht denselben Weg wie ich: eigene Bücher, eigene Homepage, alles ohne Verlag im Rücken.</p>
+    <p>Seine Romane führen in die Zeit nach dem Ersten Weltkrieg, in die Jahre, in denen Deutschland zwischen Aufbruch und Abgrund stand. Er erzählt keine großen Schlachten, sondern das Leben der einfachen Leute: auf dem Hof, im Dorf, im Berlin der späten Weimarer Republik.</p>
+
+    <div class="buecher">
+      <div class="buch">
+        <div class="buch-titel">Ein leises Wir. Berlin, 1930</div>
+        <div class="buch-meta">Roman · September 2025</div>
+        <p>Berlin in der späten Weimarer Republik: Der amerikanische Reporter Nathaniel und die Berlinerin Clara finden zueinander, während um sie herum die Zeiten immer unsicherer werden. Eine Geschichte über Liebe und Mut in einer Stadt am Scheideweg.</p>
+      </div>
+      <div class="buch">
+        <div class="buch-titel">Ein Herz, das keinen Zorn mehr trägt</div>
+        <div class="buch-meta">Roman · Januar 2026</div>
+        <p>Hunsrück, 1918 bis 1921: Auf dem Hauser-Hof zählt allein der Wille des Vaters, der aus dem Krieg heimkehrt. Ein Roman über eine Mutter, die den Mut sucht, sich und ihre Kinder aus den Fesseln von Angst und Gewalt zu befreien.</p>
+      </div>
+    </div>
+
+    <p class="sprach-hinweis">Die Bücher erscheinen auf Deutsch, als Taschenbuch und für Kindle. Signierte Exemplare gibt es direkt über seine Homepage.</p>
+
+    <div class="autor-links">
+      <a href="https://www.stefan-roeser.de" target="_blank" rel="noopener">Zur Homepage von Stefan Röser →</a>
+      <a href="https://www.amazon.de/dp/B0FQ2LSK8M" target="_blank" rel="noopener">Bei Amazon →</a>
+    </div>
+  </div>
+
+  <a href="home.html" class="back-btn">⌂ Zur Hauptseite</a>
+</div>
+
+<footer style="border-top: 1px solid #3a3020; padding: 20px; text-align: center; margin-top: 32px;">
+  <a href="datenschutz.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;">Datenschutz</a>
+</footer>
+</body>
+</html>
