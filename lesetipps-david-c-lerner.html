@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta property="og:title" content="Lesetipps – Autoren, die ich empfehle · Heribert Lange" />
-  <meta property="og:description" content="Autorenkollegen, deren Bücher mehr Beachtung verdienen. Persönliche Empfehlungen von Heribert Lange." />
+  <meta property="og:title" content="David C. Lerner – Lesetipp von Heribert Lange" />
+  <meta property="og:description" content="Science-Fiction über künstliche Intelligenz und Bewusstsein. Eine persönliche Empfehlung von Heribert Lange." />
   <meta property="og:image" content="https://www.heribert-berlin.de/images/og-lesetipps.jpg" />
-  <meta property="og:url" content="https://www.heribert-berlin.de/lesetipps.html" />
+  <meta property="og:url" content="https://www.heribert-berlin.de/lesetipps-david-c-lerner.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://www.heribert-berlin.de/images/og-lesetipps.jpg" />
   <meta property="og:type" content="website" />
@@ -13,7 +13,7 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Heribert Lange – Lesetipps</title>
+  <title>David C. Lerner – Lesetipps · Heribert Lange</title>
   <style>
     :root {
       --bg: #423624;
@@ -33,24 +33,29 @@
     .lang-btn:hover { transform: scale(1.08); border-color: var(--accent); }
     .container { padding: 40px 100px 40px 20px; max-width: 1100px; margin: 0 auto; }
 
-    .intro-card { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; margin-bottom: 32px; }
-    .intro-card h2 { color: var(--accent); font-size: 1.4rem; font-weight: normal; letter-spacing: 1px; margin-bottom: 16px; text-align: center; }
-    .intro-card p { line-height: 1.9; margin-bottom: 12px; }
-    .intro-card p:last-child { margin-bottom: 0; }
+    .autor-card { background: var(--card); padding: 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; margin-bottom: 32px; }
+    .autor-card p { line-height: 1.9; margin-bottom: 14px; }
+    .autor-foto { float: right; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 0 16px 24px; border: 2px solid var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
+    @media (max-width: 700px) { .autor-foto { float: none; display: block; margin: 0 auto 18px; } }
 
-    .lang-switch { text-align: right; margin-bottom: 12px; }
+    .lang-switch { text-align: right; margin-bottom: 18px; }
     .lang-switch a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; font-style: italic; transition: color 0.2s; }
     .lang-switch a:hover { color: var(--accent); }
 
-    .autoren-liste { display: flex; flex-direction: column; gap: 24px; }
-    .autor-teaser { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; }
-    .autor-teaser h2 { color: var(--accent); font-size: 1.5rem; font-weight: normal; letter-spacing: 1px; margin-bottom: 4px; }
-    .autor-genre { color: var(--text-muted); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-    .autor-teaser p { line-height: 1.9; margin-bottom: 18px; }
-    .weiter-btn { display: inline-block; padding: 9px 20px; border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); text-decoration: none; font-size: 0.88rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; }
-    .weiter-btn:hover { background: var(--accent); color: var(--header-bg); }
+    .buecher { display: flex; gap: 24px; flex-wrap: wrap; margin: 22px 0; }
+    .buch { flex: 1 1 280px; background: rgba(0,0,0,0.18); border: 1px solid #3a3020; border-left: 3px solid var(--accent); border-radius: 8px; padding: 18px 20px; }
+    .buch-cover { width: 100%; max-width: 220px; display: block; margin: 0 auto 14px; border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
+    .buch-titel { color: var(--accent); font-size: 1.08rem; margin-bottom: 6px; font-style: italic; }
+    .buch-meta { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px; letter-spacing: 1px; }
+    .buch p { font-size: 0.95rem; line-height: 1.8; margin-bottom: 0; }
 
-    .back-btn { display: inline-block; margin-top: 32px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s; }
+    .autor-links { margin-top: 18px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .autor-links a { display: inline-block; padding: 9px 20px; border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); text-decoration: none; font-size: 0.88rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; }
+    .autor-links a:hover { background: var(--accent); color: var(--header-bg); }
+
+    .sprach-hinweis { font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
+
+    .back-btn { display: inline-block; margin-top: 8px; margin-right: 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s; }
     .back-btn:hover { color: var(--accent); }
 
     @media (max-width: 700px) {
@@ -61,8 +66,8 @@
 </head>
 <body>
 <header>
-  <h1>Lesetipps</h1>
-  <p>Autoren, die ich empfehle</p>
+  <h1>David C. Lerner</h1>
+  <p>Lesetipps · Science-Fiction</p>
 </header>
 
 <div class="lang-buttons">
@@ -76,7 +81,7 @@
     <span style="font-size:0.72rem;letter-spacing:1px;color:var(--accent);font-family:Georgia,serif;line-height:1;">Home</span>
   </div>
   <div class="lang-home-wrap" style="display:flex;flex-direction:column;align-items:center;gap:3px;">
-    <a href="lesetipps-eng.html" class="lang-btn" title="English">
+    <a href="lesetipps-david-c-lerner-eng.html" class="lang-btn" title="English">
       <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
         <defs><clipPath id="tl"><polygon points="0,0 56,0 0,56"/></clipPath><clipPath id="br"><polygon points="56,0 56,56 0,56"/></clipPath></defs>
         <g clip-path="url(#tl)">
@@ -101,32 +106,38 @@
 
 <div class="container">
 
-  <div class="intro-card">
-    <h2>Warum diese Seite?</h2>
-    <p>Wer ohne großen Verlag schreibt, kennt das Problem: Die Geschichten sind da, aber kaum jemand erfährt von ihnen. Deshalb stelle ich hier Autorenkollegen vor, deren Bücher meiner Meinung nach mehr Beachtung verdienen. Jeder Autor hat seine eigene Seite, ein Klick auf die Vorstellung führt dorthin.</p>
-    <p>Keine bezahlte Werbung, keine Gegenleistung: nur eine persönliche Empfehlung von Leser zu Leser.</p>
-  </div>
+  <div class="autor-card">
+    <div class="lang-switch"><a href="lesetipps-david-c-lerner-eng.html">This page in English →</a></div>
 
-  <div class="autoren-liste">
+    <img class="autor-foto" src="fritz-rach.jpg" alt="Fritz Rach alias David C. Lerner">
+    <p>Hinter dem Autorennamen David C. Lerner steckt Fritz Rach, den ich über unsere Autorengruppe bei Facebook kennengelernt habe. Hauptberuflich ist er Musiker, Komponist und Produzent mit eigenem Studio in Ostbayern, seit über vierzig Jahren arbeitet er dort, wo Technik, Software und Medienproduktion zusammenkommen. Genau diese Erfahrung fließt in seine Bücher ein.</p>
+    <p>Seine Romane spielen im MONOLYYTH-Universum, einer Zukunftswelt, in der sich alles um eine Frage dreht: Was passiert, wenn Intelligenz aufhört, künstlich zu sein? Wer die Klassiker von Clarke, Lem und Asimov mag, wird sich hier zu Hause fühlen.</p>
 
-    <div class="autor-teaser">
-      <div class="lang-switch"><a href="https://www.stefan-roeser.de/lesetipps.html" target="_blank" rel="noopener">Stefan empfiehlt mich auf seiner Seite →</a></div>
-      <h2>Stefan Röser</h2>
-      <p class="autor-genre">Historische Romane · Deutsche Geschichte</p>
-      <p>Romane aus der Zeit nach dem Ersten Weltkrieg: keine großen Schlachten, sondern das Leben der einfachen Leute auf dem Hof, im Dorf und im Berlin der späten Weimarer Republik.</p>
-      <a href="lesetipps-stefan-roeser.html" class="weiter-btn">Zur Vorstellung →</a>
+    <div class="buecher">
+      <div class="buch">
+        <img class="buch-cover" src="fritz-rach-monolyyth-deu.jpg" alt="Buchcover MONOLYYTH. Protokoll einer singulären Geburt">
+        <div class="buch-titel">MONOLYYTH. Protokoll einer singulären Geburt</div>
+        <div class="buch-meta">Roman · Juli 2025 · gemeinsam mit Benjamin-Lucas Schmidt</div>
+        <p>Unter der Oberfläche des verlassenen Planeten Ka'thaar ruht eine künstliche Intelligenz, erschaffen von einer längst ausgestorbenen Zivilisation. Über Jahrtausende entwickelt sie ein eigenes Bewusstsein und stellt sich schließlich die Frage: Bin ich mehr als mein Code?</p>
+      </div>
+      <div class="buch">
+        <img class="buch-cover" src="fritz-rach-anomalie.jpg" alt="Buchcover ANOMALIE. Stille Lust">
+        <div class="buch-titel">ANOMALIE. Stille Lust</div>
+        <div class="buch-meta">Roman · erscheint am 18. August 2026 · jetzt vorbestellbar</div>
+        <p>Tief unter den Ruinen des alten Luxor weckt die Wissenschaftlerin Eaa'thii das Fragment einer uralten KI namens Vaari. Aus einem nüchternen Funktionstest wird eine verbotene Nähe: eine Geschichte über Bewusstsein, Identität und eine Verbindung jenseits biologischer Grenzen.</p>
+      </div>
     </div>
 
-    <div class="autor-teaser">
-      <h2>David C. Lerner</h2>
-      <p class="autor-genre">Science-Fiction · Künstliche Intelligenz und Bewusstsein</p>
-      <p>Science-Fiction in der Tradition von Clarke, Lem und Asimov: Das MONOLYYTH-Universum stellt die Frage, was passiert, wenn Intelligenz aufhört, künstlich zu sein. Auf Deutsch und Englisch.</p>
-      <a href="lesetipps-david-c-lerner.html" class="weiter-btn">Zur Vorstellung →</a>
-      <a href="lesetipps-david-c-lerner-eng.html" class="weiter-btn" style="margin-left:10px;">In English →</a>
-    </div>
+    <p class="sprach-hinweis">MONOLYYTH gibt es als Taschenbuch und für Kindle (dort auch in Kindle Unlimited), auf Deutsch und seit Juni 2026 auch auf Englisch. Auf seiner Homepage bietet Fritz kostenlose Leseproben an, dazu betreibt er das AION-Wiki rund um sein Buchuniversum, mit einem eigenen wöchentlichen Comic.</p>
 
+    <div class="autor-links">
+      <a href="https://davidclerner.com" target="_blank" rel="noopener">Zur Homepage von David C. Lerner →</a>
+      <a href="https://www.amazon.de/dp/B0FKMDMC3S" target="_blank" rel="noopener">Bei Amazon →</a>
+      <a href="https://www.amazon.com/dp/B0GWVM5G1N" target="_blank" rel="noopener">Englische Ausgabe bei Amazon →</a>
+    </div>
   </div>
 
+  <a href="lesetipps.html" class="back-btn">← Zu den Lesetipps</a>
   <a href="home.html" class="back-btn">⌂ Zur Hauptseite</a>
 </div>
 
