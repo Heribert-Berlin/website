@@ -225,6 +225,7 @@
       overflow:hidden; text-overflow:ellipsis;
     }
     @media(max-width:900px){ .gname{order:3; flex-basis:100%; font-size:1.05rem; letter-spacing:2px;} }
+      a.btn{display:inline-flex; align-items:center; justify-content:center; text-decoration:none;}
   </style>
 </head>
 <body>
@@ -362,6 +363,7 @@
       <p id="winBest" style="margin-top:8px;"></p>
       <div class="row" style="justify-content:center;">
         <button class="btn primary" id="btnWinNew">Neues Spiel</button>
+        <a class="btn" id="t-winPlatform" href="spiele.html">⌂ Spielezimmer</a>
       </div>
     </div>
   </div>
@@ -565,7 +567,8 @@ function onCard(c){
       beep(784, 0.09); setTimeout(()=>beep(1046, 0.12), 95);
       namePop(NAMES[sym] ? NAMES[sym][lang] : "");
       busy = false;
-      if(cards.every(x=>x.removed)) setTimeout(win, 500);
+      /* kleine Pause, damit man das letzte Tier und seinen Namen noch sieht */
+      if(cards.every(x=>x.removed)) setTimeout(win, 1800);
     }, 480);
   } else {
     a.el.classList.add("wrong"); b.el.classList.add("wrong");
@@ -752,6 +755,7 @@ function applyLang(){
   $("btnMode1").textContent = t.mode1;
   $("btnMode2").textContent = t.mode2;
   $("t-platform").textContent = t.platform;
+  { const wp = document.getElementById("t-winPlatform"); if(wp) wp.textContent = t.platform; }
   document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active", b.dataset.lang === lang));
   buildSizes(); buildGuide(); updateDuel();
   applyGuardLang();

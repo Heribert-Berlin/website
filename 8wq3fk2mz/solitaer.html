@@ -272,6 +272,8 @@
       overflow:hidden; text-overflow:ellipsis;
     }
     @media(max-width:900px){ .gname{order:3; flex-basis:100%; font-size:1.05rem; letter-spacing:2px;} }
+      a.btn{display:inline-flex; align-items:center; justify-content:center; text-decoration:none;}
+    .win-box .btn{margin:6px 5px 0;}
   </style>
 </head>
 <body>
@@ -352,6 +354,7 @@
     <h2 id="t-win">Gewonnen!</h2>
     <p id="t-winsub">Glückwunsch, alle Karten abgelegt!</p>
     <button class="btn primary" id="btnWinNew">Neues Spiel</button>
+    <a class="btn" id="t-winPlatform" href="spiele.html">⌂ Spielezimmer</a>
   </div>
 
   <div class="scrim" id="guideModal">
@@ -1309,6 +1312,7 @@ function applyLang(){
   document.getElementById("btnGuide").textContent=t.guideBtn;
   applyGuide();
   const plat=document.getElementById("t-platform"); if(plat) plat.textContent=t.platform;
+  const wplat=document.getElementById("t-winPlatform"); if(wplat) wplat.textContent=t.platform;
   document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
   updateButtons();
   // stehende Sackgassen-Meldung in der neuen Sprache zeigen
