@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spielezimmer · Heribert Lange</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Cinzel:wght@400;600&family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#101c2e; --text:#e8e2d4; --text-muted:#93a7bf;
+      --accent:#d9a441; --header-bg:#0b1522; --border:rgba(217,164,65,0.28);
+      --deep:#1d3557;
+    }
+    *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
+    html,body{height:100%;}
+    body{
+      font-family:'Noto Serif TC','Cormorant Garamond',Georgia,serif;
+      background:var(--bg); color:var(--text);
+      min-height:100vh; display:flex; flex-direction:column; overflow-x:hidden;
+    }
+    body::before{
+      content:''; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:0.35;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    .topbar{
+      position:relative; z-index:10; background:var(--header-bg);
+      border-bottom:2px solid var(--deep);
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:10px 18px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:12px;}
+    .brand .diamond{width:8px; height:8px; background:var(--accent); transform:rotate(45deg);}
+    .brand h1{font-family:'Cinzel','Noto Serif TC',serif; font-weight:600; color:var(--accent); font-size:1.4rem; letter-spacing:4px;}
+    .lang{display:flex; gap:4px;}
+    .lang button{font-family:'Cinzel',serif; font-size:0.7rem; background:transparent; border:1px solid var(--border); color:var(--text-muted); border-radius:6px; padding:5px 9px; cursor:pointer; transition:.2s;}
+    .lang button.active{color:var(--accent); border-color:var(--accent);}
+    .lang button:hover{color:var(--accent);}
+
+    .wrap{
+      position:relative; z-index:1; flex:1; width:100%;
+      max-width:940px; margin:0 auto; padding:10px 20px 40px;
+    }
+    .sub{text-align:center; color:var(--text-muted); font-size:1.18rem; margin:28px 0 26px; letter-spacing:.5px;}
+
+    .grid{
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(270px, 350px));
+      gap:26px; justify-content:center;
+    }
+    a.game{
+      display:flex; flex-direction:column; gap:11px; text-decoration:none;
+      background:rgba(11,21,34,0.72); border:1px solid var(--border); border-radius:16px;
+      padding:18px; color:var(--text);
+      transition:transform .2s, border-color .2s, box-shadow .2s;
+    }
+    a.game:hover{transform:translateY(-4px); border-color:var(--accent); box-shadow:0 14px 40px rgba(0,0,0,.5);}
+    .pic{
+      height:172px; border-radius:12px; overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.3);
+    }
+    .pic-bau{background:#fbfaf7;}
+    .pic-kids{
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.10), rgba(255,255,255,0) 60%),
+        linear-gradient(160deg, #6a8f47 0%, #4d6d32 100%);
+    }
+    .pic-sol{
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.08), rgba(255,255,255,0) 60%),
+        linear-gradient(160deg, #2f6b4f 0%, #1f4a36 100%);
+    }
+    .game h2{font-family:'Cinzel','Noto Serif TC',serif; font-weight:600; color:var(--accent); font-size:1.12rem; letter-spacing:1.5px;}
+    .game p{color:var(--text-muted); font-size:0.98rem; line-height:1.55; flex:1;}
+    .badge{
+      align-self:flex-start; font-family:'Cinzel','Noto Serif TC',serif;
+      font-size:0.7rem; letter-spacing:1px; color:var(--accent);
+      border:1px solid var(--border); border-radius:14px; padding:5px 11px;
+    }
+
+    footer{
+      position:relative; z-index:5; text-align:center; padding:12px;
+      font-size:0.8rem; color:var(--text-muted); border-top:1px solid var(--border);
+    }
+    footer a{color:var(--text-muted); text-decoration:none;}
+    footer a:hover{color:var(--accent);}
+    .ver{opacity:.55; font-size:.75rem;}
+
+    @media(max-width:640px){
+      .brand h1{font-size:1.1rem; letter-spacing:2px;}
+      .topbar{padding:8px 12px; gap:8px;}
+      .sub{margin:20px 0 18px; font-size:1.05rem;}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><span class="diamond"></span><h1 id="t-title">Spielezimmer</h1></div>
+    <span class="lang">
+      <button data-lang="de" class="active">DE</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="zh">中文</button>
+    </span>
+  </div>
+
+  <div class="wrap">
+    <p class="sub" id="t-sub">Such dir ein Spiel aus!</p>
+
+    <div class="grid" id="grid">
+      <a class="game" href="memory.html" data-game="bau">
+        <div class="pic pic-bau">
+          <svg viewBox="0 0 120 120" width="140" height="140" aria-hidden="true">
+            <g fill="none" stroke="#4a4a4a" stroke-width="2.4" stroke-linecap="round">
+              <path d="M39 100 C 50 74, 54 46, 56.5 16"/>
+              <path d="M81 100 C 70 74, 66 46, 63.5 16"/>
+              <path d="M56.5 16 L 63.5 16"/>
+              <path d="M58.5 8 L 60 3 L 61.5 8 Z"/>
+              <path d="M47 76 Q 60 70, 73 76"/>
+              <path d="M52 48 Q 60 44, 68 48"/>
+              <path d="M48 76 L 71 96 M 72 76 L 49 96"/>
+              <path d="M53 48 L 66 74 M 67 48 L 54 74"/>
+            </g>
+            <g fill="none" stroke="#8a8a8a" stroke-width="1.3" stroke-linecap="round">
+              <path d="M40 98 C 51 73, 55 46, 57.5 17"/>
+              <path d="M80 98 C 69 73, 65 46, 62.5 17"/>
+              <path d="M22 103 L 98 103"/>
+            </g>
+          </svg>
+        </div>
+        <h2 id="t-bau">Memory · Bauwerke der Welt</h2>
+        <p id="t-bauDesc">Berühmte Bauwerke als Bleistiftzeichnung. Die Karten liegen kreuz und quer übereinander, du musst dir merken, was wo hervorschaut.</p>
+        <span class="badge" id="t-bauBadge">Für große Spieler · am PC · allein oder zu zweit</span>
+      </a>
+
+      <a class="game" href="memory-kinder.html" data-game="kids">
+        <div class="pic pic-kids">
+          <svg viewBox="0 0 100 100" width="120" height="120" aria-hidden="true">
+            <g fill="#ffffff" fill-opacity="0.55">
+              <ellipse cx="50" cy="63" rx="21" ry="17"/>
+              <ellipse cx="30" cy="40" rx="7.5" ry="10.5"/>
+              <ellipse cx="44" cy="31" rx="7.5" ry="11.5"/>
+              <ellipse cx="58" cy="31" rx="7.5" ry="11.5"/>
+              <ellipse cx="71" cy="42" rx="7.5" ry="10.5"/>
+            </g>
+          </svg>
+        </div>
+        <h2 id="t-kids">Waldemar-Memory</h2>
+        <p id="t-kidsDesc">Findest du zu jedem echten Tier die lustige Waldemar-Zeichnung? Mit allen Tieren aus dem Wald von Uhu Waldemar.</p>
+        <span class="badge" id="t-kidsBadge">Für Kinder · PC und Handy · allein oder zu zweit</span>
+      </a>
+
+      <a class="game" href="solitaer.html" data-game="sol">
+        <div class="pic pic-sol">
+          <svg viewBox="0 0 130 100" width="140" aria-hidden="true">
+            <g transform="rotate(-14 45 55)">
+              <rect x="22" y="18" width="46" height="66" rx="6" fill="#f5f2ea" stroke="#c9c2b0" stroke-width="1.5"/>
+              <text x="30" y="38" font-size="16" fill="#b03030" font-family="Georgia,serif">A♥</text>
+            </g>
+            <g transform="rotate(12 85 55)">
+              <rect x="62" y="14" width="46" height="66" rx="6" fill="#ffffff" stroke="#c9c2b0" stroke-width="1.5"/>
+              <text x="70" y="34" font-size="16" fill="#222222" font-family="Georgia,serif">K♠</text>
+              <text x="78" y="58" font-size="24" fill="#222222" font-family="Georgia,serif">♠</text>
+            </g>
+          </svg>
+        </div>
+        <h2 id="t-sol">Solitär</h2>
+        <p id="t-solDesc">Der Kartenklassiker Klondike für eine ruhige Runde zwischendurch. Mit Anleitung, Tipp-Funktion und Auto-Ablage.</p>
+        <span class="badge" id="t-solBadge">Für große Spieler · allein</span>
+      </a>
+    </div>
+  </div>
+
+  <footer><a href="../home.html" id="t-back">← Startseite</a> &nbsp;·&nbsp; © 2026 Heribert Lange <span class="ver">· v1.0</span></footer>
+
+<script>
+const I18N = {
+  de:{title:"Spielezimmer", sub:"Such dir ein Spiel aus!",
+      bau:"Memory · Bauwerke der Welt",
+      bauDesc:"Berühmte Bauwerke als Bleistiftzeichnung. Die Karten liegen kreuz und quer übereinander, du musst dir merken, was wo hervorschaut.",
+      bauBadge:"Für große Spieler · am PC · allein oder zu zweit",
+      kids:"Waldemar-Memory",
+      kidsDesc:"Findest du zu jedem echten Tier die lustige Waldemar-Zeichnung? Mit allen Tieren aus dem Wald von Uhu Waldemar.",
+      kidsBadge:"Für Kinder · PC und Handy · allein oder zu zweit",
+      sol:"Solitär",
+      solDesc:"Der Kartenklassiker Klondike für eine ruhige Runde zwischendurch. Mit Anleitung, Tipp-Funktion und Auto-Ablage.",
+      solBadge:"Für große Spieler · allein",
+      back:"← Startseite", home:"../home.html"},
+  en:{title:"Game Room", sub:"Pick a game!",
+      bau:"Memory · Landmarks of the World",
+      bauDesc:"Famous landmarks drawn in pencil. The cards lie scattered on top of each other, and you must remember what peeks out where.",
+      bauBadge:"For grown-ups · on a PC · solo or two players",
+      kids:"Waldemar Memory",
+      kidsDesc:"Can you match every real animal with its funny Waldemar drawing? With all the animals from Waldemar the owl's forest.",
+      kidsBadge:"For children · PC and phone · solo or two players",
+      sol:"Solitaire",
+      solDesc:"The card classic Klondike for a quiet round in between. With instructions, a hint button and auto-play.",
+      solBadge:"For grown-ups · solo",
+      back:"← Home", home:"../home-eng.html"},
+  zh:{title:"遊戲室", sub:"選一個遊戲吧！",
+      bau:"記憶遊戲 · 世界建築",
+      bauDesc:"著名建築的鉛筆畫。卡牌層層疊放，你要記住哪張牌從哪裡露出來。",
+      bauBadge:"適合大人 · 電腦 · 單人或雙人",
+      kids:"瓦爾德馬記憶遊戲",
+      kidsDesc:"你能為每隻真實動物找到有趣的瓦爾德馬插畫嗎？貓頭鷹瓦爾德馬森林裡的所有動物都在這裡。",
+      kidsBadge:"適合孩子 · 電腦和手機 · 單人或雙人",
+      sol:"接龍紙牌",
+      solDesc:"經典紙牌遊戲 Klondike，適合忙裡偷閒玩上一局。附遊戲說明、提示按鈕和自動收牌。",
+      solBadge:"適合大人 · 單人",
+      back:"← 首頁", home:"../home-chi.html"}
+};
+
+let lang = localStorage.getItem("memstart_lang") || localStorage.getItem("mem_lang") || "de";
+if(!I18N[lang]) lang = "de";
+
+const $ = id => document.getElementById(id);
+
+function applyLang(){
+  const t = I18N[lang];
+  document.documentElement.lang = lang;
+  document.title = t.title + " · Heribert Lange";
+  $("t-title").textContent = t.title;
+  $("t-sub").textContent = t.sub;
+  $("t-bau").textContent = t.bau;
+  $("t-bauDesc").textContent = t.bauDesc;
+  $("t-bauBadge").textContent = t.bauBadge;
+  $("t-kids").textContent = t.kids;
+  $("t-kidsDesc").textContent = t.kidsDesc;
+  $("t-kidsBadge").textContent = t.kidsBadge;
+  $("t-sol").textContent = t.sol;
+  $("t-solDesc").textContent = t.solDesc;
+  $("t-solBadge").textContent = t.solBadge;
+  const back = $("t-back"); back.textContent = t.back; back.href = t.home;
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active", b.dataset.lang === lang));
+}
+
+/* Die hier gewaehlte Sprache gilt auch im gestarteten Spiel */
+function syncLang(){
+  try{
+    localStorage.setItem("memstart_lang", lang);
+    localStorage.setItem("mem_lang", lang);
+    localStorage.setItem("memk_lang", lang);
+    localStorage.setItem("sol_lang", lang);
+  }catch(e){}
+}
+
+document.querySelectorAll(".lang button").forEach(b=>{
+  b.addEventListener("click", ()=>{ lang = b.dataset.lang; syncLang(); applyLang(); });
+});
+document.querySelectorAll("a.game").forEach(a=>{
+  a.addEventListener("click", syncLang);
+});
+
+applyLang();
+</script>
+</body>
+</html>

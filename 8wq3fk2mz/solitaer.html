@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<!-- Solitär · Final Version 2.0 · Stand 04.08.2026 · Fassung für das Rundbrief-Archiv (Langzeichen, Links mit ../) -->
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="version" content="Solitaer Final 2.0 (2026-08-04)">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Solitär · Heribert Lange</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#393023; --text:#ede0c8; --text-muted:#a8987a;
+      --accent:#d4b87a; --header-bg:#292319; --border:rgba(212,184,122,0.25);
+      --felt1:#2f5a40; --felt2:#1d3a29; --felt3:#15291d;
+      --red:#b3322c; --black:#23211c;
+      --cw:90px; --ch:126px; --gap:12px;
+    }
+    *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
+    html,body{height:100%;}
+    body{
+      font-family:'Cormorant Garamond',Georgia,serif;
+      background:var(--bg); color:var(--text);
+      min-height:100vh; overflow-x:hidden;
+      display:flex; flex-direction:column;
+    }
+    body::before{
+      content:''; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:0.4;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    /* ---- Top bar ---- */
+    .topbar{
+      position:relative; z-index:10; background:var(--header-bg);
+      border-bottom:1px solid var(--border);
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:10px 18px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:12px;}
+    .brand .diamond{width:8px; height:8px; background:var(--accent); transform:rotate(45deg);}
+    .brand h1{
+      font-family:'Cinzel',serif; font-weight:400; color:var(--accent);
+      font-size:1.4rem; letter-spacing:4px;
+    }
+    .controls{display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+    .btn{
+      font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:1.5px;
+      text-transform:uppercase; color:var(--text-muted);
+      background:transparent; border:1px solid var(--border);
+      border-radius:20px; padding:7px 14px; cursor:pointer;
+      transition:border-color .2s,color .2s,background .2s; white-space:nowrap;
+    }
+    .btn:hover{border-color:var(--accent); color:var(--accent);}
+    .btn.primary{color:var(--header-bg); background:var(--accent); border-color:var(--accent); font-weight:600;}
+    .btn.primary:hover{background:#e6cb90;}
+    .btn:disabled{opacity:.4; cursor:default; border-color:var(--border); color:var(--text-muted);}
+    .btn.active{color:var(--accent); border-color:var(--accent);}
+    .btn.ready{color:var(--accent); border-color:var(--accent); animation:btnPulse 1.1s ease-in-out infinite;}
+    @keyframes btnPulse{50%{box-shadow:0 0 10px rgba(212,184,122,0.55); border-color:#e6cb90;}}
+    .lang{display:flex; gap:4px;}
+    .lang button{
+      font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:1px;
+      background:transparent; border:1px solid var(--border); color:var(--text-muted);
+      border-radius:6px; padding:5px 9px; cursor:pointer; transition:.2s;
+    }
+    .lang button.active{color:var(--accent); border-color:var(--accent);}
+    .lang button:hover{color:var(--accent);}
+
+    .stats{
+      display:flex; gap:20px; align-items:center; justify-content:center;
+      flex-wrap:wrap; font-size:0.95rem; color:var(--text-muted);
+    }
+    .stats b{color:var(--text); font-weight:600; font-variant-numeric:tabular-nums;}
+    .reset-best{
+      font-size:0.85rem; line-height:1; color:var(--text-muted); background:transparent;
+      border:1px solid var(--border); border-radius:50%; width:20px; height:20px;
+      cursor:pointer; padding:0; vertical-align:middle; transition:border-color .2s,color .2s;
+    }
+    .reset-best:hover{border-color:var(--accent); color:var(--accent);}
+
+    /* ---- Board ---- */
+    .stage{
+      position:relative; z-index:1; flex:1;
+      display:flex; flex-direction:column; align-items:center;
+      padding:14px 10px 18px;
+    }
+    .board{
+      position:relative;
+      width:min(1080px,97vw);
+      border-radius:18px;
+      background:radial-gradient(circle at 50% 30%,var(--felt1),var(--felt2) 62%,var(--felt3) 100%);
+      border:1px solid rgba(212,184,122,0.45);
+      box-shadow:0 0 0 6px rgba(0,0,0,0.25), inset 0 2px 30px rgba(0,0,0,0.45), 0 24px 60px rgba(0,0,0,0.5);
+      padding:16px;
+    }
+    .row-top{display:flex; gap:var(--gap); margin-bottom:var(--gap);}
+    .row-top .spacer{flex:1;}
+    .tableau{display:flex; gap:var(--gap);}
+
+    .slot{
+      width:var(--cw); height:var(--ch); border-radius:calc(var(--cw)*0.09);
+      position:relative; flex:0 0 auto;
+    }
+    .slot.col{height:auto;}
+    .slot .placeholder{
+      position:absolute; inset:0; border-radius:calc(var(--cw)*0.09);
+      border:1.5px dashed rgba(212,184,122,0.4);
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(212,184,122,0.35); font-size:calc(var(--cw)*0.42);
+      background:rgba(0,0,0,0.12);
+    }
+    .waste-slot{width:calc(var(--cw) + var(--cw)*0.56);}
+
+    /* ---- Cards ---- */
+    .card{
+      position:absolute; left:0; top:0;
+      width:var(--cw); height:var(--ch);
+      border-radius:calc(var(--cw)*0.09);
+      user-select:none; -webkit-user-select:none; touch-action:none;
+      will-change:transform;
+    }
+    .card .face{
+      position:absolute; inset:0; border-radius:calc(var(--cw)*0.09);
+      background:linear-gradient(160deg,#fffdf6,#f3ead4);
+      border:1px solid rgba(0,0,0,0.18);
+      box-shadow:0 2px 5px rgba(0,0,0,0.4);
+      overflow:hidden;
+    }
+    .card.red .face{color:var(--red);} .card.black .face{color:var(--black);}
+    .card .corner{
+      position:absolute; display:flex; flex-direction:column; align-items:center;
+      line-height:0.92; font-weight:600;
+    }
+    .card .corner .r{font-size:calc(var(--cw)*0.23); font-family:'Cinzel',serif;}
+    .card .corner .s{font-size:calc(var(--cw)*0.19);}
+    .card .corner.tl{top:calc(var(--cw)*0.07); left:calc(var(--cw)*0.07);}
+    .card .corner.br{bottom:calc(var(--cw)*0.07); right:calc(var(--cw)*0.07); transform:rotate(180deg);}
+    .pip{position:absolute; transform:translate(-50%,-50%); font-size:calc(var(--cw)*0.24);}
+    .pip.flip{transform:translate(-50%,-50%) rotate(180deg);}
+    .pip.ace{font-size:calc(var(--cw)*0.6);}
+    .court{
+      position:absolute; inset:calc(var(--cw)*0.13);
+      border:1.5px solid currentColor; border-radius:calc(var(--cw)*0.05);
+      display:flex; align-items:center; justify-content:center; flex-direction:column;
+      opacity:0.92;
+    }
+    .court .letter{font-family:'Cinzel',serif; font-size:calc(var(--cw)*0.46); font-weight:600; line-height:1;}
+    .court .csuit{font-size:calc(var(--cw)*0.30); margin-top:calc(var(--cw)*0.02);}
+
+    .card.down .face{
+      background:
+        repeating-linear-gradient(45deg,rgba(212,184,122,0.16) 0 6px,transparent 6px 12px),
+        radial-gradient(circle at 50% 50%,#5a451c,#3a2c12 75%);
+      border:1px solid rgba(212,184,122,0.5);
+      display:flex; align-items:center; justify-content:center;
+    }
+    .card.down .back-emblem{
+      width:46%; height:62%; border:1.5px solid rgba(212,184,122,0.55);
+      border-radius:calc(var(--cw)*0.05);
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(212,184,122,0.85); font-size:calc(var(--cw)*0.3);
+    }
+    .card.dragging{opacity:0; }
+    .card.hint .face{box-shadow:0 0 0 3px var(--accent),0 2px 5px rgba(0,0,0,0.4); animation:hintPulse .6s ease-in-out 2;}
+    .slot.hint .placeholder{border-color:var(--accent); box-shadow:0 0 0 3px rgba(212,184,122,0.5);}
+    @keyframes hintPulse{50%{box-shadow:0 0 0 6px var(--accent),0 2px 5px rgba(0,0,0,0.4);}}
+    .card.reveal-cue .face{box-shadow:0 0 0 3px var(--accent),0 2px 5px rgba(0,0,0,0.4); animation:hintPulse .6s ease-in-out 2;}
+    .card.landed{animation:land .18s ease-out;}
+    @keyframes land{from{transform:translateY(-7px) scale(1.03);}to{transform:none;}}
+
+    #dragLayer{position:fixed; left:0; top:0; z-index:5000; pointer-events:none;}
+    #dragLayer .card{box-shadow:0 14px 30px rgba(0,0,0,0.55); border-radius:calc(var(--cw)*0.09);}
+
+    /* ---- Win overlay + canvas ---- */
+    #winCanvas{position:fixed; inset:0; z-index:6000; pointer-events:none; display:none;}
+    .win-box{
+      position:fixed; z-index:6100; inset:0; display:none; pointer-events:none;
+      align-items:center; justify-content:center; flex-direction:column; gap:18px;
+      background:rgba(20,16,10,0.35); text-align:center; padding:20px;
+    }
+    .win-box>*{pointer-events:auto;}
+    .win-box.show{display:flex;}
+    .win-box h2{font-family:'Cinzel',serif; color:var(--accent); font-size:2.6rem; letter-spacing:5px;
+      text-shadow:0 3px 18px rgba(0,0,0,0.7); animation:pop .5s ease;}
+    .win-box p{color:var(--text); font-size:1.2rem;}
+    @keyframes pop{from{transform:scale(.6); opacity:0;}to{transform:scale(1); opacity:1;}}
+
+    footer{
+      position:relative; z-index:1; text-align:center;
+      padding:10px; font-size:0.8rem; color:var(--text-muted); opacity:0.75; letter-spacing:1px;
+    }
+
+    @media(max-width:560px){
+      .brand h1{font-size:1.1rem; letter-spacing:2px;}
+      .btn{padding:6px 10px; font-size:0.66rem;}
+      .stats{gap:12px; font-size:0.85rem;}
+      .board{padding:9px;}
+    }
+
+    /* ---- Anleitung (Modal) ---- */
+    .scrim{position:fixed; inset:0; z-index:8000; display:none; align-items:center; justify-content:center; padding:18px; background:rgba(20,16,10,0.82);}
+    .scrim.show{display:flex;}
+    .sheet{background:var(--header-bg); border:2px solid var(--accent); border-radius:14px; max-width:540px; width:100%; max-height:88vh; overflow:auto; padding:22px; box-shadow:0 18px 60px rgba(0,0,0,.6);}
+    .sheet h2{font-family:'Cinzel',serif; color:var(--accent); font-size:1.5rem; letter-spacing:2px; margin-bottom:14px; text-align:center;}
+    .sheet ol{color:var(--text); line-height:1.55; padding-left:1.4em; display:flex; flex-direction:column; gap:8px;}
+    .sheet ol li{padding-left:4px;}
+    .sheet-actions{display:flex; gap:10px; justify-content:center; margin-top:18px;}
+
+    /* ---- Einblendung (Toast) ---- */
+    .toast{position:fixed; left:50%; bottom:20px; transform:translateX(-50%) translateY(20px); z-index:6500;
+      background:var(--header-bg); border:1px solid var(--accent); color:var(--text);
+      padding:10px 18px; border-radius:24px; font-size:0.95rem; opacity:0; pointer-events:none;
+      width:max-content; max-width:min(92vw,520px); text-align:center; line-height:1.35;
+      transition:opacity .3s, transform .3s; box-shadow:0 8px 30px rgba(0,0,0,.5);}
+    .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+    .toast.blink{animation:toastBlink 1.1s ease-in-out 9;}   /* rund 10 Sekunden blinken, dann ruhig stehen bleiben */
+    @keyframes toastBlink{
+      0%,100%{opacity:1; border-color:var(--accent); box-shadow:0 8px 30px rgba(0,0,0,.5);}
+      50%{opacity:.45; border-color:#fff; box-shadow:0 8px 30px rgba(0,0,0,.5),0 0 0 4px var(--accent);}
+    }
+    @media (prefers-reduced-motion:reduce){ .toast.blink{animation:none;} }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">
+      <span class="diamond"></span>
+      <h1 id="t-title">Solitär</h1>
+    </div>
+    <div class="stats">
+      <span><span id="t-moves">Züge</span>: <b id="moves">0</b></span>
+      <span><span id="t-time">Zeit</span>: <b id="time">0:00</b></span>
+      <span><span id="t-score">Punkte</span>: <b id="score">0</b></span>
+      <span><span id="t-best">Bestleistung</span>: <b id="best">0</b> <button class="reset-best" id="btnResetBest" title="Bestleistung zurücksetzen">↺</button></span>
+    </div>
+    <div class="controls">
+      <button class="btn primary" id="btnNew">Neues Spiel</button>
+      <button class="btn" id="btnUndo">Zurück</button>
+      <button class="btn" id="btnHint">Tipp</button>
+      <button class="btn" id="btnAuto">Auto</button>
+      <button class="btn" id="btnDraw">Ziehen: 3</button>
+      <button class="btn" id="btnSound">🔊 Ton</button>
+      <button class="btn" id="btnGuide">Anleitung</button>
+      <span class="lang">
+        <button data-lang="de" class="active">DE</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="zh">中文</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="board" id="board">
+      <div class="row-top">
+        <div class="slot" id="stock"></div>
+        <div class="slot waste-slot" id="waste"></div>
+        <div class="spacer"></div>
+        <div class="slot foundation" data-f="0"></div>
+        <div class="slot foundation" data-f="1"></div>
+        <div class="slot foundation" data-f="2"></div>
+        <div class="slot foundation" data-f="3"></div>
+      </div>
+      <div class="tableau" id="tableau"></div>
+    </div>
+  </div>
+
+  <footer><a href="spiele.html" id="t-platform" style="color:var(--text-muted); text-decoration:underline; text-underline-offset:3px;">⌂ Spielezimmer</a> &nbsp;·&nbsp; <a href="../home.html" id="t-back" style="color:var(--text-muted); text-decoration:underline; text-underline-offset:3px;">← Startseite</a> &nbsp;·&nbsp; © 2026 Heribert Lange</footer>
+
+  <div id="dragLayer"></div>
+  <canvas id="winCanvas"></canvas>
+  <div class="win-box" id="winBox">
+    <h2 id="t-win">Gewonnen!</h2>
+    <p id="t-winsub">Glückwunsch, alle Karten abgelegt!</p>
+    <button class="btn primary" id="btnWinNew">Neues Spiel</button>
+  </div>
+
+  <div class="scrim" id="guideModal">
+    <div class="sheet">
+      <h2 id="g-title">Anleitung</h2>
+      <ol id="g-list"></ol>
+      <div class="sheet-actions">
+        <button class="btn primary" id="btnGuideClose">Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+/* ============================ Übersetzungen ============================ */
+const I18N = {
+  de:{title:"Solitär",moves:"Züge",time:"Zeit",score:"Punkte",best:"Bestleistung",neu:"Neues Spiel",
+      undo:"Zurück",hint:"Tipp",auto:"Auto",draw:"Ziehen",win:"Gewonnen!",
+      winsub:"Glückwunsch, alle Karten abgelegt!",back:"← Startseite",home:"../home.html",platform:"⌂ Spielezimmer",sound:"Ton",
+      guideBtn:"Anleitung",guideTitle:"Spielregeln",close:"Schließen",
+      resetBestTitle:"Bestleistung zurücksetzen",resetBestConfirm:"Bestleistung wirklich auf 0 zurücksetzen?",
+      nomoves:"Keine Züge mehr. Nimm einen Zug zurück oder starte ein neues Spiel.",
+      stillwin:"Nichts geht mehr? Doch, zu schaffen ist es noch. Du musst nur richtig kombinieren, notfalls Karten von den Ablagen zurückholen.",
+      dead:"Diese Stellung ist verloren, von hier aus geht nichts mehr. Zeit für ein neues Spiel.",
+      deadAgo:"Diese Stellung ist verloren. Zu gewinnen war die Partie noch vor {n} Zügen, so weit bringt dich „Zurück“.",
+      deadAgo1:"Diese Stellung ist verloren. Der letzte Zug hat sie gekostet, ein „Zurück“ holt sie sich wieder.",
+      deadStart:"Diese Stellung ist verloren. Dieses Blatt war schon beim Austeilen nicht zu gewinnen, da hilft nur ein neues Spiel.",
+      guide:["Ziel: Lege alle 52 Karten auf die vier Ablagen oben rechts — je Farbe aufsteigend von Ass bis König.",
+             "Im Spielfeld werden Karten absteigend und in abwechselnder Farbe gestapelt (rot auf schwarz, schwarz auf rot).",
+             "Zieh eine Karte oder eine passende Folge mit Maus oder Finger auf einen anderen Stapel.",
+             "Ein Tipp/Klick auf eine Karte legt sie automatisch aufs Fundament, wenn sie passt.",
+             "Auf einen leeren Spielfeld-Platz darf nur ein König (oder eine Folge ab König).",
+             "Mit dem Talon links oben deckst du neue Karten auf; „Ziehen: 3/1“ stellt um, wie viele.",
+             "„Tipp“ zeigt einen möglichen Zug, „Auto“ legt am Ende alles automatisch ab, „Zurück“ nimmt einen Zug zurück.",
+             "Leuchtet eine frisch aufgedeckte Karte kurz golden auf, kannst du sie sofort verwenden."],
+      lang:"de"},
+  en:{title:"Solitaire",moves:"Moves",time:"Time",score:"Score",best:"Best Score",neu:"New Game",
+      undo:"Undo",hint:"Hint",auto:"Auto",draw:"Draw",win:"You Win!",
+      winsub:"Congratulations — all cards cleared!",back:"← Home",home:"../home-eng.html",platform:"⌂ Game Room",sound:"Sound",
+      guideBtn:"Guide",guideTitle:"How to play",close:"Close",
+      resetBestTitle:"Reset best score",resetBestConfirm:"Really reset the best score to 0?",
+      nomoves:"No moves left. Undo a move or start a new game.",
+      stillwin:"Looks stuck, but this deal can still be won. Combine cleverly, and take cards back off the foundations if you must.",
+      dead:"This position is lost, there is no way on from here. Time for a new game.",
+      deadAgo:"This position is lost. The game was still winnable {n} moves ago, that is how far “Undo” takes you.",
+      deadAgo1:"This position is lost. The last move cost you the game, one “Undo” wins it back.",
+      deadStart:"This position is lost. This deal could not be won from the very start, so start a new game.",
+      guide:["Goal: move all 52 cards onto the four foundations (top right) — each suit ascending from Ace to King.",
+             "On the tableau, cards stack in descending order and alternating colour (red on black, black on red).",
+             "Drag a card or a matching run onto another pile with mouse or finger.",
+             "Tapping/clicking a card sends it to a foundation automatically if it fits.",
+             "Only a King (or a run starting with a King) may go onto an empty tableau space.",
+             "Use the stock (top left) to turn up new cards; “Draw: 3/1” switches how many.",
+             "“Hint” shows a possible move, “Auto” clears everything at the end, “Undo” takes a move back.",
+             "When a freshly revealed card briefly glows gold, you can play it right away."],
+      lang:"en"},
+  zh:{title:"紙牌接龍",moves:"步數",time:"時間",score:"得分",best:"最高分",neu:"新遊戲",
+      undo:"撤銷",hint:"提示",auto:"自動",draw:"發牌",win:"你贏了！",
+      winsub:"恭喜，已完成全部牌！",back:"← 首頁",home:"../home-chi.html",platform:"⌂ 遊戲室",sound:"聲音",
+      guideBtn:"說明",guideTitle:"遊戲規則",close:"關閉",
+      resetBestTitle:"重置最高分",resetBestConfirm:"確定要把最高分重置為 0 嗎？",
+      nomoves:"沒有可走的牌了，請撤銷一步或開始新遊戲。",
+      stillwin:"看似無路可走，其實還有解。只要走對順序，必要時把牌從基礎堆取回。",
+      dead:"當前局面已經無法取勝，從這裡再也走不通了。開始新遊戲吧。",
+      deadAgo:"當前局面已經無法取勝。{n} 步之前這局還有解，用「撤銷」可以退回去。",
+      deadAgo1:"當前局面已經無法取勝。就是上一步葬送了這局，撤銷一步就能救回來。",
+      deadStart:"當前局面已經無法取勝。這副牌從發牌起就贏不了，開始新遊戲吧。",
+      guide:["目標：把全部 52 張牌按花色從 A 到 K 依次疊到右上角的四個基礎堆。",
+             "在牌桌上，牌要按從大到小、紅黑交替的順序疊放。",
+             "用鼠標或手指把一張牌或一組連牌拖到另一摞上。",
+             "點一下牌，如果合適會自動飛到基礎堆。",
+             "空的牌桌位置只能放國王 K（或以 K 開頭的連牌）。",
+             "用左上角的牌堆翻新牌；「發牌：3/1」可切換每次翻幾張。",
+             "「提示」顯示一個可走的步，「自動」在最後把所有牌自動收好，「撤銷」可悔一步。",
+             "當一張剛翻開的牌短暫地金光閃爍時，說明你可以馬上用它。"],
+      lang:"zh"}
+};
+let lang = localStorage.getItem("sol_lang") || (navigator.language||"de").slice(0,2);
+if(!I18N[lang]) lang="de";
+
+/* ============================ Spiel-Konstanten ============================ */
+const SUITS = ["♠","♥","♦","♣"];     // 0 Pik, 1 Herz, 2 Karo, 3 Kreuz
+const RANKS = ["","A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+const isRed = s => s===1 || s===2;
+const PIPS = {
+  1:[[.5,.5,1]],
+  2:[[.5,.2],[.5,.8]],
+  3:[[.5,.2],[.5,.5],[.5,.8]],
+  4:[[.32,.2],[.68,.2],[.32,.8],[.68,.8]],
+  5:[[.32,.2],[.68,.2],[.5,.5],[.32,.8],[.68,.8]],
+  6:[[.32,.2],[.68,.2],[.32,.5],[.68,.5],[.32,.8],[.68,.8]],
+  7:[[.32,.2],[.68,.2],[.5,.34],[.32,.5],[.68,.5],[.32,.8],[.68,.8]],
+  8:[[.32,.2],[.68,.2],[.5,.34],[.32,.5],[.68,.5],[.5,.66],[.32,.8],[.68,.8]],
+  9:[[.32,.17],[.68,.17],[.32,.4],[.68,.4],[.5,.5],[.32,.6],[.68,.6],[.32,.83],[.68,.83]],
+  10:[[.32,.17],[.68,.17],[.5,.29],[.32,.4],[.68,.4],[.32,.6],[.68,.6],[.5,.71],[.32,.83],[.68,.83]]
+};
+
+/* ============================ Zustand ============================ */
+let best = parseInt(localStorage.getItem("sol_best")||"0",10) || 0;
+let S = null;            // {stock,waste,foundations[4],tableau[7],draw,moves,score,started}
+let history = [];        // Undo-Stack (JSON)
+let timer = null, seconds = 0;
+let uid = 0;
+
+function newDeck(){
+  const d=[];
+  for(let s=0;s<4;s++) for(let r=1;r<=13;r++) d.push({id:++uid,suit:s,rank:r,up:false});
+  for(let i=d.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [d[i],d[j]]=[d[j],d[i]]; }
+  return d;
+}
+
+function newGame(keepDraw){
+  const drawN = keepDraw && S ? S.draw : 3;
+  const deck = newDeck();
+  S = {stock:[],waste:[],foundations:[[],[],[],[]],tableau:[[],[],[],[],[],[],[]],
+       draw:drawN, moves:0, score:0, started:false};
+  for(let c=0;c<7;c++){
+    for(let k=0;k<=c;k++){ const card=deck.pop(); card.up=(k===c); S.tableau[c].push(card); }
+  }
+  S.stock = deck;  // Rest verdeckt im Talon
+  history=[]; seconds=0; stopTimer(); updateClock();
+  hideWin();
+  suppressCues=false; revealCandidates=[]; stuckKey=""; stuckVerdict=null; hideToast();
+  render(); save();
+  sfx("shuffle");
+}
+
+/* ============================ Persistenz ============================ */
+function save(){
+  try{ localStorage.setItem("sol_state", JSON.stringify({S,seconds})); }catch(e){}
+}
+function load(){
+  try{
+    const raw = localStorage.getItem("sol_state");
+    if(!raw) return false;
+    const o = JSON.parse(raw);
+    if(!o||!o.S||!o.S.tableau) return false;
+    S=o.S; seconds=o.seconds||0;
+    if(typeof S.draw!=="number") S.draw=3;
+    return true;
+  }catch(e){ return false; }
+}
+
+/* ============================ Regeln ============================ */
+function canToFoundation(card, f){
+  const p=S.foundations[f];
+  if(p.length===0) return card.rank===1;
+  const t=p[p.length-1];
+  return t.suit===card.suit && card.rank===t.rank+1;
+}
+function canToTableau(card, t){
+  const p=S.tableau[t];
+  if(p.length===0) return card.rank===13;
+  const top=p[p.length-1];
+  return top.up && isRed(top.suit)!==isRed(card.suit) && card.rank===top.rank-1;
+}
+
+/* ============================ Karten-DOM ============================ */
+function buildCardFace(card){
+  let inner="";
+  inner+=`<div class="corner tl"><span class="r">${RANKS[card.rank]}</span><span class="s">${SUITS[card.suit]}</span></div>`;
+  inner+=`<div class="corner br"><span class="r">${RANKS[card.rank]}</span><span class="s">${SUITS[card.suit]}</span></div>`;
+  if(card.rank>=11){
+    inner+=`<div class="court"><span class="letter">${RANKS[card.rank]}</span><span class="csuit">${SUITS[card.suit]}</span></div>`;
+  }else{
+    const pips=PIPS[card.rank]||[];
+    for(const p of pips){
+      const flip = (p[2]?false:p[1]>0.5) ? "flip":"";
+      const ace = p[2]?"ace":"";
+      inner+=`<span class="pip ${flip} ${ace}" style="left:${p[0]*100}%;top:${p[1]*100}%">${SUITS[card.suit]}</span>`;
+    }
+  }
+  return inner;
+}
+function makeCardEl(card){
+  const el=document.createElement("div");
+  el.className="card "+(card.up?(isRed(card.suit)?"red":"black"):"down");
+  el.dataset.id=card.id;
+  if(card.up){ el.innerHTML=`<div class="face">${buildCardFace(card)}</div>`; }
+  else{ el.innerHTML=`<div class="face"><div class="back-emblem">◆</div></div>`; }
+  return el;
+}
+
+/* ============================ Rendering ============================ */
+const board=document.getElementById("board");
+const elStock=document.getElementById("stock");
+const elWaste=document.getElementById("waste");
+const elTableau=document.getElementById("tableau");
+
+function layout(){
+  const bw=board.clientWidth-32;          // minus padding
+  const gap=Math.max(6,Math.min(16,bw*0.014));
+  const cw=Math.floor((bw-6*gap)/7);
+  const ch=Math.round(cw*1.4);
+  document.documentElement.style.setProperty("--cw",cw+"px");
+  document.documentElement.style.setProperty("--ch",ch+"px");
+  document.documentElement.style.setProperty("--gap",gap+"px");
+}
+function maxColHeight(){
+  const ch=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--ch"));
+  const top=document.querySelector(".topbar").offsetHeight;
+  const foot=document.querySelector("footer").offsetHeight;
+  const avail=window.innerHeight - top - foot - ch - 90; // Reserve für oberste Reihe
+  return Math.max(ch*2.4, avail);
+}
+
+function render(){
+  layout();
+  const ch=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--ch"));
+
+  // Talon
+  elStock.innerHTML="";
+  if(S.stock.length){
+    const c=makeCardEl({up:false,suit:0,rank:0,id:"stock"});
+    c.dataset.pile="stock"; elStock.appendChild(c);
+  }else{
+    elStock.innerHTML=`<div class="placeholder" data-pile="stock">↻</div>`;
+  }
+
+  // Abwurf (Waste) – im 3er-Modus bis zu 3 gefächert
+  elWaste.innerHTML="";
+  if(S.waste.length===0){
+    elWaste.innerHTML=`<div class="placeholder">♣</div>`;
+  }else{
+    const show=Math.min(S.draw===1?1:3, S.waste.length);
+    const start=S.waste.length-show;
+    const fan=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--cw"))*0.28;
+    for(let i=start;i<S.waste.length;i++){
+      const el=makeCardEl(S.waste[i]);
+      el.style.left=((i-start)*fan)+"px"; el.style.top="0px";
+      el.dataset.pile="waste"; el.dataset.ci=i;
+      elWaste.appendChild(el);
+    }
+  }
+
+  // Fundamente
+  document.querySelectorAll(".foundation").forEach(slot=>{
+    const f=+slot.dataset.f; slot.innerHTML="";
+    const p=S.foundations[f];
+    if(p.length===0){ slot.innerHTML=`<div class="placeholder">A</div>`; }
+    else{ const el=makeCardEl(p[p.length-1]); el.dataset.pile="foundation"; el.dataset.pi=f; el.dataset.ci=p.length-1; slot.appendChild(el); }
+  });
+
+  // Tableau
+  elTableau.innerHTML="";
+  const maxH=maxColHeight();
+  for(let c=0;c<7;c++){
+    const col=document.createElement("div"); col.className="slot col"; col.dataset.col=c;
+    col.style.minHeight=maxH+"px";
+    const cards=S.tableau[c];
+    if(cards.length===0){ col.innerHTML=`<div class="placeholder" data-drop-col="${c}">K</div>`; }
+    const downN=cards.filter(x=>!x.up).length;
+    const upN=cards.length-downN;
+    let dOff=ch*0.16, uOff=ch*0.30;
+    let total=downN*dOff + (upN>0?(upN-1)*uOff:0) + ch;
+    if(total>maxH){ const sc=(maxH-ch)/(total-ch); dOff*=sc; uOff*=sc; }
+    let y=0;
+    cards.forEach((card,ci)=>{
+      const el=makeCardEl(card);
+      el.style.top=y+"px"; el.style.left="0px";
+      el.dataset.pile="tableau"; el.dataset.pi=c; el.dataset.ci=ci;
+      col.appendChild(el);
+      y += card.up?uOff:dOff;
+    });
+    elTableau.appendChild(col);
+  }
+  updateButtons();
+}
+
+function updateButtons(){
+  const t=I18N[lang];
+  if(!S){ document.getElementById("btnDraw").textContent = t.draw+": 3"; return; }
+  document.getElementById("btnUndo").disabled = history.length===0;
+  document.getElementById("btnDraw").textContent = t.draw+": "+S.draw;
+  document.getElementById("moves").textContent = S.moves;
+  document.getElementById("score").textContent = S.score;
+  if(S.score>best){ best=S.score; try{ localStorage.setItem("sol_best",best); }catch(e){} }
+  document.getElementById("best").textContent = best;
+  updateAutoPulse();
+}
+function resetBest(){
+  if(!confirm(I18N[lang].resetBestConfirm)) return;
+  best=0;
+  try{ localStorage.setItem("sol_best","0"); }catch(e){}
+  document.getElementById("best").textContent = best;
+}
+
+/* ============================ Aktionen / Commit ============================ */
+function snapshot(){ history.push(JSON.stringify(S)); if(history.length>250) history.shift(); }
+function ensureTimer(){ if(!S.started){ S.started=true; startTimer(); } }
+
+function commit(mut){
+  snapshot();
+  ensureTimer();
+  revealCandidates=[];
+  mut();
+  render(); save();
+  if(checkWin()) celebrate();
+  else { flashReveals(); checkStuck(); }
+}
+
+function undo(){
+  if(!history.length) return;
+  S=JSON.parse(history.pop());
+  render(); save();
+  checkStuck();        // zurückgenommen heißt nicht automatisch, dass es weitergeht
+}
+
+function drawStock(){
+  commit(()=>{
+    if(S.stock.length){
+      const n=Math.min(S.draw,S.stock.length);
+      for(let i=0;i<n;i++){ const c=S.stock.pop(); c.up=true; S.waste.push(c); }
+      S.moves++;
+      sfx("draw");
+      revealCandidates.push(S.waste[S.waste.length-1]);   // oberste gezogene Karte
+    }else if(S.waste.length){
+      while(S.waste.length){ const c=S.waste.pop(); c.up=false; S.stock.push(c); }
+      S.score=Math.max(0,S.score-2);
+      sfx("recycle");
+    }
+  });
+}
+
+function getPile(pile,pi){
+  if(pile==="waste") return S.waste;
+  if(pile==="stock") return S.stock;
+  if(pile==="foundation") return S.foundations[pi];
+  if(pile==="tableau") return S.tableau[pi];
+  return null;
+}
+
+function moveGroup(src, dst){
+  // src:{pile,pi,ci}  dst:{pile,pi}
+  const from=getPile(src.pile,src.pi);
+  const group=from.splice(src.ci);
+  const to=getPile(dst.pile,dst.pi);
+  to.push(...group);
+  // Punkte + Ton
+  if(dst.pile==="foundation"){ S.score+=10; sfx("foundation",group[0].rank); }
+  else if(dst.pile==="tableau"){ sfx("place"); }
+  if(src.pile==="foundation" && dst.pile==="tableau") S.score=Math.max(0,S.score-10);
+  if(src.pile==="waste" && dst.pile==="tableau") S.score+=5;
+  // Aufdecken
+  if(src.pile==="tableau" && from.length && !from[from.length-1].up){
+    from[from.length-1].up=true; S.score+=5;
+    revealCandidates.push(from[from.length-1]);     // neu aufgedeckte Karte
+  }
+  S.moves++;
+}
+
+/* Versucht, eine einzelne Karte automatisch aufs Fundament zu legen */
+function autoToFoundation(src){
+  const p=getPile(src.pile,src.pi);
+  if(src.ci!==p.length-1) return false;          // nur oberste Karte
+  const card=p[p.length-1];
+  for(let f=0;f<4;f++){
+    if(canToFoundation(card,f)){
+      commit(()=>moveGroup({pile:src.pile,pi:src.pi,ci:src.ci},{pile:"foundation",pi:f}));
+      return true;
+    }
+  }
+  return false;
+}
+
+/* Auto-Ablegen: solange Karten aufs Fundament passen */
+function autoFinish(){
+  let moved=true, any=false;
+  suppressCues=true;                 // kein Aufdeck-Geblinke während des Auto-Laufs
+  const step=()=>{
+    moved=false;
+    // Waste
+    if(S.waste.length){ const c=S.waste[S.waste.length-1]; for(let f=0;f<4;f++) if(canToFoundation(c,f)){ commit(()=>moveGroup({pile:"waste",pi:0,ci:S.waste.length-1},{pile:"foundation",pi:f})); moved=true; any=true; break; } }
+    if(moved) return schedule();
+    // Tableau
+    for(let c=0;c<7;c++){ const col=S.tableau[c]; if(!col.length) continue; const card=col[col.length-1]; if(!card.up) continue;
+      for(let f=0;f<4;f++) if(canToFoundation(card,f)){ commit(()=>moveGroup({pile:"tableau",pi:c,ci:col.length-1},{pile:"foundation",pi:f})); moved=true; any=true; break; }
+      if(moved) break;
+    }
+    if(moved) schedule();
+    else { suppressCues=false; updateAutoPulse(); checkStuck(); }   // nach dem Auto-Lauf kann es zu Ende sein
+  };
+  const schedule=()=>setTimeout(step,90);
+  step();
+}
+
+/* ============================ Drag & Drop / Tippen ============================ */
+const dragLayer=document.getElementById("dragLayer");
+let drag=null; // {src,cards[],ghosts,offX,offY,started,zones}
+
+function buildZones(){
+  const zones=[];
+  document.querySelectorAll(".foundation").forEach(s=>zones.push({pile:"foundation",pi:+s.dataset.f,rect:s.getBoundingClientRect()}));
+  document.querySelectorAll(".slot.col").forEach(s=>zones.push({pile:"tableau",pi:+s.dataset.col,rect:s.getBoundingClientRect()}));
+  return zones;
+}
+
+function pointerDown(e){
+  if(drag) return;
+  ensureAudio();
+  const ph=e.target.closest(".placeholder[data-pile='stock']");
+  if(ph){ drawStock(); return; }
+  const cardEl=e.target.closest(".card");
+  if(!cardEl) return;
+  const pile=cardEl.dataset.pile;
+  if(pile==="stock"){ drawStock(); return; }
+  if(!pile) return;
+
+  // Quellindex bestimmen
+  let pi=cardEl.dataset.pi?+cardEl.dataset.pi:0;
+  let ci=cardEl.dataset.ci?+cardEl.dataset.ci:0;
+  const arr=getPile(pile,pi);
+  const card=arr[ci];
+  if(!card || !card.up) return;
+
+  // ziehbare Gruppe
+  let group;
+  if(pile==="tableau") group=arr.slice(ci);
+  else { if(ci!==arr.length-1) return; group=[card]; }
+
+  const rect=cardEl.getBoundingClientRect();
+  drag={
+    src:{pile,pi,ci}, group,
+    offX:e.clientX-rect.left, offY:e.clientY-rect.top,
+    startX:e.clientX, startY:e.clientY,
+    started:false, srcEls:[], zones:null
+  };
+  // Quell-Elemente merken (zum Ausblenden)
+  if(pile==="tableau"){
+    const col=elTableau.querySelector(`.slot.col[data-col='${pi}']`);
+    const els=[...col.querySelectorAll(".card")];
+    drag.srcEls=els.slice(ci);
+  }else{
+    drag.srcEls=[cardEl];
+  }
+  window.addEventListener("pointermove",pointerMove);
+  window.addEventListener("pointerup",pointerUp);
+  e.preventDefault();
+}
+
+function startDragVisual(){
+  drag.started=true;
+  drag.zones=buildZones();
+  drag.srcEls.forEach(el=>el.classList.add("dragging"));
+  const ch=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--ch"));
+  const uOff=ch*0.30;
+  dragLayer.innerHTML="";
+  drag.ghosts=[];
+  drag.group.forEach((card,i)=>{
+    const g=makeCardEl(card);
+    g.style.top=(i*uOff)+"px"; g.style.left="0px";
+    dragLayer.appendChild(g); drag.ghosts.push(g);
+  });
+}
+
+function pointerMove(e){
+  if(!drag) return;
+  if(!drag.started){
+    const dx=e.clientX-drag.startX, dy=e.clientY-drag.startY;
+    if(Math.hypot(dx,dy)<6) return;
+    startDragVisual();
+  }
+  dragLayer.style.transform=`translate(${e.clientX-drag.offX}px,${e.clientY-drag.offY}px)`;
+}
+
+function pointerUp(e){
+  window.removeEventListener("pointermove",pointerMove);
+  window.removeEventListener("pointerup",pointerUp);
+  if(!drag) return;
+  const d=drag; drag=null;
+
+  if(!d.started){
+    // Tippen → automatisch aufs Fundament
+    autoToFoundation(d.src);
+    return;
+  }
+  // Drop-Ziel finden
+  dragLayer.innerHTML=""; dragLayer.style.transform="";
+  const x=e.clientX, y=e.clientY;
+  let target=null;
+  for(const z of d.zones){
+    const r=z.rect;
+    if(x>=r.left && x<=r.right && y>=r.top && y<=r.bottom){
+      if(z.pile===d.src.pile && z.pi===d.src.pi) continue; // gleiche Quelle ignorieren
+      target=z; break;
+    }
+  }
+  const card=d.group[0];
+  let ok=false;
+  if(target){
+    if(target.pile==="foundation" && d.group.length===1 && canToFoundation(card,target.pi)) ok=true;
+    else if(target.pile==="tableau" && canToTableau(card,target.pi)) ok=true;
+  }
+  if(ok){
+    commit(()=>moveGroup(d.src,{pile:target.pile,pi:target.pi}));
+  }else{
+    d.srcEls.forEach(el=>el.classList.remove("dragging"));
+    sfx("invalid");
+  }
+}
+
+/* ============================ Tipp ============================ */
+function findHint(){
+  // 1) Waste/Tableau-Spitze -> Fundament
+  if(S.waste.length){ const c=S.waste[S.waste.length-1]; for(let f=0;f<4;f++) if(canToFoundation(c,f)) return {from:{pile:"waste",pi:0,ci:S.waste.length-1}, to:{pile:"foundation",pi:f}}; }
+  for(let t=0;t<7;t++){ const col=S.tableau[t]; if(col.length){ const c=col[col.length-1]; if(c.up) for(let f=0;f<4;f++) if(canToFoundation(c,f)) return {from:{pile:"tableau",pi:t,ci:col.length-1},to:{pile:"foundation",pi:f}}; } }
+  // 2) Waste -> Tableau
+  if(S.waste.length){ const c=S.waste[S.waste.length-1]; for(let t=0;t<7;t++) if(canToTableau(c,t)) return {from:{pile:"waste",pi:0,ci:S.waste.length-1},to:{pile:"tableau",pi:t}}; }
+  // 3) Tableau -> Tableau (nur wenn es eine verdeckte Karte aufdeckt oder einen leeren Platz sinnvoll füllt)
+  for(let s=0;s<7;s++){ const col=S.tableau[s]; for(let i=0;i<col.length;i++){ if(!col[i].up) continue;
+      const movesPile = i>0 && !col[i-1].up;            // deckt verdeckte Karte auf
+      const isKingFull = col[i].rank===13 && i===0;     // König auf leerem -> Endlosschleife vermeiden
+      if(!movesPile && !isKingFull) { if(i!==0) continue; }
+      for(let t=0;t<7;t++){ if(t===s) continue; if(canToTableau(col[i],t)){
+        if(isKingFull && S.tableau[t].length===0) continue;
+        return {from:{pile:"tableau",pi:s,ci:i},to:{pile:"tableau",pi:t}};
+      }}
+  }}
+  return null;
+}
+function showHint(){
+  const h=findHint();
+  if(!h){ flashNoMove(); return; }
+  const fromEl=cardElAt(h.from.pile,h.from.pi,h.from.ci);
+  const toEl=slotElFor(h.to);
+  if(fromEl) fromEl.classList.add("hint");
+  if(toEl) toEl.classList.add("hint");
+  setTimeout(()=>{ if(fromEl)fromEl.classList.remove("hint"); if(toEl)toEl.classList.remove("hint"); },1500);
+}
+function cardElAt(pile,pi,ci){
+  if(pile==="waste") return [...elWaste.querySelectorAll(".card")].pop();
+  if(pile==="tableau") return elTableau.querySelector(`.slot.col[data-col='${pi}'] .card[data-ci='${ci}']`);
+  if(pile==="foundation") return document.querySelector(`.foundation[data-f='${pi}'] .card`);
+  return null;
+}
+function slotElFor(to){
+  if(to.pile==="foundation") return document.querySelector(`.foundation[data-f='${to.pi}']`);
+  if(to.pile==="tableau") return elTableau.querySelector(`.slot.col[data-col='${to.pi}']`);
+  return null;
+}
+function flashNoMove(){
+  const b=document.getElementById("btnHint"); const o=b.textContent;
+  b.textContent="—"; setTimeout(()=>b.textContent=o,500);
+}
+
+/* ============================ Gewinn ============================ */
+function checkWin(){ return S.foundations.reduce((a,p)=>a+p.length,0)===52; }
+function hideWin(){ document.getElementById("winBox").classList.remove("show"); const cv=document.getElementById("winCanvas"); cv.style.display="none"; if(winRAF) cancelAnimationFrame(winRAF); winRAF=0; }
+
+let winRAF=0;
+function celebrate(){
+  stopTimer();
+  sfx("win");
+  const t=I18N[lang];
+  document.getElementById("t-win").textContent=t.win;
+  document.getElementById("t-winsub").textContent=t.winsub;
+  document.getElementById("winBox").classList.add("show");
+
+  const cv=document.getElementById("winCanvas");
+  cv.style.display="block";
+  const ctx=cv.getContext("2d");
+  const DPR=Math.min(2,window.devicePixelRatio||1);
+  cv.width=innerWidth*DPR; cv.height=innerHeight*DPR; ctx.scale(DPR,DPR);
+  const W=innerWidth,H=innerHeight,CX=W/2,CY=H/2;
+  const cw=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--cw"));
+  const ch=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--ch"));
+
+  // Alle 52 Karten starten an ihren Fundament-Slots und spiralisieren zur Mitte
+  const sprites=[];
+  document.querySelectorAll(".foundation").forEach((slot,f)=>{
+    const r=slot.getBoundingClientRect();
+    const sx=r.left+cw/2, sy=r.top+ch/2;
+    S.foundations[f].forEach((card,i)=>{
+      sprites.push({card,sx,sy,
+        startAngle:Math.atan2(sy-CY,sx-CX),
+        startR:Math.hypot(sx-CX,sy-CY),
+        delay:f*6+i*2, done:false});
+    });
+  });
+  const SPIRAL=80; // Frames pro Karte
+
+  const particles=[];
+  let burstFired=false, burstFrame=-1;
+
+  // Nach dem Vortex blühen die 4 Kartensymbole in die Ecken
+  const RB=Math.min(W,H)*0.28;
+  const suitSyms=[
+    {sym:"♠",col:"#a8a4d4",tx:CX-RB,ty:CY-RB,active:false,t: 0.00},
+    {sym:"♥",col:"#d86868",tx:CX+RB,ty:CY-RB,active:false,t:-0.18},
+    {sym:"♦",col:"#d86868",tx:CX+RB,ty:CY+RB,active:false,t:-0.36},
+    {sym:"♣",col:"#a8a4d4",tx:CX-RB,ty:CY+RB,active:false,t:-0.54}
+  ];
+
+  function easeOut(t){ return 1-Math.pow(1-t,3); }
+  function easeInOut(t){ return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2; }
+
+  let frame=0;
+  function loop(){
+    frame++;
+    ctx.clearRect(0,0,W,H);
+
+    // Karten spiralisieren zur Mitte (1,5 Drehungen, schrumpfend)
+    let anySprite=false;
+    for(const s of sprites){
+      const lf=frame-s.delay;
+      if(lf<0||s.done) continue;
+      if(lf>=SPIRAL){s.done=true;continue;}
+      anySprite=true;
+      const p=easeOut(lf/SPIRAL);
+      const angle=s.startAngle-p*Math.PI*3;
+      const radius=s.startR*(1-p);
+      const x=CX+Math.cos(angle)*radius, y=CY+Math.sin(angle)*radius;
+      const sc=Math.max(0.05,1-p*0.93);
+      const al=p>.78?1-(p-.78)/.22:1;
+      ctx.save();
+      ctx.translate(x,y); ctx.rotate(angle+Math.PI/2); ctx.scale(sc,sc); ctx.globalAlpha=al;
+      drawCanvasCard(ctx,-cw/2,-ch/2,cw,ch,s.card);
+      ctx.restore();
+    }
+
+    // Burst: alle Karten sind konvergiert
+    if(!burstFired && sprites.every(s=>s.done)){
+      burstFired=true; burstFrame=frame;
+      for(let i=0;i<190;i++){
+        const a=Math.random()*Math.PI*2, sp=Math.random()*13+3;
+        particles.push({x:CX,y:CY,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-4,
+          size:Math.random()*5.5+1,alpha:1,
+          col:["#d4b87a","#fff3a0","#c83030","#e8dfc8","#f0e060"][Math.floor(Math.random()*5)]});
+      }
+      suitSyms.forEach(s=>s.active=true);
+    }
+
+    // Goldener Lichtblitz an der Mitte
+    if(burstFrame>=0){
+      const gr=Math.max(0,1-(frame-burstFrame)/24);
+      if(gr>0){
+        const g=ctx.createRadialGradient(CX,CY,0,CX,CY,140);
+        g.addColorStop(0,`rgba(212,184,122,${gr*.95})`);
+        g.addColorStop(.5,`rgba(212,184,122,${gr*.32})`);
+        g.addColorStop(1,"rgba(212,184,122,0)");
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(CX,CY,140,0,Math.PI*2); ctx.fill();
+      }
+    }
+
+    // Partikel
+    let anyP=false;
+    for(const p of particles){
+      p.x+=p.vx; p.y+=p.vy; p.vy+=0.22; p.alpha*=0.953;
+      if(p.alpha<0.02) continue; anyP=true;
+      ctx.save(); ctx.globalAlpha=p.alpha; ctx.fillStyle=p.col;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill(); ctx.restore();
+    }
+
+    // Kartensymbole blühen versetzt in die Ecken
+    let anySuit=false;
+    for(const s of suitSyms){
+      if(!s.active) continue;
+      s.t=Math.min(1,s.t+0.022);
+      if(s.t<=0) continue;
+      const p=easeInOut(s.t);
+      const x=CX+(s.tx-CX)*p, y=CY+(s.ty-CY)*p;
+      const sz=Math.min(W,H)*0.17*Math.min(s.t*7,1);
+      const al=s.t>.8?1-(s.t-.8)/.2:s.t<.1?s.t/.1:1;
+      if(al<=0||sz<2) continue; anySuit=true;
+      ctx.save(); ctx.globalAlpha=al*.88; ctx.fillStyle=s.col;
+      ctx.font=`${sz}px serif`; ctx.textAlign="center"; ctx.textBaseline="middle";
+      ctx.shadowColor=s.col; ctx.shadowBlur=22;
+      ctx.fillText(s.sym,x,y); ctx.restore();
+    }
+
+    const glowing=burstFrame>=0&&(frame-burstFrame)<24;
+    if(anySprite||anyP||anySuit||glowing) winRAF=requestAnimationFrame(loop);
+  }
+
+  loop();
+}
+function drawCanvasCard(ctx,x,y,w,h,card){
+  const r=w*0.09;
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+  ctx.fillStyle="#fffdf6"; ctx.fill();
+  ctx.lineWidth=1; ctx.strokeStyle="rgba(0,0,0,0.25)"; ctx.stroke();
+  ctx.fillStyle=isRed(card.suit)?"#b3322c":"#23211c";
+  ctx.textBaseline="top"; ctx.textAlign="left";
+  ctx.font=`600 ${w*0.24}px Cinzel, serif`;
+  ctx.fillText(RANKS[card.rank], x+w*0.08, y+w*0.06);
+  ctx.font=`${w*0.5}px serif`;
+  ctx.textAlign="center"; ctx.textBaseline="middle";
+  ctx.fillText(SUITS[card.suit], x+w*0.5, y+h*0.55);
+}
+
+/* ============================ Uhr ============================ */
+function startTimer(){ stopTimer(); timer=setInterval(()=>{ seconds++; updateClock(); if(seconds%5===0) save(); },1000); }
+function stopTimer(){ if(timer){ clearInterval(timer); timer=null; } }
+function updateClock(){ const m=Math.floor(seconds/60), s=seconds%60; document.getElementById("time").textContent=m+":"+String(s).padStart(2,"0"); }
+
+/* ============================ Ton & Hinweise ============================ */
+let actx=null, soundOn=(localStorage.getItem("sol_sound")!=="0");
+let revealCandidates=[], suppressCues=false;
+function ensureAudio(){ if(!actx){ try{ actx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } if(actx&&actx.state==="suspended") actx.resume(); }
+function tone(freq,start,dur,vol,type){
+  if(!actx) return;
+  const o=actx.createOscillator(), g=actx.createGain();
+  o.type=type||"sine"; o.frequency.value=freq;
+  const t0=actx.currentTime+start;
+  g.gain.setValueAtTime(0,t0); g.gain.linearRampToValueAtTime(vol,t0+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t0+dur);
+  o.connect(g); g.connect(actx.destination); o.start(t0); o.stop(t0+dur+0.03);
+}
+function noiseBurst(dur,vol,freq){
+  if(!actx) return;
+  const n=Math.max(1,Math.floor(actx.sampleRate*dur)), buf=actx.createBuffer(1,n,actx.sampleRate), data=buf.getChannelData(0);
+  for(let i=0;i<n;i++) data[i]=(Math.random()*2-1)*(1-i/n);
+  const src=actx.createBufferSource(); src.buffer=buf;
+  const f=actx.createBiquadFilter(); f.type="bandpass"; f.frequency.value=freq||2600; f.Q.value=0.6;
+  const g=actx.createGain(); const t0=actx.currentTime;
+  g.gain.setValueAtTime(vol,t0); g.gain.exponentialRampToValueAtTime(0.0001,t0+dur);
+  src.connect(f); f.connect(g); g.connect(actx.destination); src.start(t0); src.stop(t0+dur+0.02);
+}
+function sfx(kind,param){
+  if(!soundOn) return; ensureAudio(); if(!actx) return;
+  if(kind==="place"){ tone(300,0,0.09,0.09,"sine"); }
+  else if(kind==="foundation"){ const f=523.25*Math.pow(2,((param||1)-1)/8); tone(f,0,0.22,0.12,"sine"); tone(f*2,0.015,0.16,0.05,"sine"); }
+  else if(kind==="reveal"){ tone(620,0,0.10,0.08,"triangle"); tone(932,0.07,0.16,0.08,"sine"); }
+  else if(kind==="draw"){ noiseBurst(0.14,0.09,2600); }
+  else if(kind==="recycle"){ noiseBurst(0.22,0.08,1600); tone(200,0,0.16,0.05,"triangle"); }
+  else if(kind==="invalid"){ tone(150,0,0.16,0.10,"triangle"); }
+  else if(kind==="shuffle"){ noiseBurst(0.30,0.09,1800); }
+  else if(kind==="nomove"){ tone(392,0,0.15,0.09,"sine"); tone(294,0.13,0.22,0.09,"sine"); }
+  else if(kind==="stillwin"){ tone(587.33,0,0.16,0.11,"triangle"); tone(880,0.13,0.20,0.11,"triangle"); tone(1174.66,0.26,0.34,0.07,"sine"); }
+  else if(kind==="dead"){ tone(415.30,0,0.22,0.12,"triangle"); tone(311.13,0.21,0.24,0.12,"triangle"); tone(207.65,0.44,0.60,0.13,"triangle"); tone(103.83,0.44,0.65,0.07,"sine"); }
+  else if(kind==="win"){ [523.25,659.25,783.99,1046.5,1318.5].forEach((f,i)=>tone(f,i*0.12,0.5,0.12)); tone(1046.5,0.62,0.7,0.09); tone(1567.98,0.64,0.8,0.06); }
+}
+function toggleSound(){
+  soundOn=!soundOn; localStorage.setItem("sol_sound",soundOn?"1":"0");
+  const b=document.getElementById("btnSound");
+  b.textContent=(soundOn?"🔊 ":"🔈 ")+I18N[lang].sound;
+  b.classList.toggle("active",soundOn);
+  if(soundOn){ ensureAudio(); sfx("place"); }
+}
+
+function isPlayable(card){
+  for(let f=0;f<4;f++) if(canToFoundation(card,f)) return true;
+  for(let t=0;t<7;t++) if(canToTableau(card,t)) return true;
+  return false;
+}
+function flashReveals(){
+  if(suppressCues) return;
+  let played=false;
+  for(const card of revealCandidates){
+    if(card && card.up && isPlayable(card)){
+      const el=document.querySelector(`.card[data-id='${card.id}']`);
+      if(el){ el.classList.add("reveal-cue"); setTimeout(()=>el.classList.remove("reveal-cue"),1400); }
+      if(!played){ sfx("reveal"); played=true; }
+    }
+  }
+}
+function canAutoComplete(){
+  if(!S || S.stock.length) return false;
+  for(let c=0;c<7;c++) for(const card of S.tableau[c]) if(!card.up) return false;
+  const total=S.foundations.reduce((a,p)=>a+p.length,0);
+  return total<52;
+}
+function updateAutoPulse(){ const b=document.getElementById("btnAuto"); if(b) b.classList.toggle("ready",canAutoComplete()); }
+
+// Gibt es überhaupt noch einen Zug? Der Talon wird einmal komplett durchgespielt,
+// denn bei "Ziehen: 3" kommen nicht alle Karten je oben an, und was nie oben ankommt,
+// kann auch niemand spielen.
+function hasAnyMove(){
+  if(findHint()) return true;
+  const playable=c=>{
+    for(let f=0;f<4;f++) if(canToFoundation(c,f)) return true;
+    for(let t=0;t<7;t++) if(canToTableau(c,t)) return true;
+    return false;
+  };
+  const stock=S.stock.slice(), waste=S.waste.slice();
+  for(let i=0;i<120;i++){                       // ein voller Talonumlauf sind höchstens 53 Schritte
+    if(stock.length){
+      for(let n=Math.min(S.draw,stock.length);n>0;n--) waste.push(stock.pop());
+      if(playable(waste[waste.length-1])) return true;
+    }
+    else if(waste.length){ while(waste.length) stock.push(waste.pop()); }
+    else break;
+  }
+  return false;
+}
+/* Ist die Stellung überhaupt noch zu gewinnen?
+   Tiefensuche über alle legalen Züge, inklusive Rücknahme vom Fundament.
+   Transpositionstabelle gegen Kreisläufe, Spalten sind vertauschbar und werden sortiert.
+   Ergebnis: "win" (Gewinnweg gefunden), "dead" (Suchraum komplett, kein Weg), "unknown" (Deckel erreicht).
+   ponytail: Knoten-/Zeitdeckel statt Web Worker, reicht bei den paar hundert ms Blockade. */
+const SOLVE_NODES=150000, SOLVE_MS=700;
+const SOLVE_CH=[]; for(let i=0;i<64;i++) SOLVE_CH.push(String.fromCharCode(65+i));   // "A" aufwärts, ein Zeichen je Karte
+function solveFromCurrent(msCap,nodeCap){
+  const MS=msCap||SOLVE_MS, ND=nodeCap||SOLVE_NODES;
+  const enc=c=>c.suit*13+c.rank-1, rank=c=>c%13+1, suit=c=>(c/13)|0;
+  const red=c=>{const s=suit(c); return s===1||s===2;};
+  const DRAW=S.draw;
+
+  const start={
+    f:[0,0,0,0],
+    cols:S.tableau.map(t=>({d:t.filter(c=>!c.up).map(enc), u:t.filter(c=>c.up).map(enc)})),
+    st:S.stock.map(enc), w:S.waste.map(enc)
+  };
+  for(const p of S.foundations) if(p.length){ const t=p[p.length-1]; start.f[t.suit]=t.rank; }
+
+  const clone=s=>({f:s.f.slice(), cols:s.cols.map(c=>({d:c.d.slice(),u:c.u.slice()})), st:s.st.slice(), w:s.w.slice()});
+  // Kennung als kurze Zeichenkette: je Karte ein Zeichen ab "A", Trenner liegen alle darunter.
+  // Spalten sind untereinander vertauschbar, deshalb sortiert.
+  const txt=a=>{ let s=""; for(let i=0;i<a.length;i++) s+=SOLVE_CH[a[i]]; return s; };
+  const spalten=new Array(7);
+  const key=s=>{
+    for(let i=0;i<7;i++) spalten[i]=txt(s.cols[i].d)+"-"+txt(s.cols[i].u);
+    return spalten.sort().join("|")+"#"+txt(s.f)+"#"+txt(s.w)+"/"+txt(s.st);
+  };
+  const canTab=(card,col)=> col.u.length
+      ? (red(col.u[col.u.length-1])!==red(card) && rank(card)===rank(col.u[col.u.length-1])-1)
+      : (col.d.length===0 && rank(card)===13);
+
+  function moves(s){
+    const out=[], later=[];
+    const add=(arr,fn)=>{ const n=clone(s); fn(n); arr.push(n); };
+
+    // Fundament: Ass und Zwei sind nie ein Fehler, dann ist es der einzige Zug
+    const toF=[];
+    if(s.w.length){ const c=s.w[s.w.length-1]; if(rank(c)===s.f[suit(c)]+1) toF.push([c,n=>{ n.w.pop(); n.f[suit(c)]=rank(c); }]); }
+    for(let i=0;i<7;i++){ const col=s.cols[i]; if(!col.u.length) continue; const c=col.u[col.u.length-1];
+      if(rank(c)===s.f[suit(c)]+1) toF.push([c,n=>{ const a=n.cols[i]; a.u.pop(); if(!a.u.length && a.d.length) a.u.push(a.d.pop()); n.f[suit(c)]=rank(c); }]); }
+    for(const [c,fn] of toF) if(rank(c)<=2){ const n=clone(s); fn(n); return [n]; }
+    for(const [,fn] of toF) add(out,fn);
+
+    // Spielfeld: erst Züge, die eine verdeckte Karte aufdecken
+    for(let a=0;a<7;a++){ const ca=s.cols[a];
+      for(let i=0;i<ca.u.length;i++){ const card=ca.u[i];
+        for(let b=0;b<7;b++){ if(b===a || !canTab(card,s.cols[b])) continue;
+          add(i===0 && ca.d.length ? out : later, n=>{ const x=n.cols[a], y=n.cols[b];
+            y.u.push(...x.u.splice(i)); if(!x.u.length && x.d.length) x.u.push(x.d.pop()); });
+        }
+      }
+    }
+    // Abwurf aufs Spielfeld
+    if(s.w.length){ const c=s.w[s.w.length-1];
+      for(let b=0;b<7;b++) if(canTab(c,s.cols[b])) add(out,n=>{ n.w.pop(); n.cols[b].u.push(c); }); }
+    // Talon ziehen bzw. umdrehen
+    if(s.st.length) add(out,n=>{ for(let i=Math.min(DRAW,n.st.length);i>0;i--) n.w.push(n.st.pop()); });
+    else if(s.w.length) add(out,n=>{ while(n.w.length) n.st.push(n.w.pop()); });
+    // zuletzt: Karten vom Fundament zurückholen
+    for(let f=0;f<4;f++){ if(!s.f[f]) continue; const c=f*13+s.f[f]-1;
+      for(let b=0;b<7;b++) if(canTab(c,s.cols[b])) add(later,n=>{ n.f[f]--; n.cols[b].u.push(c); }); }
+
+    return out.concat(later);
+  }
+
+  const seen=new Set(); const t0=performance.now();
+  let nodes=0, capped=false;
+  function dfs(s){
+    if(s.f[0]+s.f[1]+s.f[2]+s.f[3]===52) return true;
+    if(++nodes>ND || (nodes%512===0 && performance.now()-t0>MS)){ capped=true; return false; }
+    for(const n of moves(s)){
+      const k=key(n);
+      if(seen.has(k)) continue;
+      seen.add(k);
+      if(dfs(n)) return true;
+      if(capped) return false;
+    }
+    return false;
+  }
+  seen.add(key(start));
+  if(dfs(start)) return "win";
+  return capped ? "unknown" : "dead";
+}
+
+/* Rückwärts durch die Zughistorie: wie viele Züge zurück war die Partie zuletzt zu gewinnen?
+   >0 Anzahl Züge (bewiesen), 0 schon das ausgeteilte Blatt war verloren (bewiesen),
+   -1 keine sichere Aussage möglich. */
+function lastWinnableAgo(budgetMs){
+  const cur=S, t0=performance.now();
+  let sure=true, blind=0;
+  try{
+    for(let i=history.length-1;i>=0;i--){
+      if(performance.now()-t0>budgetMs) return -1;
+      S=JSON.parse(history[i]);
+      const r=solveFromCurrent(250);
+      if(r==="win") return history.length-i;
+      if(r!=="unknown"){ blind=0; continue; }
+      sure=false;
+      if(++blind>=3) return -1;      // je weiter zurück, desto größer der Suchraum, das wird nichts mehr
+    }
+  } finally { S=cur; }
+  return sure ? 0 : -1;
+}
+
+let toastT=null;
+function showToast(msg,ms,blink){
+  const el=document.getElementById("toast"); if(!el) return;
+  el.textContent=msg; el.classList.toggle("blink",!!blink); el.classList.add("show");
+  clearTimeout(toastT); toastT = ms ? setTimeout(hideToast,ms) : null;   // ms=0: bleibt stehen
+}
+function hideToast(){
+  const el=document.getElementById("toast"); if(!el) return;
+  clearTimeout(toastT); el.classList.remove("show","blink");
+}
+
+/* Die Sackgassen-Meldung bleibt stehen, solange die Lage unverändert festgefahren ist.
+   Talon durchblättern ändert Spielfeld und Fundamente nicht, deshalb reichen die als Kennung
+   und das Urteil muss nicht jedes Mal neu berechnet werden. */
+let stuckKey="", stuckVerdict=null;
+const stuckSig=()=>JSON.stringify(S.tableau)+"#"+JSON.stringify(S.foundations)+"#"+S.draw;
+
+function checkStuck(){
+  if(suppressCues) return;
+  if(hasAnyMove()){ stuckKey=""; stuckVerdict=null; hideToast(); return; }
+  const key=stuckSig(), t=I18N[lang];
+  if(key===stuckKey){                     // gleiche Sackgasse: nur wieder einblenden, ohne Ton
+    if(stuckVerdict) showToast(stuckVerdict==="win"?t.stillwin : stuckVerdict==="dead"?t.dead : t.nomoves,0,false);
+    return;
+  }
+  stuckKey=key; stuckVerdict=null;
+  setTimeout(()=>{                        // erst zeichnen lassen, dann rechnen
+    if(stuckKey!==key) return;            // inzwischen weitergespielt
+    const r=solveFromCurrent(); stuckVerdict=r;
+    if(r==="win"){ showToast(t.stillwin,0,true); sfx("stillwin"); }
+    else if(r==="dead"){
+      showToast(t.dead,0,true); sfx("dead");
+      if(history.length) setTimeout(()=>{           // danach: ab wann war es verloren?
+        if(stuckKey!==key) return;
+        const n=lastWinnableAgo(1500);
+        if(n>0) showToast(n===1?t.deadAgo1:t.deadAgo.replace("{n}",n),0,true);
+        else if(n===0) showToast(t.deadStart,0,true);
+      },80);
+    }
+    else { showToast(t.nomoves,0,true); sfx("nomove"); }
+  },60);
+}
+
+/* ============================ Sprache / UI ============================ */
+function applyLang(){
+  const t=I18N[lang];
+  document.documentElement.lang=lang;
+  document.getElementById("t-title").textContent=t.title;
+  document.getElementById("t-moves").textContent=t.moves;
+  document.getElementById("t-time").textContent=t.time;
+  document.getElementById("t-score").textContent=t.score;
+  document.getElementById("t-best").textContent=t.best;
+  document.getElementById("btnResetBest").title=t.resetBestTitle;
+  document.getElementById("btnNew").textContent=t.neu;
+  document.getElementById("btnUndo").textContent=t.undo;
+  document.getElementById("btnHint").textContent=t.hint;
+  document.getElementById("btnAuto").textContent=t.auto;
+  const bs=document.getElementById("btnSound"); bs.textContent=(soundOn?"🔊 ":"🔈 ")+t.sound; bs.classList.toggle("active",soundOn);
+  document.getElementById("btnGuide").textContent=t.guideBtn;
+  applyGuide();
+  const back=document.getElementById("t-back"); back.textContent=t.back; back.href=t.home;
+  const plat=document.getElementById("t-platform"); if(plat) plat.textContent=t.platform;
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
+  updateButtons();
+  // stehende Sackgassen-Meldung in der neuen Sprache zeigen
+  if(S && stuckVerdict && document.getElementById("toast").classList.contains("show")) checkStuck();
+}
+function applyGuide(){
+  const t=I18N[lang];
+  document.getElementById("g-title").textContent=t.guideTitle;
+  document.getElementById("btnGuideClose").textContent=t.close;
+  const ol=document.getElementById("g-list"); ol.innerHTML="";
+  t.guide.forEach(s=>{ const li=document.createElement("li"); li.textContent=s; ol.appendChild(li); });
+}
+function openGuide(){ document.getElementById("guideModal").classList.add("show"); }
+function closeGuide(){ document.getElementById("guideModal").classList.remove("show"); }
+
+/* ============================ Verdrahtung ============================ */
+board.addEventListener("pointerdown",pointerDown);
+document.getElementById("btnNew").addEventListener("click",()=>{hideWin(); newGame(true);});
+document.getElementById("btnWinNew").addEventListener("click",()=>{hideWin(); newGame(true);});
+document.getElementById("btnUndo").addEventListener("click",undo);
+document.getElementById("btnHint").addEventListener("click",showHint);
+document.getElementById("btnAuto").addEventListener("click",autoFinish);
+document.getElementById("btnDraw").addEventListener("click",()=>{ S.draw = S.draw===3?1:3; render(); save(); checkStuck(); });
+document.getElementById("btnSound").addEventListener("click",toggleSound);
+document.getElementById("btnGuide").addEventListener("click",openGuide);
+document.getElementById("btnGuideClose").addEventListener("click",closeGuide);
+document.getElementById("btnResetBest").addEventListener("click",resetBest);
+document.getElementById("best").textContent = best;
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>{ lang=b.dataset.lang; localStorage.setItem("sol_lang",lang); applyLang(); }));
+document.addEventListener("keydown",e=>{
+  if(document.querySelector(".scrim.show")) return;
+  if(e.key==="n"||e.key==="N") newGame(true);
+  else if(e.key==="u"||e.key==="U") undo();
+  else if(e.key===" "){ e.preventDefault(); drawStock(); }
+  else if(e.key==="h"||e.key==="H") showHint();
+});
+let rT=null;
+window.addEventListener("resize",()=>{ clearTimeout(rT); rT=setTimeout(()=>{ if(document.getElementById("winBox").classList.contains("show")) return; render(); },120); });
+
+/* ============================ Start ============================ */
+applyLang();
+if(load() && !checkWin()){ render(); if(S.started){ startTimer(); } checkStuck(); }
+else{ newGame(false); }
+</script>
+</body>
+</html>
