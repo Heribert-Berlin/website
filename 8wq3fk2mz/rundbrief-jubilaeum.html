@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Sonderrundbrief – Ein Jahr · Heribert Lange</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#393023; --text:#ede0c8; --text-muted:#a8987a; --accent:#d4b87a;
+      --header-bg:#352918; --border:rgba(212,184,122,0.25); --card:#453217;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family:'Cormorant Garamond','Noto Serif TC',Georgia,serif;
+      background:var(--bg); color:var(--text); min-height:100vh; line-height:1.85;
+    }
+    body::before {
+      content:''; position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events:none; z-index:0; opacity:0.4;
+    }
+    header {
+      position:relative; z-index:10; background:var(--header-bg);
+      border-bottom:1px solid var(--border); padding:44px 20px 28px; text-align:center;
+    }
+    .header-deco { display:flex; align-items:center; justify-content:center; gap:20px; margin-bottom:16px; }
+    .header-deco-line { flex:1; max-width:120px; height:1px; background:linear-gradient(90deg,transparent,var(--accent)); }
+    .header-deco-line.right { background:linear-gradient(90deg,var(--accent),transparent); }
+    .header-deco-diamond { width:8px; height:8px; background:var(--accent); transform:rotate(45deg); }
+    header h1 { font-family:'Cinzel',serif; font-size:2.2rem; font-weight:400; color:var(--accent); letter-spacing:5px; }
+    header .subtitle { margin-top:10px; font-size:0.78rem; letter-spacing:3px; color:var(--text-muted); text-transform:uppercase; }
+    .lang-switch { display:flex; justify-content:center; gap:10px; margin-top:22px; flex-wrap:wrap; }
+    .lang-switch a, .lang-switch span {
+      padding:6px 16px; border:1px solid var(--border); border-radius:20px;
+      font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:2px;
+      text-decoration:none; color:var(--text-muted); transition:border-color .2s,color .2s;
+    }
+    .lang-switch a:hover { border-color:var(--accent); color:var(--accent); }
+    .lang-switch .active { background:var(--accent); color:var(--header-bg); border-color:var(--accent); }
+    .main { position:relative; z-index:1; padding:56px 28px 40px; max-width:720px; margin:0 auto; }
+    .letter-title { font-family:'Cinzel',serif; font-size:1.7rem; font-weight:400; color:var(--accent); text-align:center; letter-spacing:1px; margin-bottom:10px; }
+    .title-wreath { display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:10px; }
+    .title-wreath .letter-title { margin-bottom:0; }
+    .laurel { width:46px; height:82px; flex:none; color:var(--accent); opacity:0.8; }
+    .laurel.flip { transform:scaleX(-1); }
+    @media (max-width:560px){ .laurel { width:28px; height:52px; } .title-wreath { gap:8px; } }
+    .letter-sub { text-align:center; color:var(--text-muted); font-style:italic; font-size:1.1rem; margin-bottom:14px; }
+    .letter-date { text-align:center; font-size:0.74rem; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted); opacity:0.8; margin-bottom:40px; }
+    .letter-body p { font-size:1.12rem; margin-bottom:22px; }
+    .letter-body h2 {
+      font-family:'Cinzel',serif; font-size:1.15rem; font-weight:600; color:var(--accent);
+      letter-spacing:1px; margin:38px 0 14px;
+    }
+    .letter-body a { color:var(--accent); text-decoration:none; border-bottom:1px solid var(--border); }
+    .letter-body a:hover { border-bottom-color:var(--accent); }
+    .stats { list-style:none; margin:0 0 22px; padding:0; }
+    .stats li { position:relative; padding-left:24px; font-size:1.12rem; margin-bottom:8px; }
+    .stats li::before { content:'◆'; position:absolute; left:2px; top:0; font-size:0.7rem; color:var(--accent); }
+    .channel {
+      display:grid; grid-template-columns:96px 1fr; gap:20px; align-items:start;
+      background:var(--card); border:1px solid var(--border); border-radius:10px;
+      padding:20px 22px; margin-bottom:16px;
+    }
+    .channel img {
+      width:96px; height:96px; object-fit:cover; border-radius:12px;
+      border:1px solid var(--border);
+    }
+    .channel h3 { font-family:'Cinzel',serif; font-size:1.0rem; font-weight:600; color:var(--accent); letter-spacing:1px; margin-bottom:2px; }
+    .channel .ch-link { display:block; font-size:0.92rem; margin-bottom:8px; word-break:break-all; }
+    .channel p { font-size:1.05rem; margin:0; }
+    .kicker {
+      font-size:0.95rem; color:var(--text-muted); font-style:italic;
+      margin:-6px 0 18px; letter-spacing:0.5px;
+    }
+    .gift-box {
+      background:var(--card); border:1px solid var(--accent); border-radius:10px;
+      padding:26px 26px 22px; margin:20px 0 26px;
+    }
+    .gift-box p { font-size:1.08rem; }
+    .go-btn {
+      display:inline-block; margin:4px 0 6px; padding:11px 30px;
+      background:var(--accent); color:var(--header-bg) !important; border:none !important; border-radius:24px;
+      font-family:'Cinzel',serif; font-size:0.82rem; letter-spacing:2px; text-transform:uppercase;
+      text-decoration:none; transition:opacity .2s;
+    }
+    .go-btn:hover { opacity:0.85; }
+    .signature { margin-top:36px; font-style:italic; color:var(--text); }
+    .signature .name { font-family:'Cinzel',serif; font-style:normal; color:var(--accent); letter-spacing:2px; display:block; margin-top:4px; }
+    .back-btn-wrap { text-align:center; margin-top:48px; display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+    .back-btn {
+      display:inline-block; padding:10px 26px; border:1px solid var(--border); border-radius:22px;
+      color:var(--text-muted); text-decoration:none; font-family:'Cinzel',serif;
+      font-size:0.78rem; letter-spacing:2px; text-transform:uppercase; transition:border-color .2s,color .2s;
+    }
+    .back-btn:hover { border-color:var(--accent); color:var(--accent); }
+    footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:24px; text-align:center; margin-top:56px; }
+    .footer-copy { font-size:0.75rem; color:var(--text-muted); letter-spacing:1px; opacity:0.6; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
+    header { animation:fadeUp .6s ease both; }
+    .main { animation:fadeUp .6s ease .1s both; }
+    @media (max-width:520px){
+      .channel { grid-template-columns:72px 1fr; gap:14px; padding:16px; }
+      .channel img { width:72px; height:72px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-deco">
+    <div class="header-deco-line"></div>
+    <div class="header-deco-diamond"></div>
+    <div class="header-deco-line right"></div>
+  </div>
+  <h1>Heribert Lange</h1>
+  <p class="subtitle">Sonderrundbrief · Ein Jahr</p>
+  <div class="lang-switch">
+    <span class="active">Deutsch</span>
+    <a href="rundbrief-jubilaeum-eng.html">English</a>
+    <a href="rundbrief-jubilaeum-chi.html">繁體中文</a>
+  </div>
+</header>
+
+<main class="main">
+  <div class="title-wreath">
+    <svg class="laurel" viewBox="0 0 60 100" aria-hidden="true">
+      <path d="M42 96 C 22 70, 22 30, 42 4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <g fill="currentColor">
+        <ellipse cx="27" cy="80" rx="3.4" ry="9" transform="rotate(-60 27 80)"/>
+        <ellipse cx="41" cy="78" rx="3.4" ry="9" transform="rotate(-5 41 78)"/>
+        <ellipse cx="22" cy="66" rx="3.4" ry="9" transform="rotate(-55 22 66)"/>
+        <ellipse cx="36" cy="64" rx="3.4" ry="9" transform="rotate(0 36 64)"/>
+        <ellipse cx="20" cy="46" rx="3.4" ry="9" transform="rotate(-45 20 46)"/>
+        <ellipse cx="34" cy="45" rx="3.4" ry="9" transform="rotate(10 34 45)"/>
+        <ellipse cx="23" cy="26" rx="3.4" ry="9" transform="rotate(-30 23 26)"/>
+        <ellipse cx="36" cy="26" rx="3.4" ry="9" transform="rotate(25 36 26)"/>
+        <ellipse cx="29" cy="12" rx="3.2" ry="8.5" transform="rotate(-15 29 12)"/>
+        <ellipse cx="41" cy="14" rx="3.2" ry="8.5" transform="rotate(35 41 14)"/>
+        <ellipse cx="45" cy="5" rx="3" ry="8" transform="rotate(45 45 5)"/>
+      </g>
+    </svg>
+    <h2 class="letter-title">Ein Jahr. Eine Zwischenbilanz.</h2>
+    <svg class="laurel flip" viewBox="0 0 60 100" aria-hidden="true">
+      <path d="M42 96 C 22 70, 22 30, 42 4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <g fill="currentColor">
+        <ellipse cx="27" cy="80" rx="3.4" ry="9" transform="rotate(-60 27 80)"/>
+        <ellipse cx="41" cy="78" rx="3.4" ry="9" transform="rotate(-5 41 78)"/>
+        <ellipse cx="22" cy="66" rx="3.4" ry="9" transform="rotate(-55 22 66)"/>
+        <ellipse cx="36" cy="64" rx="3.4" ry="9" transform="rotate(0 36 64)"/>
+        <ellipse cx="20" cy="46" rx="3.4" ry="9" transform="rotate(-45 20 46)"/>
+        <ellipse cx="34" cy="45" rx="3.4" ry="9" transform="rotate(10 34 45)"/>
+        <ellipse cx="23" cy="26" rx="3.4" ry="9" transform="rotate(-30 23 26)"/>
+        <ellipse cx="36" cy="26" rx="3.4" ry="9" transform="rotate(25 36 26)"/>
+        <ellipse cx="29" cy="12" rx="3.2" ry="8.5" transform="rotate(-15 29 12)"/>
+        <ellipse cx="41" cy="14" rx="3.2" ry="8.5" transform="rotate(35 41 14)"/>
+        <ellipse cx="45" cy="5" rx="3" ry="8" transform="rotate(45 45 5)"/>
+      </g>
+    </svg>
+  </div>
+  <p class="letter-sub">Zum einjährigen Bestehen von heribert-berlin.de</p>
+  <p class="letter-date">8. August 2026</p>
+
+  <div class="letter-body">
+    <p>Liebe Leserinnen, liebe Leser,</p>
+    <p>heute vor einem Jahr, am 8. August 2025, habe ich angefangen. Ohne Verlag, ohne Team, ohne Erfahrung mit dem, was da alles auf mich zukommen würde. Nur mit der Absicht, meine Geschichten aus der Schublade zu holen.</p>
+    <p>Was in zwölf Monaten daraus geworden ist:</p>
+    <ul class="stats">
+      <li>13 Bücher und 20 E-Books</li>
+      <li>770 Fotos auf Facebook</li>
+      <li>145 eigene Videos, die meisten davon mit Untertiteln in 13 Sprachen</li>
+      <li>eine eigene Homepage, von Grund auf gebaut</li>
+      <li>Musiktitel, Transkripte, digital eingesprochene Fassungen</li>
+    </ul>
+    <p>Zahlen sind praktisch, weil sie sich aufschreiben lassen. Nur erzählen sie die halbe Geschichte.</p>
+    <p>Sie sagen nichts über die mehreren tausend Bilder, die ich erzeugt habe, damit die paar hundert brauchbaren übrig blieben. Nichts über die Woche, in der ich an einem Skript saß, bis es endlich fehlerfrei lief. Nichts über die deutschen Untertitel, die ich bis heute von Hand in die Timeline setze, weil kein Programm den Sprechrhythmus trifft. Und nichts über Buchhaltung und Finanzamt, die auch dann ihren Platz beanspruchen, wenn man lieber schreiben würde.</p>
+    <p>Sie sagen auch nichts über das, was vor jedem Buch und jedem Video steht: Zeitpläne, Redaktionskalender, Auswertungen darüber, was wann auf welcher Plattform funktioniert hat, und für jede Figur ein eigenes Dossier, damit über hunderte Seiten hinweg nichts durcheinandergerät.</p>
+    <p>Genau das ist die ehrliche Bilanz: Der sichtbare Teil ist der kleinere.</p>
+    <p>Ich bin intuitiver Anwendungstechniker. Ich löse Probleme lieber, als lange über sie zu reden. Dieses Jahr bestand größtenteils aus Problemen lösen. Manches ging schnell, manches nicht, manches erst beim fünften Anlauf.</p>
+    <p>Was mich getragen hat, waren Sie. Jeder Kommentar unter einem Video, jede Rückmeldung zu einem Buch, jede Nachricht von jemandem, der Kim Collins oder Waldemar ins Herz geschlossen hat. Ich beantworte jeden Kommentar, und ich meine das nicht als Marketingregel, sondern weil mich interessiert, wer da liest.</p>
+
+    <h2>Die drei YouTube-Kanäle</h2>
+    <p><strong>Aus einem Kanal wurden drei</strong></p>
+    <p>Angefangen habe ich mit einem YouTube-Kanal. Inzwischen sind es drei, jeder mit eigenem Gesicht:</p>
+
+    <div class="channel">
+      <img src="avatar1.jpg" alt="Avatar Hauptkanal">
+      <div>
+        <h3>Reisevideos, Hörbücher, Infos</h3>
+        <a class="ch-link" href="https://www.youtube.com/@heri_berlin" rel="noopener">www.youtube.com/@heri_berlin</a>
+        <p>Der Hauptkanal. Hier finden Sie die Videos meiner Reise 2018/19 durch Südostasien, das kostenlose Hörbuch zu „Ein letzter Cà phê" und alles rund um meine Bücher.</p>
+      </div>
+    </div>
+
+    <div class="channel">
+      <img src="avatar2.jpg" alt="Avatar Kinderkanal">
+      <div>
+        <h3>Heri's Kinderkanal</h3>
+        <a class="ch-link" href="https://www.youtube.com/@heribertskinderkanal" rel="noopener">www.youtube.com/@heribertskinderkanal</a>
+        <p>Der Kanal für die Kleinen: Uhu Waldemar und die Tiere des Waldes, zu jedem Band der Kinderbuchreihe gibt es hier das passende Video.</p>
+      </div>
+    </div>
+
+    <div class="channel">
+      <img src="avatar3.jpg" alt="Avatar Transport-Fever-Kanal">
+      <div>
+        <h3>Heribert's Transport Fever</h3>
+        <a class="ch-link" href="https://www.youtube.com/@HeribertsTransportFever" rel="noopener">www.youtube.com/@HeribertsTransportFever</a>
+        <p>Der Neue im Bunde. Die Transport-Fever-Videos, die bisher im Hauptkanal liefen, haben jetzt ihr eigenes Zuhause, und jeden Montag kommt ein neues dazu. Wenn Transport Fever 3 erscheint, werde ich dort auch Geschichten mit dem Spiel erzählen.</p>
+      </div>
+    </div>
+
+    <h2>Autoren helfen Autoren</h2>
+    <p class="kicker">„Lesetipps"</p>
+    <p>Seit Juli gibt es auf meiner Homepage die Rubrik „Lesetipps". Dort stelle ich Autorenkollegen vor, deren Bücher mehr Beachtung verdienen. Den Anfang machte Stefan Röser mit seinen historischen Romanen, er stellt mich im Gegenzug auf seiner Seite vor. Dazu kamen David C. Lerner mit Science-Fiction über künstliche Intelligenz und Bewusstsein sowie Perry Payne, der in Paraguay lebt und rund 30 Bücher geschrieben hat.</p>
+    <p>Und weil Empfehlen ohne Lesen nichts taugt, gibt es inzwischen auch eine Rezensionsseite. Keine Sterne, keine Noten, nur das, was beim Lesen hängen geblieben ist.</p>
+    <p>Wir machen das alle ohne Verlag im Rücken. Da hilft man sich gegenseitig, so einfach ist das.</p>
+    <p><a class="go-btn" href="../lesetipps.html">Zu den Lesetipps →</a></p>
+
+    <h2>Ein Geschenk zum Jubiläum: das Spielezimmer</h2>
+    <p class="kicker">Spielezimmer:</p>
+    <div class="gift-box">
+      <p>Zum Einjährigen habe ich ein Dankeschön für Sie, das es nirgendwo sonst gibt: mein Spielezimmer. Es ist von der Homepage aus nicht erreichbar und taucht in keiner Suchmaschine auf. Den Zugang haben nur Sie als Rundbrief-Leser.</p>
+      <p>Den Anfang machen drei Spiele, alle selbst gebaut:</p>
+      <p><strong>Memory „Weltbauwerke"</strong>, für Erwachsene und größere Kinder: 101 berühmte Bauwerke aus aller Welt. Die Karten liegen überlappend auf dem Tisch und jede lässt sich anklicken. Fünf Stufen, die höchste mit 100 Karten, auch zu zweit spielbar.</p>
+      <p><strong>Waldemar-Memory</strong>, für Kinder: 20 Tiere des Waldes. Ein Paar besteht aus dem echten Tier und seiner Zeichentrick-Figur, beim Treffer erscheint der Tiername. Auch dieses Memory lässt sich zu zweit spielen, und wer noch nicht lesen kann, lässt sich die Anleitung von Simon vorlesen, dem Sprecher meiner Kinder-Hörbücher.</p>
+      <p><strong>Solitär</strong>, der Kartenklassiker: Klondike für eine ruhige Runde zwischendurch, mit Anleitung in drei Sprachen, Tipp-Funktion und Auto-Ablage.</p>
+      <p>Ein Wort an die Eltern: Die beiden Memory-Spiele haben eine eingebaute Zeitbremse. Nach einer Stunde kommt ein freundlicher Hinweis, nach 70 Minuten eine Pause, nach drei Stunden macht das Spiel für 30 Minuten zu. Ausschalten können das nur Erwachsene. Kein Konto, keine Werbung, keine Kosten, es wird nichts heruntergeladen und nichts gesammelt.</p>
+      <p>Das Spielezimmer wird wachsen. Treue Leser dürfen sich hier immer wieder auf Neues freuen.</p>
+      <p style="margin-bottom:0;"><a class="go-btn" href="spiele.html">Zum Spielezimmer →</a></p>
+    </div>
+
+    <h2>Eine Bitte zum Schluss</h2>
+    <p>Wenn Ihnen dieser Rundbrief gefällt, leiten Sie ihn gern an Freunde und Familie weiter. Anmelden kann sich jeder auf der <a href="../newsletter.html">Anmeldeseite</a>.</p>
+    <p>Wie es weitergeht: Es wird geschrieben. Der zweite Roman ist in Arbeit, die Waldemar-Reihe geht weiter, und in der Pipeline liegen meine Memoiren in vier Bänden. Pakistan ist erzählt, aber Sie werden davon noch eine Weile zu sehen bekommen.</p>
+
+    <p class="signature">Danke, dass Sie das erste Jahr mitgegangen sind.<br>
+      Herzlich Ihr
+      <span class="name">Heribert Lange</span>
+    </p>
+  </div>
+
+  <div class="back-btn-wrap">
+    <a href="rundbrief-02.html" class="back-btn">← Nr. 02 · Juli</a>
+    <a href="index.html" class="back-btn">Zur Übersicht</a>
+  </div>
+</main>
+
+<footer>
+  <p class="footer-copy">© 2026 Heribert Lange · Berlin</p>
+</footer>
+</body>
+</html>

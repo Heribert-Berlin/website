@@ -263,6 +263,15 @@
       .fl-zh .st{font-size:14px;} .fl-zh .st2{display:none;}
       .lang-home-label,.oneway{display:none;}
     }
+      /* Name des Spiels mittig in der Kopfzeile */
+    .gname{
+      flex:1 1 auto; min-width:0; text-align:center;
+      font-family:'Cinzel','Noto Serif TC',serif; font-weight:600;
+      font-size:1.45rem; letter-spacing:3px; color:var(--accent);
+      pointer-events:none; white-space:nowrap;
+      overflow:hidden; text-overflow:ellipsis;
+    }
+    @media(max-width:900px){ .gname{order:3; flex-basis:100%; font-size:1.05rem; letter-spacing:2px;} }
   </style>
 </head>
 <body>
@@ -302,6 +311,7 @@
       <span class="diamond"></span>
       <h1 id="t-title">Solitär</h1>
     </div>
+    <span class="gname" id="t-gname">Klondike</span>
     <div class="stats">
       <span><span id="t-moves">Züge</span>: <b id="moves">0</b></span>
       <span><span id="t-time">Zeit</span>: <b id="time">0:00</b></span>
@@ -334,7 +344,7 @@
     </div>
   </div>
 
-  <footer><a href="spiele.html" id="t-platform" style="color:var(--text-muted); text-decoration:underline; text-underline-offset:3px;">⌂ Spielezimmer</a> &nbsp;·&nbsp; <a href="../home.html" id="t-back" style="color:var(--text-muted); text-decoration:underline; text-underline-offset:3px;">← Startseite</a> &nbsp;·&nbsp; © 2026 Heribert Lange</footer>
+  <footer><a href="spiele.html" id="t-platform" style="color:var(--text-muted); text-decoration:underline; text-underline-offset:3px;">⌂ Spielezimmer</a> &nbsp;·&nbsp; © 2026 Heribert Lange</footer>
 
   <div id="dragLayer"></div>
   <canvas id="winCanvas"></canvas>
@@ -1298,7 +1308,6 @@ function applyLang(){
   const bs=document.getElementById("btnSound"); bs.textContent=(soundOn?"🔊 ":"🔈 ")+t.sound; bs.classList.toggle("active",soundOn);
   document.getElementById("btnGuide").textContent=t.guideBtn;
   applyGuide();
-  const back=document.getElementById("t-back"); back.textContent=t.back; back.href=t.home;
   const plat=document.getElementById("t-platform"); if(plat) plat.textContent=t.platform;
   document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
   updateButtons();
@@ -1326,6 +1335,10 @@ document.getElementById("btnDraw").addEventListener("click",()=>{ S.draw = S.dra
 document.getElementById("btnSound").addEventListener("click",toggleSound);
 document.getElementById("btnGuide").addEventListener("click",openGuide);
 document.getElementById("btnGuideClose").addEventListener("click",closeGuide);
+/* Klick neben die Anleitung schliesst sie, wie in den Memory-Spielen */
+document.getElementById("guideModal").addEventListener("click", e=>{
+  if(e.target === document.getElementById("guideModal")) closeGuide();
+});
 document.getElementById("btnResetBest").addEventListener("click",resetBest);
 document.getElementById("best").textContent = best;
 document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>{ lang=b.dataset.lang; localStorage.setItem("sol_lang",lang); applyLang(); }));

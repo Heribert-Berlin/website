@@ -242,6 +242,15 @@
       .fl-zh .st{font-size:14px;} .fl-zh .st2{display:none;}
       .lang-home-label,.oneway{display:none;}
     }
+      /* Name des Spiels mittig in der Kopfzeile */
+    .gname{
+      flex:1 1 auto; min-width:0; text-align:center;
+      font-family:'Cinzel','Noto Serif TC',serif; font-weight:600;
+      font-size:1.45rem; letter-spacing:3px; color:var(--accent);
+      pointer-events:none; white-space:nowrap;
+      overflow:hidden; text-overflow:ellipsis;
+    }
+    @media(max-width:900px){ .gname{order:3; flex-basis:100%; font-size:1.05rem; letter-spacing:2px;} }
   </style>
 </head>
 <body>
@@ -278,6 +287,7 @@
 </div>
   <div class="topbar">
     <div class="brand"><span class="diamond"></span><h1 id="t-title">Memory</h1></div>
+    <span class="gname" id="t-gname">Bauwerke</span>
     <div class="controls">
       <button class="btn primary" id="btnNew">Neues Spiel</button>
       <button class="btn" id="btnSound">🔊 Ton</button>
@@ -305,7 +315,7 @@
 
   <div class="stage" id="stage"><div class="board" id="board"></div></div>
 
-  <footer><a href="spiele.html" id="t-platform">⌂ Spielezimmer</a> &nbsp;·&nbsp; <a href="../home.html" id="t-back">← Startseite</a> &nbsp;·&nbsp; © 2026 Heribert Lange <span class="ver">· v1.3</span></footer>
+  <footer><a href="spiele.html" id="t-platform">⌂ Spielezimmer</a> &nbsp;·&nbsp; © 2026 Heribert Lange <span class="ver">· v1.3</span></footer>
 
   <div class="toast" id="toast"></div>
 
@@ -587,7 +597,7 @@ const NAMES = {
 };
 
 const I18N={
-  de:{title:"Memory", neu:"Neues Spiel", sound:"Ton", guideBtn:"Anleitung",
+  de:{gname:"Bauwerke", title:"Memory", neu:"Neues Spiel", sound:"Ton", guideBtn:"Anleitung",
       size:"Feld", sizes:{klein:"Klein", mittel:"Mittel", gross:"Groß", riesig:"Riesig", wahnsinn:"Wahnsinn"},
       pairs:"Paare", moves:"Züge", time:"Zeit", best:"Bestzeit", bestMoves:"Wenigste Züge",
       resetBestTitle:"Bestzeit und Züge zurücksetzen", resetBestConfirm:"Bestzeit und Zug-Rekord für dieses Feld wirklich zurücksetzen?",
@@ -612,7 +622,7 @@ const I18N={
       medContinue:"Erwachsene: weiterspielen", medDisable:"Kinderschutz ausschalten",
       hardTitle:"Lange genug gespielt!", hardMsg:"Jetzt ist eine längere Pause dran. Das Spiel macht für 30 Minuten zu.", hardCountLbl:"Es geht weiter in",
       gateTitle:"Frage für Erwachsene", gateWrong:"Das stimmt nicht. Versuch es noch einmal.", gateOk:"OK", gateCancel:"Zurück"},
-  en:{title:"Memory", neu:"New Game", sound:"Sound", guideBtn:"Guide",
+  en:{gname:"Landmarks", title:"Memory", neu:"New Game", sound:"Sound", guideBtn:"Guide",
       size:"Board", sizes:{klein:"Small", mittel:"Medium", gross:"Large", riesig:"Huge", wahnsinn:"Insane"},
       pairs:"Pairs", moves:"Moves", time:"Time", best:"Best Time", bestMoves:"Fewest Moves",
       resetBestTitle:"Reset records", resetBestConfirm:"Really reset the best time and move record for this board?",
@@ -637,7 +647,7 @@ const I18N={
       medContinue:"Grown-ups: keep playing", medDisable:"Turn off child lock",
       hardTitle:"That's enough for today!", hardMsg:"Time for a longer break. The game will close for 30 minutes.", hardCountLbl:"Back in",
       gateTitle:"Question for grown-ups", gateWrong:"That's not right. Please try again.", gateOk:"OK", gateCancel:"Back"},
-  zh:{title:"記憶遊戲", neu:"新遊戲", sound:"聲音", guideBtn:"說明",
+  zh:{gname:"世界建築", title:"記憶遊戲", neu:"新遊戲", sound:"聲音", guideBtn:"說明",
       size:"棋盤", sizes:{klein:"小", mittel:"中", gross:"大", riesig:"超大", wahnsinn:"瘋狂"},
       pairs:"配對", moves:"步數", time:"時間", best:"最佳時間", bestMoves:"最少步數",
       resetBestTitle:"重置紀錄", resetBestConfirm:"確定要重置此棋盤的最佳時間和步數紀錄嗎？",
@@ -960,6 +970,7 @@ function buildGuide(){
 }
 
 function applyLang(){
+  { const g=document.getElementById("t-gname"); if(g) g.textContent = I18N[lang].gname; }
   const t = I18N[lang];
   document.documentElement.lang = lang;
   $("t-title").textContent = t.title;
@@ -984,7 +995,6 @@ function applyLang(){
   $("btnMode1").textContent = t.mode1;
   $("btnMode2").textContent = t.mode2;
   $("t-platform").textContent = t.platform;
-  const back = $("t-back"); back.textContent = t.back; back.href = t.home;
   document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active", b.dataset.lang === lang));
   buildSizes(); buildGuide(); updateDuel();
   applyGuardLang();
