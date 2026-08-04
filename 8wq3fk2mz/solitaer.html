@@ -211,7 +211,7 @@
     /* ---- Einblendung (Toast) ---- */
     .toast{position:fixed; left:50%; bottom:20px; transform:translateX(-50%) translateY(20px); z-index:6500;
       background:var(--header-bg); border:1px solid var(--accent); color:var(--text);
-      padding:10px 18px; border-radius:24px; font-size:0.95rem; opacity:0; pointer-events:none;
+      padding:10px 18px; border-radius:24px; font-size:0.95rem; opacity:0; pointer-events:none; cursor:pointer;
       width:max-content; max-width:min(92vw,520px); text-align:center; line-height:1.35;
       transition:opacity .3s, transform .3s; box-shadow:0 8px 30px rgba(0,0,0,.5);}
     .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
@@ -1267,30 +1267,34 @@ function hideToast(){
 let stuckKey="", stuckVerdict=null;
 const stuckSig=()=>JSON.stringify(S.tableau)+"#"+JSON.stringify(S.foundations)+"#"+S.draw;
 
+/* Anzeigedauer der Sackgassen-Meldung. Sie verschwindet danach, damit die Fusszeile
+   mit dem Weg ins Spielezimmer wieder frei liegt. Das Urteil selbst bleibt bestehen und
+   wird bei der naechsten Aktion erneut eingeblendet. */
+const STUCK_MS = 12000;
 function checkStuck(){
   if(suppressCues) return;
   // Gewonnen ist keine Sackgasse: alle Karten liegen ab, es gibt nichts mehr zu melden
   if(checkWin() || hasAnyMove()){ stuckKey=""; stuckVerdict=null; hideToast(); return; }
   const key=stuckSig(), t=I18N[lang];
   if(key===stuckKey){                     // gleiche Sackgasse: nur wieder einblenden, ohne Ton
-    if(stuckVerdict) showToast(stuckVerdict==="win"?t.stillwin : stuckVerdict==="dead"?t.dead : t.nomoves,0,false);
+    if(stuckVerdict) showToast(stuckVerdict==="win"?t.stillwin : stuckVerdict==="dead"?t.dead : t.nomoves,STUCK_MS,false);
     return;
   }
   stuckKey=key; stuckVerdict=null;
   setTimeout(()=>{                        // erst zeichnen lassen, dann rechnen
     if(stuckKey!==key) return;            // inzwischen weitergespielt
     const r=solveFromCurrent(); stuckVerdict=r;
-    if(r==="win"){ showToast(t.stillwin,0,true); sfx("stillwin"); }
+    if(r==="win"){ showToast(t.stillwin,STUCK_MS,true); sfx("stillwin"); }
     else if(r==="dead"){
-      showToast(t.dead,0,true); sfx("dead");
+      showToast(t.dead,STUCK_MS,true); sfx("dead");
       if(history.length) setTimeout(()=>{           // danach: ab wann war es verloren?
         if(stuckKey!==key) return;
         const n=lastWinnableAgo(1500);
-        if(n>0) showToast(n===1?t.deadAgo1:t.deadAgo.replace("{n}",n),0,true);
-        else if(n===0) showToast(t.deadStart,0,true);
+        if(n>0) showToast(n===1?t.deadAgo1:t.deadAgo.replace("{n}",n),STUCK_MS,true);
+        else if(n===0) showToast(t.deadStart,STUCK_MS,true);
       },80);
     }
-    else { showToast(t.nomoves,0,true); sfx("nomove"); }
+    else { showToast(t.nomoves,STUCK_MS,true); sfx("nomove"); }
   },60);
 }
 
@@ -1339,6 +1343,8 @@ document.getElementById("btnDraw").addEventListener("click",()=>{ S.draw = S.dra
 document.getElementById("btnSound").addEventListener("click",toggleSound);
 document.getElementById("btnGuide").addEventListener("click",openGuide);
 document.getElementById("btnGuideClose").addEventListener("click",closeGuide);
+/* Klick auf die Meldung blendet sie sofort aus */
+{ const tt=document.getElementById("toast"); if(tt){ tt.style.pointerEvents="auto"; tt.addEventListener("click",hideToast); } }
 /* Klick neben die Anleitung schliesst sie, wie in den Memory-Spielen */
 document.getElementById("guideModal").addEventListener("click", e=>{
   if(e.target === document.getElementById("guideModal")) closeGuide();
