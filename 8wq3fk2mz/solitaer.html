@@ -221,9 +221,82 @@
       50%{opacity:.45; border-color:#fff; box-shadow:0 8px 30px rgba(0,0,0,.5),0 0 0 4px var(--accent);}
     }
     @media (prefers-reduced-motion:reduce){ .toast.blink{animation:none;} }
+  
+    /* ---- Sprachfarben wie auf der uebrigen Website (DE Gold, EN Blau, ZH Amber) ---- */
+    html[data-lang="de"]{--bg:#393023;--text:#ede0c8;--text-muted:#a8987a;--accent:#d4b87a;--header-bg:#352918;--border:rgba(212,184,122,0.28);--card:#453217;--bg2:#332b1f;--accent2:#c8a96e;--shadow:rgba(0,0,0,0.45);}
+    html[data-lang="en"]{--bg:#212d45;--text:#dce4f0;--text-muted:#8898b0;--accent:#a8c0d8;--header-bg:#1d273a;--border:rgba(168,192,216,0.28);--card:#2a3a58;--bg2:#1b2438;--accent2:#8fb0cc;--shadow:rgba(0,0,0,0.45);}
+    html[data-lang="zh"]{--bg:#392323;--text:#f0e0d0;--text-muted:#c09080;--accent:#e8a040;--header-bg:#321b1b;--border:rgba(232,160,64,0.28);--card:#46291c;--bg2:#2f1d1d;--accent2:#d18c33;--shadow:rgba(0,0,0,0.45);}
+
+    /* ---- Sprachwahl als Faehnchen rechts, wie auf der uebrigen Website ---- */
+    body{padding-right:82px;}
+    .lang-buttons{position:fixed; right:14px; top:50%; transform:translateY(-50%);
+      display:flex; flex-direction:column; align-items:center; gap:12px; z-index:300;}
+    .lang{display:flex; flex-direction:column; gap:12px;}
+    .lang button{width:54px; height:54px; padding:0; border-radius:8px; overflow:hidden;
+      cursor:pointer; background:transparent; border:2px solid rgba(255,255,255,0.15);
+      box-shadow:0 3px 12px rgba(0,0,0,0.5); transition:transform .2s, border-color .2s;
+      position:relative; display:block;}
+    .lang button:hover{transform:scale(1.08); border-color:var(--accent);}
+    .lang button.active{border-color:var(--accent); box-shadow:0 0 14px var(--accent);}
+    .lang .fl{position:absolute; inset:0; display:block;}
+    .fl-de{background:linear-gradient(#000 0 33.33%, #DD0000 33.33% 66.66%, #FFCE00 66.66% 100%);}
+    .fl-zh{background:#DE2910;}
+    .fl-zh .st{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      font-size:21px; color:#FFDE00; line-height:1;}
+    .fl-zh .st2{position:absolute; top:5px; right:5px; display:flex; flex-direction:column;
+      gap:1px; font-size:7px; color:#FFDE00; line-height:1;}
+    .lang .fl svg{width:100%; height:100%; display:block;}
+    .lang-home{width:54px; height:54px; border-radius:8px; border:2px solid rgba(255,255,255,0.15);
+      background:var(--header-bg); display:flex; align-items:center; justify-content:center;
+      box-shadow:0 3px 12px rgba(0,0,0,0.5); transition:transform .2s, border-color .2s;
+      text-decoration:none; margin-top:4px;}
+    .lang-home:hover{transform:scale(1.08); border-color:var(--accent);}
+    .lang-home-label{font-size:0.7rem; letter-spacing:1px; color:var(--accent);
+      line-height:1.2; text-align:center;}
+    .oneway{max-width:104px; font-size:0.6rem; line-height:1.35; color:var(--text-muted);
+      text-align:center; opacity:.85;}
+    @media(max-width:900px){
+      body{padding-right:48px;}
+      .lang-buttons{right:5px; gap:7px;}
+      .lang{gap:7px;}
+      .lang button,.lang-home{width:36px; height:36px;}
+      .fl-zh .st{font-size:14px;} .fl-zh .st2{display:none;}
+      .lang-home-label,.oneway{display:none;}
+    }
   </style>
 </head>
 <body>
+<div class="lang-buttons">
+  <span class="lang">
+    <button data-lang="de" class="active" title="Deutsch"><span class="fl fl-de"></span></button>
+    <button data-lang="en" title="English"><span class="fl fl-en"><svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+      <defs><clipPath id="lgtl"><polygon points="0,0 56,0 0,56"/></clipPath><clipPath id="lgbr"><polygon points="56,0 56,56 0,56"/></clipPath></defs>
+      <g clip-path="url(#lgtl)">
+        <rect x="0" y="0" width="56" height="56" fill="#B22234"/>
+        <rect x="0" y="4.3" width="56" height="4.3" fill="white"/><rect x="0" y="12.9" width="56" height="4.3" fill="white"/><rect x="0" y="21.5" width="56" height="4.3" fill="white"/><rect x="0" y="30.1" width="56" height="4.3" fill="white"/><rect x="0" y="38.7" width="56" height="4.3" fill="white"/><rect x="0" y="47.3" width="56" height="4.3" fill="white"/>
+        <rect x="0" y="0" width="22" height="24" fill="#3C3B6E"/>
+        <text x="1" y="7" font-size="4.5" fill="white">&#9733;&#9733;&#9733;&#9733;</text><text x="3" y="11" font-size="4.5" fill="white">&#9733;&#9733;&#9733;</text><text x="1" y="15" font-size="4.5" fill="white">&#9733;&#9733;&#9733;&#9733;</text><text x="3" y="19" font-size="4.5" fill="white">&#9733;&#9733;&#9733;</text><text x="1" y="23" font-size="4.5" fill="white">&#9733;&#9733;&#9733;&#9733;</text>
+      </g>
+      <g clip-path="url(#lgbr)">
+        <rect x="0" y="0" width="56" height="56" fill="#012169"/>
+        <line x1="0" y1="0" x2="56" y2="56" stroke="white" stroke-width="10"/><line x1="56" y1="0" x2="0" y2="56" stroke="white" stroke-width="10"/>
+        <line x1="0" y1="0" x2="56" y2="56" stroke="#CC0000" stroke-width="5"/><line x1="56" y1="0" x2="0" y2="56" stroke="#CC0000" stroke-width="5"/>
+        <rect x="23" y="0" width="10" height="56" fill="white"/><rect x="0" y="23" width="56" height="10" fill="white"/>
+        <rect x="25" y="0" width="6" height="56" fill="#CC0000"/><rect x="0" y="25" width="56" height="6" fill="#CC0000"/>
+      </g>
+      <line x1="0" y1="56" x2="56" y2="0" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/>
+    </svg></span></button>
+    <button data-lang="zh" title="&#32321;&#39636;&#20013;&#25991;"><span class="fl fl-zh"><span class="st">&#9733;</span><span class="st2"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span></span></button>
+  </span>
+  <a href="../home.html" class="lang-home" id="t-langhome" title="Home">
+    <svg viewBox="0 0 56 56" width="38" height="38" xmlns="http://www.w3.org/2000/svg">
+      <path d="M28 10 L50 30 H44 V48 H12 V30 H6 Z" fill="var(--accent)"/>
+      <rect x="23" y="34" width="10" height="14" rx="1" fill="var(--header-bg)"/>
+    </svg>
+  </a>
+  <span class="lang-home-label" id="t-homelabel">Home</span>
+  <span class="oneway" id="t-oneway">Einbahnstra&szlig;e: Von der Homepage f&uuml;hrt kein Weg hierher zur&uuml;ck. Am besten als Lesezeichen speichern.</span>
+</div>
   <div class="topbar">
     <div class="brand">
       <span class="diamond"></span>
@@ -243,11 +316,6 @@
       <button class="btn" id="btnDraw">Ziehen: 3</button>
       <button class="btn" id="btnSound">🔊 Ton</button>
       <button class="btn" id="btnGuide">Anleitung</button>
-      <span class="lang">
-        <button data-lang="de" class="active">DE</button>
-        <button data-lang="en">EN</button>
-        <button data-lang="zh">中文</button>
-      </span>
     </div>
   </div>
 
@@ -828,6 +896,7 @@ function hideWin(){ document.getElementById("winBox").classList.remove("show"); 
 let winRAF=0;
 function celebrate(){
   stopTimer();
+  stuckKey=""; stuckVerdict=null; hideToast();   // eine stehende Sackgassen-Meldung hat hier nichts zu suchen
   sfx("win");
   const t=I18N[lang];
   document.getElementById("t-win").textContent=t.win;
@@ -1187,7 +1256,8 @@ const stuckSig=()=>JSON.stringify(S.tableau)+"#"+JSON.stringify(S.foundations)+"
 
 function checkStuck(){
   if(suppressCues) return;
-  if(hasAnyMove()){ stuckKey=""; stuckVerdict=null; hideToast(); return; }
+  // Gewonnen ist keine Sackgasse: alle Karten liegen ab, es gibt nichts mehr zu melden
+  if(checkWin() || hasAnyMove()){ stuckKey=""; stuckVerdict=null; hideToast(); return; }
   const key=stuckSig(), t=I18N[lang];
   if(key===stuckKey){                     // gleiche Sackgasse: nur wieder einblenden, ohne Ton
     if(stuckVerdict) showToast(stuckVerdict==="win"?t.stillwin : stuckVerdict==="dead"?t.dead : t.nomoves,0,false);
@@ -1273,6 +1343,33 @@ window.addEventListener("resize",()=>{ clearTimeout(rT); rT=setTimeout(()=>{ if(
 applyLang();
 if(load() && !checkWin()){ render(); if(S.started){ startTimer(); } checkStuck(); }
 else{ newGame(false); }
+</script>
+<script>
+/* Faehnchen rechts: Sprachfarbe, Home-Ziel und Einbahnstrassen-Hinweis mitfuehren.
+   Liest nur die aktive Sprache aus, greift nicht in die Spiel-Logik ein. */
+(function(){
+  var T = {
+    de:{home:"../home.html", label:"Startseite",
+        note:"Einbahnstra\u00dfe: Von der Homepage f\u00fchrt kein Weg hierher zur\u00fcck. Am besten als Lesezeichen speichern."},
+    en:{home:"../home-eng.html", label:"Home",
+        note:"A one-way street: there is no way back here from the homepage. Best to bookmark this page."},
+    zh:{home:"../home-chi.html", label:"\u9996\u9801",
+        note:"\u55ae\u884c\u9053\uff1a\u5f9e\u9996\u9801\u7121\u6cd5\u56de\u5230\u9019\u88e1\u3002\u5efa\u8b70\u52a0\u5165\u66f8\u7c64\u3002"}
+  };
+  function paint(){
+    var a = document.querySelector('.lang button.active');
+    var l = a ? a.dataset.lang : 'de';
+    var t = T[l] || T.de;
+    document.documentElement.setAttribute('data-lang', l);
+    var h = document.getElementById('t-langhome');  if(h) h.setAttribute('href', t.home);
+    var b = document.getElementById('t-homelabel'); if(b) b.textContent = t.label;
+    var n = document.getElementById('t-oneway');    if(n) n.textContent = t.note;
+  }
+  document.querySelectorAll('.lang button').forEach(function(x){
+    x.addEventListener('click', function(){ setTimeout(paint, 0); });
+  });
+  paint();
+})();
 </script>
 </body>
 </html>
