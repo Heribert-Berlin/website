@@ -261,7 +261,7 @@
     </div>
   </div>
 
-  <footer>© 2026 Heribert Lange <span class="ver">· v1.0</span></footer>
+  <footer><a href="index.html" id="t-arch">← Zum Rundbrief-Archiv</a> &nbsp;·&nbsp; © 2026 Heribert Lange <span class="ver">· v1.1</span></footer>
 
 <script>
 const I18N = {
@@ -278,7 +278,8 @@ const I18N = {
       sol:"Solitär",
       solDesc:"Der Kartenklassiker Klondike für eine ruhige Runde zwischendurch. Mit Anleitung, Tipp-Funktion und Auto-Ablage.",
       solBadge:"Für große Spieler · allein",
-      back:"← Startseite", home:"../home.html"},
+      back:"← Startseite", home:"../home.html",
+      arch:"← Zum Rundbrief-Archiv", archHref:"index.html"},
   en:{title:"Game Room",
       bauK:"Memory", bauN:"Landmarks of the World",
       kidsK:"Memory", kidsN:"Waldemar",
@@ -292,7 +293,8 @@ const I18N = {
       sol:"Solitaire",
       solDesc:"The card classic Klondike for a quiet round in between. With instructions, a hint button and auto-play.",
       solBadge:"For grown-ups · solo",
-      back:"← Home", home:"../home-eng.html"},
+      back:"← Home", home:"../home-eng.html",
+      arch:"← To the newsletter archive", archHref:"index-eng.html"},
   zh:{title:"遊戲室",
       bauK:"記憶遊戲", bauN:"世界建築",
       kidsK:"記憶遊戲", kidsN:"瓦爾德馬",
@@ -306,7 +308,8 @@ const I18N = {
       sol:"接龍紙牌",
       solDesc:"經典紙牌遊戲 Klondike，適合忙裡偷閒玩上一局。附遊戲說明、提示按鈕和自動收牌。",
       solBadge:"適合大人 · 單人",
-      back:"← 首頁", home:"../home-chi.html"}
+      back:"← 首頁", home:"../home-chi.html",
+      arch:"← 返回讀者專頁", archHref:"index-chi.html"}
 };
 
 let lang = localStorage.getItem("memstart_lang") || localStorage.getItem("mem_lang") || "de";
@@ -332,6 +335,7 @@ function applyLang(){
   $("t-solN").textContent = t.solN;
   $("t-solDesc").textContent = t.solDesc;
   $("t-solBadge").textContent = t.solBadge;
+  const arch = $("t-arch"); arch.textContent = t.arch; arch.href = t.archHref;
   document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active", b.dataset.lang === lang));
 }
 
