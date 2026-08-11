@@ -54,6 +54,9 @@
     .letter-meta .letter-date { display:block; font-size:0.82rem; letter-spacing:2px; color:var(--text-muted); margin-bottom:4px; }
     .letter-meta .letter-name { font-size:1.25rem; color:var(--text); }
     .letter-arrow { color:var(--accent); font-size:1.4rem; }
+    .spiele-card { margin-top:30px; border-color:var(--accent); background:linear-gradient(180deg,var(--card),#3a1f1f); }
+    .spiele-card .letter-num { display:inline-flex; align-items:center; gap:9px; }
+    .spiele-card .letter-num svg { flex:0 0 auto; }
     footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:24px; text-align:center; margin-top:60px; }
     .footer-copy { font-size:0.78rem; color:var(--text-muted); letter-spacing:1px; opacity:0.6; }
     .home-exit { margin-bottom:22px; }
@@ -118,6 +121,21 @@
       <span class="letter-meta">
         <span class="letter-date">2026 年 6 月 15 日</span>
         <span class="letter-name">2026 年 6 月的新消息</span>
+      </span>
+      <span class="letter-arrow">→</span>
+    </a>
+
+    <a class="letter-card spiele-card" href="spiele.html">
+      <span class="letter-num">
+        <svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true">
+          <rect x="2.6" y="6" width="9.6" height="13.4" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.3" transform="rotate(-14 7.4 12.7)"/>
+          <rect x="11.6" y="4.6" width="9.8" height="14.8" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M16.5 15.4c-2.4-2-3.4-3.2-2.3-4.4.8-.9 1.8-.4 2.3.5.5-.9 1.5-1.4 2.3-.5 1.1 1.2.1 2.4-2.3 4.4z" fill="currentColor"/>
+        </svg>
+        遊戲</span>
+      <span class="letter-meta">
+        <span class="letter-date">僅限通訊讀者</span>
+        <span class="letter-name">遊戲室</span>
       </span>
       <span class="letter-arrow">→</span>
     </a>
