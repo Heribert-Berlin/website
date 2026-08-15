@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>通訊 第 03 期 – 2026 年 8 月 · Heribert Lange</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#392323; --text:#f0e0d0; --text-muted:#c09080; --accent:#e8a040;
+      --header-bg:#321b1b; --border:rgba(232,160,64,0.25); --card:#46291c;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family:'Cormorant Garamond','Noto Serif TC',Georgia,serif;
+      background:var(--bg); color:var(--text); min-height:100vh; line-height:1.85;
+    }
+    body::before {
+      content:''; position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events:none; z-index:0; opacity:0.4;
+    }
+    header {
+      position:relative; z-index:10; background:var(--header-bg);
+      border-bottom:1px solid var(--border); padding:44px 20px 28px; text-align:center;
+    }
+    .header-deco { display:flex; align-items:center; justify-content:center; gap:20px; margin-bottom:16px; }
+    .header-deco-line { flex:1; max-width:120px; height:1px; background:linear-gradient(90deg,transparent,var(--accent)); }
+    .header-deco-line.right { background:linear-gradient(90deg,var(--accent),transparent); }
+    .header-deco-diamond { width:8px; height:8px; background:var(--accent); transform:rotate(45deg); }
+    header h1 { font-family:'Cinzel',serif; font-size:2.2rem; font-weight:400; color:var(--accent); letter-spacing:5px; }
+    header .subtitle { margin-top:10px; font-size:0.78rem; letter-spacing:3px; color:var(--text-muted); text-transform:uppercase; }
+    .lang-switch { display:flex; justify-content:center; gap:10px; margin-top:22px; flex-wrap:wrap; }
+    .lang-switch a, .lang-switch span {
+      padding:6px 16px; border:1px solid var(--border); border-radius:20px;
+      font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:2px;
+      text-decoration:none; color:var(--text-muted); transition:border-color .2s,color .2s;
+    }
+    .lang-switch a:hover { border-color:var(--accent); color:var(--accent); }
+    .lang-switch .active { background:var(--accent); color:var(--header-bg); border-color:var(--accent); }
+    .main { position:relative; z-index:1; padding:56px 28px 40px; max-width:720px; margin:0 auto; }
+    .letter-title { font-family:'Cinzel','Noto Serif TC',serif; font-size:1.7rem; font-weight:400; color:var(--accent); text-align:center; letter-spacing:1px; margin-bottom:10px; }
+    .letter-sub { text-align:center; color:var(--text-muted); font-style:italic; font-size:1.1rem; margin-bottom:14px; }
+    .letter-date { text-align:center; font-size:0.74rem; letter-spacing:3px; text-transform:uppercase; color:var(--text-muted); opacity:0.8; margin-bottom:40px; }
+    .letter-body p { font-size:1.12rem; margin-bottom:22px; }
+    .letter-body h2 {
+      font-family:'Cinzel','Noto Serif TC',serif; font-size:1.15rem; font-weight:600; color:var(--accent);
+      letter-spacing:1px; margin:38px 0 14px;
+    }
+    .letter-body a { color:var(--accent); text-decoration:none; border-bottom:1px solid var(--border); }
+    .letter-body a:hover { border-bottom-color:var(--accent); }
+    .signature { margin-top:36px; font-style:italic; color:var(--text); }
+    .signature .name { font-family:'Cinzel',serif; font-style:normal; color:var(--accent); letter-spacing:2px; display:block; margin-top:4px; }
+    /* 第二封信——低調的引導行 */
+    .section-divider { width:80px; height:1px; background:var(--border); margin:56px auto 38px; }
+    .lead-in {
+      text-align:center; font-style:italic; font-size:1.15rem;
+      color:var(--text-muted); margin:0 0 34px; letter-spacing:0.5px;
+    }
+    .kim-portrait {
+      display:block; width:210px; height:210px; object-fit:cover;
+      border-radius:14px; margin:6px auto 30px;
+      border:1px solid var(--border); box-shadow:0 8px 26px rgba(0,0,0,0.55);
+    }
+    /* 可展開的更動清單 */
+    details.changelog {
+      margin-top:48px; background:var(--card); border:1px solid var(--border);
+      border-radius:10px; padding:0 26px; overflow:hidden;
+    }
+    details.changelog summary {
+      cursor:pointer; list-style:none; padding:22px 0; font-family:'Cinzel','Noto Serif TC',serif;
+      font-size:0.92rem; letter-spacing:2px; color:var(--accent); display:flex;
+      align-items:center; justify-content:space-between;
+    }
+    details.changelog summary::-webkit-details-marker { display:none; }
+    details.changelog summary .chev { transition:transform .25s; font-size:1.1rem; }
+    details.changelog[open] summary .chev { transform:rotate(90deg); }
+    .changelog-inner { padding:4px 0 28px; border-top:1px solid var(--border); }
+    .changelog-inner h3 { font-family:'Cinzel','Noto Serif TC',serif; font-size:0.86rem; color:var(--text); letter-spacing:1px; margin:22px 0 8px; }
+    .changelog-inner ul { list-style:none; padding:0; margin:0 0 4px; }
+    .changelog-inner li { position:relative; padding-left:20px; font-size:1.0rem; color:var(--text-muted); margin-bottom:7px; line-height:1.6; }
+    .changelog-inner li::before { content:'·'; position:absolute; left:6px; color:var(--accent); }
+    .changelog-inner code { font-family:'Courier New',monospace; font-size:0.82rem; color:var(--accent); opacity:0.85; }
+    .back-btn-wrap { text-align:center; margin-top:48px; display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+    .back-btn {
+      display:inline-block; padding:10px 26px; border:1px solid var(--border); border-radius:22px;
+      color:var(--text-muted); text-decoration:none; font-family:'Cinzel','Noto Serif TC',serif;
+      font-size:0.78rem; letter-spacing:2px; text-transform:uppercase; transition:border-color .2s,color .2s;
+    }
+    .back-btn:hover { border-color:var(--accent); color:var(--accent); }
+    footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:24px; text-align:center; margin-top:56px; }
+    .footer-copy { font-size:0.75rem; color:var(--text-muted); letter-spacing:1px; opacity:0.6; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
+    header { animation:fadeUp .6s ease both; }
+    .main { animation:fadeUp .6s ease .1s both; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-deco">
+    <div class="header-deco-line"></div>
+    <div class="header-deco-diamond"></div>
+    <div class="header-deco-line right"></div>
+  </div>
+  <h1>Heribert Lange</h1>
+  <p class="subtitle">通訊 第 03 期</p>
+  <div class="lang-switch">
+    <a href="rundbrief-03.html">Deutsch</a>
+    <a href="rundbrief-03-eng.html">English</a>
+    <span class="active">繁體中文</span>
+  </div>
+</header>
+
+<main class="main">
+  <h2 class="letter-title">2026 年 8 月的新消息</h2>
+  <p class="letter-sub">自七月中旬以來，heribert-berlin.de 上的新動態</p>
+  <p class="letter-date">2026 年 8 月 15 日</p>
+
+  <div class="letter-body">
+    <p>親愛的讀者們：</p>
+    <p>這一期除了消息之外，還有一個我想了很久才做下的決定。不過先照順序來，好消息排在前面。</p>
+
+    <h2>貓頭鷹瓦爾德馬：第 06 冊來了</h2>
+    <p>8 月 1 日，《鹿、他的家庭與楓樹》出版了，這是第一季的第六冊。湯姆、芙麗達、凱伊與奇拉陪著一棵楓樹走過四季，一如往常，我的兒童頻道上也有對應的影片。節奏維持不變：每個月的第一天都會繼續。9 月 1 日輪到第 07 冊，《蝙蝠、她的家庭與椴樹》。（童書以德文出版。）</p>
+
+    <h2>新登場：瓦爾德馬現在也有電子書</h2>
+    <p>這是我的網站上的頭一遭。第 04、05、06 冊即日起也能在 Books on Demand 買到電子書版本，每本 9.99 歐元。若您晚上習慣拿平板念故事給孩子聽，或想把故事帶在身上，現在多了一個選擇。這並不是要取代紙本書，任何螢幕都取代不了一本能捧在手裡、一頁一頁翻的圖畫書。但兩種都有，總是好事。</p>
+
+    <h2>有聲書：第 4 部已上線，接著要休息一陣子</h2>
+    <p>小說《最後一杯 Cà phê》免費有聲書的第 4 部叫作《從商議到行動》，德文版自 7 月 30 日、英文版自 7 月 31 日起上線。而它暫時會是最後一部。第 4 部之後的內容已經寫好也排好了，但八月不會推出。有聲書要進入一段創作休息期。原因我不想瞞著您。</p>
+
+    <h2>有聲書為什麼暫停</h2>
+    <p>在我這裡，一集有聲書並不是對著麥克風朗讀，而是一個小型的影片專案：整理文本、生成聲音、製作畫面、剪接，字幕還要一句一句手動排進時間軸，另外還有簡介與封面圖。單單一集，就是好幾天的工作。</p>
+    <p>我靜下心來看了看成果，學到兩件事。第一：短影片確實有人看。第二：這份注意力停在短影片上，並不會往下延伸到有聲書，更少延伸到書本身。到目前為止，真正聽完整集的耳朵非常少。</p>
+    <p>所以我先把有聲書放到一旁，沒有設定重啟的日期。這不是告別，也不是賭氣，而是一筆冷靜的帳：我的時間有限，我想把它放到成效更大的地方。</p>
+    <p>短影片一切照舊，YouTube 上已經排到十一月。已經完成的四部也都會留在線上，德文與英文兩種版本，附 13 種語言的字幕。想開始聽的朋友，隨時都可以。</p>
+    <p>至於想知道 Kim 與 Nong 後來如何的讀者，其實不必等：書本與電子書今天就已經知道結局。</p>
+
+    <h2>省下來的時間，我拿來做什麼</h2>
+    <p>閱讀。寫作。以及與同行們交流。</p>
+    <p>這件事已經開始了。我現在屬於一個小小的作者群，我們彼此閱讀、誠實地給回饋，也互相替對方吆喝。您在<a href="../lesetipps.html">閱讀推薦</a>裡認識的 Stefan Röser 也在其中。</p>
+    <p>最近我讀完了 Nastassja Böcher 的新書，在出版之前。書評已經寫好躺在抽屜裡，等書上市，就會放到我的書評頁面上。攤開在旁邊的是 Astrid Hecken 的《母愛之舞》，她以筆名 FRAU A. 寫作。順帶一提，這兩位也讀這份通訊，所以在此向她們問好。</p>
+    <p>我們這些自出版作者背後沒有出版社，因此彼此幫忙，而這除了時間與一點心思之外，不需要任何成本。而時間與心思，正是我現在有的。</p>
+    <p>寫作當然也在繼續。《再來一杯 Cà phê》正在長大。Kim 與 Nong 早就到了柏林，但這不代表 Nong 就能留下來：依親團聚需要 B1 的語言檢定。所以他正在學德文。結果如何，我暫時還不透露。</p>
+
+    <h2>現在輪到您了</h2>
+    <p>這份通訊寄給一小群很親近的讀者。這不是抱怨，正好相反：您們幾乎每一位，我都知道是誰在讀。正因為如此，我問的是您，而不是任何一份統計數字。</p>
+    <p>這份通訊哪裡讓您喜歡，哪裡讓您覺得無聊，又缺了什麼？網站用起來如何：您找得到想找的東西，還是點著點著就累了？哪怕只有一句話，對我都有幫助，而一句誠實的話比一句客氣的話更有幫助。</p>
+    <p>直接回覆這封信就好，它會直接寄到我這裡，而且我每一封都會回。</p>
+    <p>如果您認識誰可能會念瓦爾德馬給孩子聽、誰喜歡推理故事，或誰只是好奇：請把這份通訊轉寄給他。任何人都可以在<a href="../newsletter.html">訂閱頁面</a>報名。口耳相傳，是唯一真正對我有效的宣傳。</p>
+
+    <p class="signature">謝謝您一路相伴。我們下次再會！<br>
+      您的
+      <span class="name">Heribert Lange</span>
+    </p>
+  </div>
+
+  <div class="section-divider"></div>
+  <p class="lead-in">現在，請容我把那位早就知道您需要什麼的女士請進來……</p>
+
+  <h2 class="letter-title">容我介紹我們的 Miss Moneypenny：<br>Olga Lenz</h2>
+  <p class="letter-sub">給讀者的一封信</p>
+  <img class="kim-portrait" src="olga-lenz.jpg" alt="Olga Lenz — 肖像">
+
+  <div class="letter-body">
+    <p>親愛的讀者們：</p>
+    <p>Miss Moneypenny 這個說法不是我想出來的，那是 Kim 自己的比喻。當他想起那間事務所，他想到的是 007 的世界：他自己是詹姆士·龐德，Dr. Kluge 是 Q，Eddi 是 M。而坐在第一個房間裡的，是 38 歲的 Olga Lenz，他直接稱她為「辦公室的珍珠」。</p>
+    <p>他從越南回來的那天，第一個發現他的也是她：「哈囉 Cayce，你回來啦！」他當然不叫 Cayce，他叫 Kim Collins，只是大家都把他的縮寫 KC 念成這樣。Kim 在路上替她買了一束花，原因您大概已經猜到了。</p>
+    <p>Olga 坐鎮在第一個房間那張巨大的書桌後面，一推開門就會闖進那裡。接待、總機、協調、查資料，全都經過她的手，而且多半是同時進行。Kim 丟給她三個關鍵詞，郵件就由她寫成，連 Eddi 的也一併包辦。茶她照英式泡法煮，正是 Kim 喜歡的樣子：伯爵茶，加一點糖和奶油。而每當 Eddi 又戀愛了、什麼也做不成的時候，撐住整間事務所的就是她一個人。</p>
+    <p>其實她根本不需要這麼做。Olga 三度守寡，經濟獨立，明天就能不幹了。她仍然每天都來，因為她從小就愛推理故事。小說裡用一句話說明了一切：「Olga 就是那種蜜蜜，對，就是那句話說的：沒有推理小說，蜜蜜從不上床睡覺。」對她來說，事務所不是工作，而是她終於能親自參與的那則推理故事。</p>
+    <p>她最精彩的一刻，偏偏要歸功於一杯咖啡。Eddi 剛演完一場好戲，Olga 笑得把咖啡噴進杯子外，咖啡濺過整張書桌，也濺到了幾張紙。她拿紙巾把紙一張張吸乾，忽然停住了：其中一封信上，本來什麼都沒有的地方，出現了兩個字母『HI』。換作大多數人，大概就繼續擦下去了。Olga 沒有。她心想，既然這裡出現了不該出現的東西，說不定上面還有更多，於是把其餘的部分也顯了出來。後來她把那封信推到 Kim 面前時，上頭是大大的『救命』，是有人用檸檬汁寫下的，而那個人正指望著遇到這樣一位讀信的人。她自己的評語，帶著笑意，卻完全認真：她一如既往是對的。</p>
+    <p>而且她做的遠不只是擦紙。Kim 都還來不及坐下，她已經把整份卷宗讀完，把相關地址的地圖印好，還查出了那位失蹤女子是誰。Olga 就是這樣工作的：安靜、徹底，而且永遠比所有人早一步。</p>
+    <p>不過我最喜歡的，是她的星期一。好幾個月以來，每個星期一晚上八點，她都和 Kim 坐在 Húng 的店裡，而 Húng 這一天幾乎只為他們兩人開門。他們很少談工作，幾乎總在談生活。她會點兩人都愛喝的粉紅酒，還有一碗暖身子的餛飩湯。Kim 第一個把 Nong 的事告訴的，就是她。</p>
+    <p>小說結尾，每個人都有各自的去向。Eddi 有 Emona，Kim 有 Nong。關於 Olga，書上只寫著：「至於 Olga 往後如何，還寫在星星裡……」她目前擁有的，是下一個星期一。</p>
+    <p>我知道我打算怎麼安排她。當然，這裡就不透露了。</p>
+    <p class="signature">您的
+      <span class="name">Heribert Lange</span>
+    </p>
+  </div>
+
+  <details class="changelog">
+    <summary>具體改動內容 <span class="chev">›</span></summary>
+    <div class="changelog-inner">
+      <p style="color:var(--text-muted);margin:14px 0 4px;">獻給想了解每個細節的您，自上一期通訊以來的技術更動清單。</p>
+
+      <h3>1. 童書</h3>
+      <ul>
+        <li>第 06 冊《鹿、他的家庭與楓樹》於 8 月 1 日出版，訂購連結與影片同步上線</li>
+        <li>首度推出電子書版本：第 04、05、06 冊，每本 9.99 歐元</li>
+        <li>季別總覽：新增第 07 冊《蝙蝠、她的家庭與椴樹》的預告，出版日為 9 月 1 日</li>
+        <li>首頁：標記改為「第 01-06 冊已出版」</li>
+      </ul>
+
+      <h3>2. 有聲書</h3>
+      <ul>
+        <li>第 4 部《從商議到行動》已開放，德文版 7 月 30 日、英文版 7 月 31 日</li>
+        <li>兩個有聲書頁面上，原先預告的第五部已改為創作休息期的說明</li>
+        <li>已經完成的各部仍可在兩種語言中收聽</li>
+      </ul>
+
+      <h3>3. 閱讀推薦與書評</h3>
+      <ul>
+        <li>每位介紹過的作者現在都有自己的頁面，總覽以預覽卡片帶路</li>
+        <li>建立了英文版總覽，作者頁面之間以語言旗幟相連</li>
+        <li>介紹了三位作者：Stefan Röser、David C. Lerner 與 Perry Payne，並為 Perry Payne 另設一個作品全覽頁</li>
+        <li>新的書評頁面：沒有星等，沒有評分，只寫下閱讀時留在心裡的東西</li>
+      </ul>
+
+      <h3>4. 更容易被找到</h3>
+      <ul>
+        <li>網站已在 Bing Webmaster Tools 註冊並通過驗證，網站地圖也已提交</li>
+        <li>今後透過 Bing 也更容易找到我，對想推薦我的朋友來說很方便</li>
+      </ul>
+
+      <h3>5. 讀者檔案庫，就是這些頁面</h3>
+      <ul>
+        <li>新增一週年特刊，三種語言都有</li>
+        <li>英文與中文的檔案庫頁面現在採用各自語言版本的顏色，藍色與紅色，不再一律是金色</li>
+        <li>設置了遊戲室，只能透過通訊進入，現在三個總覽頁面上都有專屬的入口卡片</li>
+        <li>單人接龍改版：走入死局的提示可以點掉，頁尾可以直接回到遊戲室</li>
+        <li>新增通訊第 03 期，並上傳了 Olga 的肖像</li>
+      </ul>
+    </div>
+  </details>
+
+  <div class="back-btn-wrap">
+    <a href="rundbrief-jubilaeum-chi.html" class="back-btn">← 特刊 · 8 月 8 日</a>
+    <a href="index-chi.html" class="back-btn">返回總覽</a>
+  </div>
+</main>
+
+<footer>
+  <p class="footer-copy">© 2026 Heribert Lange · Berlin</p>
+</footer>
+</body>
+</html>
