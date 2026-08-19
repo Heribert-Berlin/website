@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<!-- Solitär · Final Version 2.0 · Stand 04.08.2026 · Fassung für das Rundbrief-Archiv (Langzeichen, Links mit ../) -->
+<!-- Solitär · Version 2.1 · Stand 19.08.2026 · Fassung für das Rundbrief-Archiv (Langzeichen, Links mit ../)
+     2.1: Die vier Ablagen haben feste Farben in der Reihenfolge Kreuz, Pik, Herz, Karo.
+          Punkteabzuege werden als Schuld gemerkt, damit sich an der Nullgrenze keine Punkte erzeugen lassen. -->
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="version" content="Solitaer Final 2.0 (2026-08-04)">
+  <meta name="version" content="Solitaer 2.1 (2026-08-19)">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Solitär · Heribert Lange</title>
   <meta name="robots" content="noindex">
@@ -164,6 +166,7 @@
     }
     .card.dragging{opacity:0; }
     .card.hint .face{box-shadow:0 0 0 3px var(--accent),0 2px 5px rgba(0,0,0,0.4); animation:hintPulse .6s ease-in-out 2;}
+    .slot .placeholder.rot{color:rgba(196,86,86,0.45);}
     .slot.hint .placeholder{border-color:var(--accent); box-shadow:0 0 0 3px rgba(212,184,122,0.5);}
     @keyframes hintPulse{50%{box-shadow:0 0 0 6px var(--accent),0 2px 5px rgba(0,0,0,0.4);}}
     .card.reveal-cue .face{box-shadow:0 0 0 3px var(--accent),0 2px 5px rgba(0,0,0,0.4); animation:hintPulse .6s ease-in-out 2;}
@@ -384,7 +387,7 @@ const I18N = {
       deadAgo:"Diese Stellung ist verloren. Zu gewinnen war die Partie noch vor {n} Zügen, so weit bringt dich „Zurück“.",
       deadAgo1:"Diese Stellung ist verloren. Der letzte Zug hat sie gekostet, ein „Zurück“ holt sie sich wieder.",
       deadStart:"Diese Stellung ist verloren. Dieses Blatt war schon beim Austeilen nicht zu gewinnen, da hilft nur ein neues Spiel.",
-      guide:["Ziel: Lege alle 52 Karten auf die vier Ablagen oben rechts — je Farbe aufsteigend von Ass bis König.",
+      guide:["Ziel: Lege alle 52 Karten auf die vier Ablagen oben rechts, je Farbe aufsteigend von Ass bis König.",
              "Im Spielfeld werden Karten absteigend und in abwechselnder Farbe gestapelt (rot auf schwarz, schwarz auf rot).",
              "Zieh eine Karte oder eine passende Folge mit Maus oder Finger auf einen anderen Stapel.",
              "Ein Tipp/Klick auf eine Karte legt sie automatisch aufs Fundament, wenn sie passt.",
@@ -395,7 +398,7 @@ const I18N = {
       lang:"de"},
   en:{title:"Solitaire",moves:"Moves",time:"Time",score:"Score",best:"Best Score",neu:"New Game",
       undo:"Undo",hint:"Hint",auto:"Auto",draw:"Draw",win:"You Win!",
-      winsub:"Congratulations — all cards cleared!",back:"← Home",home:"../home-eng.html",platform:"⌂ Game Room",sound:"Sound",
+      winsub:"Congratulations, all cards cleared!",back:"← Home",home:"../home-eng.html",platform:"⌂ Game Room",sound:"Sound",
       guideBtn:"Guide",guideTitle:"How to play",close:"Close",
       resetBestTitle:"Reset best score",resetBestConfirm:"Really reset the best score to 0?",
       nomoves:"No moves left. Undo a move or start a new game.",
@@ -404,7 +407,7 @@ const I18N = {
       deadAgo:"This position is lost. The game was still winnable {n} moves ago, that is how far “Undo” takes you.",
       deadAgo1:"This position is lost. The last move cost you the game, one “Undo” wins it back.",
       deadStart:"This position is lost. This deal could not be won from the very start, so start a new game.",
-      guide:["Goal: move all 52 cards onto the four foundations (top right) — each suit ascending from Ace to King.",
+      guide:["Goal: move all 52 cards onto the four foundations (top right), each suit ascending from Ace to King.",
              "On the tableau, cards stack in descending order and alternating colour (red on black, black on red).",
              "Drag a card or a matching run onto another pile with mouse or finger.",
              "Tapping/clicking a card sends it to a foundation automatically if it fits.",
@@ -439,6 +442,7 @@ if(!I18N[lang]) lang="de";
 
 /* ============================ Spiel-Konstanten ============================ */
 const SUITS = ["♠","♥","♦","♣"];     // 0 Pik, 1 Herz, 2 Karo, 3 Kreuz
+const FOUND_SUIT = [3,0,1,2];        // feste Reihenfolge der Ablagen: Kreuz, Pik, Herz, Karo
 const RANKS = ["","A","2","3","4","5","6","7","8","9","10","J","Q","K"];
 const isRed = s => s===1 || s===2;
 const PIPS = {
@@ -471,7 +475,7 @@ function newDeck(){
 function newGame(keepDraw){
   const drawN = keepDraw && S ? S.draw : 3;
   const deck = newDeck();
-  S = {stock:[],waste:[],foundations:[[],[],[],[]],tableau:[[],[],[],[],[],[],[]],
+  S = {stock:[],waste:[],foundations:[[],[],[],[]],tableau:[[],[],[],[],[],[],[]], debt:0,
        draw:drawN, moves:0, score:0, started:false};
   for(let c=0;c<7;c++){
     for(let k=0;k<=c;k++){ const card=deck.pop(); card.up=(k===c); S.tableau[c].push(card); }
@@ -496,16 +500,20 @@ function load(){
     if(!o||!o.S||!o.S.tableau) return false;
     S=o.S; seconds=o.seconds||0;
     if(typeof S.draw!=="number") S.draw=3;
+    if(typeof S.debt!=="number") S.debt=0;
+    // Ältere Spielstände haben die Ablagen in beliebiger Reihenfolge, hier auf die feste Farbe rücken
+    const sortiert=[[],[],[],[]];
+    for(const p of S.foundations) if(p.length) sortiert[FOUND_SUIT.indexOf(p[0].suit)]=p;
+    S.foundations=sortiert;
     return true;
   }catch(e){ return false; }
 }
 
 /* ============================ Regeln ============================ */
 function canToFoundation(card, f){
+  if(card.suit!==FOUND_SUIT[f]) return false;      // jede Ablage gehört einer festen Farbe
   const p=S.foundations[f];
-  if(p.length===0) return card.rank===1;
-  const t=p[p.length-1];
-  return t.suit===card.suit && card.rank===t.rank+1;
+  return card.rank === (p.length ? p[p.length-1].rank+1 : 1);
 }
 function canToTableau(card, t){
   const p=S.tableau[t];
@@ -596,7 +604,8 @@ function render(){
   document.querySelectorAll(".foundation").forEach(slot=>{
     const f=+slot.dataset.f; slot.innerHTML="";
     const p=S.foundations[f];
-    if(p.length===0){ slot.innerHTML=`<div class="placeholder">A</div>`; }
+    if(p.length===0){ const s=FOUND_SUIT[f];
+      slot.innerHTML=`<div class="placeholder${isRed(s)?" rot":""}">${SUITS[s]}</div>`; }
     else{ const el=makeCardEl(p[p.length-1]); el.dataset.pile="foundation"; el.dataset.pi=f; el.dataset.ci=p.length-1; slot.appendChild(el); }
   });
 
@@ -675,10 +684,25 @@ function drawStock(){
       revealCandidates.push(S.waste[S.waste.length-1]);   // oberste gezogene Karte
     }else if(S.waste.length){
       while(S.waste.length){ const c=S.waste.pop(); c.up=false; S.stock.push(c); }
-      S.score=Math.max(0,S.score-2);
+      S.score=Math.max(0,S.score-2);   // Blättern kann nie Punkte einbringen, deshalb hier keine Schuld
       sfx("recycle");
     }
   });
+}
+
+/* Punkte verrechnen. Der angezeigte Stand bleibt bei null stehen, ein Abzug darunter
+   wird aber als offene Schuld gemerkt und von den nächsten Gutschriften abgezogen.
+   Sonst wäre ein Zurückholen bei wenig Punkten billiger als das erneute Ablegen einbringt,
+   und man könnte durch Hin und Her Punkte erzeugen. */
+function punkte(delta){
+  if(typeof S.debt!=="number") S.debt=0;
+  if(delta<0){
+    const zahlbar=Math.min(-delta, S.score);
+    S.score-=zahlbar; S.debt+=(-delta-zahlbar);
+  }else{
+    const tilgung=Math.min(S.debt, delta);
+    S.debt-=tilgung; S.score+=delta-tilgung;
+  }
 }
 
 function getPile(pile,pi){
@@ -696,13 +720,13 @@ function moveGroup(src, dst){
   const to=getPile(dst.pile,dst.pi);
   to.push(...group);
   // Punkte + Ton
-  if(dst.pile==="foundation"){ S.score+=10; sfx("foundation",group[0].rank); }
+  if(dst.pile==="foundation"){ punkte(10); sfx("foundation",group[0].rank); }
   else if(dst.pile==="tableau"){ sfx("place"); }
-  if(src.pile==="foundation" && dst.pile==="tableau") S.score=Math.max(0,S.score-10);
-  if(src.pile==="waste" && dst.pile==="tableau") S.score+=5;
+  if(src.pile==="foundation" && dst.pile==="tableau") punkte(-10);
+  if(src.pile==="waste" && dst.pile==="tableau") punkte(5);
   // Aufdecken
   if(src.pile==="tableau" && from.length && !from[from.length-1].up){
-    from[from.length-1].up=true; S.score+=5;
+    from[from.length-1].up=true; punkte(5);
     revealCandidates.push(from[from.length-1]);     // neu aufgedeckte Karte
   }
   S.moves++;
