@@ -31,29 +31,32 @@
     .lang-buttons { position: fixed; right: 18px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 16px; z-index: 100; }
     .lang-btn { width: 56px; height: 56px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid rgba(255,255,255,0.15); box-shadow: 0 3px 12px rgba(0,0,0,0.5); transition: transform 0.2s, border-color 0.2s; text-decoration: none; display: block; position: relative; }
     .lang-btn:hover { transform: scale(1.08); border-color: var(--accent); }
+    .lang-label { font-size: 0.72rem; letter-spacing: 1px; color: var(--accent); font-family: Georgia, serif; line-height: 1; }
+    .lang-wrap { display: flex; flex-direction: column; align-items: center; gap: 3px; }
     .container { padding: 40px 100px 40px 20px; max-width: 1100px; margin: 0 auto; }
 
     .intro-card { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; margin-bottom: 32px; }
     .intro-card p { line-height: 1.9; margin-bottom: 12px; }
     .intro-card p:last-child { margin-bottom: 0; }
 
-    .rezension { background: var(--card); padding: 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; margin-bottom: 32px; }
-    .rezension h2 { color: var(--accent); font-size: 1.5rem; font-weight: normal; font-style: italic; letter-spacing: 1px; margin-bottom: 4px; }
-    .rezension-meta { color: var(--text-muted); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
-    .rezension p { line-height: 1.9; margin-bottom: 14px; }
-    .rezension-cover { float: right; width: 200px; max-width: 40%; margin: 0 0 16px 24px; border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
-    @media (max-width: 700px) { .rezension-cover { float: none; display: block; margin: 0 auto 18px; width: 220px; max-width: 80%; } }
+    .buch-liste { display: flex; flex-direction: column; gap: 24px; }
+    .buch-teaser { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; display: flex; gap: 26px; align-items: flex-start; }
+    .buch-teaser img { width: 120px; flex-shrink: 0; border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
+    .buch-text { flex: 1; }
+    .buch-teaser h2 { color: var(--accent); font-size: 1.5rem; font-weight: normal; font-style: italic; letter-spacing: 1px; margin-bottom: 4px; }
+    .buch-meta { color: var(--text-muted); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .buch-teaser p { line-height: 1.9; margin-bottom: 18px; }
+    .weiter-btn { display: inline-block; padding: 9px 20px; border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); text-decoration: none; font-size: 0.88rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; }
+    .weiter-btn:hover { background: var(--accent); color: var(--header-bg); }
 
-    .rezension-links { margin-top: 18px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; clear: both; }
-    .rezension-links a { display: inline-block; padding: 9px 20px; border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); text-decoration: none; font-size: 0.88rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; }
-    .rezension-links a:hover { background: var(--accent); color: var(--header-bg); }
-
-    .back-btn { display: inline-block; margin-top: 8px; margin-right: 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s; }
+    .back-btn { display: inline-block; margin-top: 32px; margin-right: 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s; }
     .back-btn:hover { color: var(--accent); }
 
     @media (max-width: 700px) {
       .container { padding: 24px 16px; }
       .lang-buttons { position: static; transform: none; flex-direction: row; justify-content: center; padding: 14px 0 0; }
+      .buch-teaser { flex-direction: column; align-items: center; text-align: center; }
+      .buch-teaser img { width: 160px; }
     }
   </style>
 </head>
@@ -64,14 +67,36 @@
 </header>
 
 <div class="lang-buttons">
-  <div class="lang-home-wrap" style="display:flex;flex-direction:column;align-items:center;gap:3px;">
-    <a href="home.html" class="lang-btn lang-home" title="Home" style="background:var(--card,#222);display:flex;align-items:center;justify-content:center;">
+  <div class="lang-wrap">
+    <a href="home.html" class="lang-btn" title="Home" style="background:var(--card,#222);display:flex;align-items:center;justify-content:center;">
       <svg viewBox="0 0 56 56" width="42" height="42" xmlns="http://www.w3.org/2000/svg">
         <path d="M28 10 L50 30 H44 V48 H12 V30 H6 Z" fill="var(--accent)"/>
         <rect x="23" y="34" width="10" height="14" rx="1" fill="var(--card,#222)"/>
       </svg>
     </a>
-    <span style="font-size:0.72rem;letter-spacing:1px;color:var(--accent);font-family:Georgia,serif;line-height:1;">Home</span>
+    <span class="lang-label">Home</span>
+  </div>
+  <div class="lang-wrap">
+    <a href="rezensionen-eng.html" class="lang-btn" title="English">
+      <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+        <defs><clipPath id="tl"><polygon points="0,0 56,0 0,56"/></clipPath><clipPath id="br"><polygon points="56,0 56,56 0,56"/></clipPath></defs>
+        <g clip-path="url(#tl)">
+          <rect x="0" y="0" width="56" height="56" fill="#B22234"/>
+          <rect x="0" y="4.3" width="56" height="4.3" fill="white"/><rect x="0" y="12.9" width="56" height="4.3" fill="white"/><rect x="0" y="21.5" width="56" height="4.3" fill="white"/><rect x="0" y="30.1" width="56" height="4.3" fill="white"/><rect x="0" y="38.7" width="56" height="4.3" fill="white"/><rect x="0" y="47.3" width="56" height="4.3" fill="white"/>
+          <rect x="0" y="0" width="22" height="24" fill="#3C3B6E"/>
+          <text x="1" y="7" font-size="4.5" fill="white">&#9733;&#9733;&#9733;&#9733;</text><text x="3" y="11" font-size="4.5" fill="white">&#9733;&#9733;&#9733;</text><text x="1" y="15" font-size="4.5" fill="white">&#9733;&#9733;&#9733;&#9733;</text><text x="3" y="19" font-size="4.5" fill="white">&#9733;&#9733;&#9733;</text><text x="1" y="23" font-size="4.5" fill="white">&#9733;&#9733;&#9733;&#9733;</text>
+        </g>
+        <g clip-path="url(#br)">
+          <rect x="0" y="0" width="56" height="56" fill="#012169"/>
+          <line x1="0" y1="0" x2="56" y2="56" stroke="white" stroke-width="10"/><line x1="56" y1="0" x2="0" y2="56" stroke="white" stroke-width="10"/>
+          <line x1="0" y1="0" x2="56" y2="56" stroke="#CC0000" stroke-width="5"/><line x1="56" y1="0" x2="0" y2="56" stroke="#CC0000" stroke-width="5"/>
+          <rect x="23" y="0" width="10" height="56" fill="white"/><rect x="0" y="23" width="56" height="10" fill="white"/>
+          <rect x="25" y="0" width="6" height="56" fill="#CC0000"/><rect x="0" y="25" width="56" height="6" fill="#CC0000"/>
+        </g>
+        <line x1="0" y1="56" x2="56" y2="0" stroke="rgba(200,169,110,0.8)" stroke-width="1.5"/>
+      </svg>
+    </a>
+    <span class="lang-label">English</span>
   </div>
 </div>
 
@@ -81,17 +106,28 @@
     <p>Auf den Lesetipps-Seiten stelle ich Autoren vor. Hier gehe ich einen Schritt weiter: Bücher, die ich selbst gelesen habe, mit meinem ehrlichen Eindruck. Keine Sterne, keine Noten, nur das, was beim Lesen hängen geblieben ist.</p>
   </div>
 
-  <div class="rezension">
-    <img class="rezension-cover" src="stefan-roeser-herz-zorn.jpg" alt="Buchcover Ein Herz, das keinen Zorn mehr trägt">
-    <h2>Ein Herz, das keinen Zorn mehr trägt</h2>
-    <p class="rezension-meta">Roman von Stefan Röser · gelesen im Juli 2026</p>
-    <p>Dieses Buch wird nicht von einer lauten Handlung getragen, sondern von Gerüchen und Geräuschen. Man liest sich nicht durch Kapitel, man geht durch Räume, riecht, was dort in der Luft hängt, hört, was am Rand passiert. Die Personen bleiben dabei seltsam schattenhaft und sind einem trotzdem ganz nah. Es sind keine Figuren zum Gernhaben und keine zum Hassen. Es sind Menschen zum Bedauern und Mitfühlen, und das ist ungleich schwerer zu schreiben als eine klare Heldin oder ein klarer Schurke.</p>
-    <p>Gewalt kommt vor, und die Schläge sitzen hart. Aber das Buch weiß, dass die tieferen Wunden anderswo entstehen. Schwerer als jeder Schlag wiegen die Worte, das Schweigen und die Blicke, die niemanden treffen und gerade deshalb so weh tun. Diese leisen Verletzungen bleiben hängen, lange nachdem man die Seite umgeblättert hat.</p>
-    <p>Auf seine eigene, unaufgeregte Art hat mich das Buch gefesselt. Ich habe es an einem halben Tag gelesen, konnte es kaum weglegen und freue mich jetzt schon auf die Fortsetzung. Ich gebe offen zu, dass ich Happy Ends mag. Genauso mag ich aber ein Ende, das förmlich um eine Fortsetzung bettelt, und hier bekommt man beides und keines davon ganz.</p>
-    <p>Denn das Happy End ist keines im eigentlichen Sinn. Es ist eher ein Luftholen, ein kurzes Innehalten zwischen zwei Wellen. Ob dieser Moment trägt oder am Ende doch bricht, wird erst der zweite Teil zeigen. Und genau darauf bin ich gespannt.</p>
-    <div class="rezension-links">
-      <a href="lesetipps-stefan-roeser.html">Zur Vorstellung von Stefan Röser →</a>
+  <div class="buch-liste">
+
+    <div class="buch-teaser">
+      <img src="lebenshaus-band-1.jpg" alt="Buchcover Das Lebenshaus, Band 1">
+      <div class="buch-text">
+        <h2>Das Lebenshaus, Band 1</h2>
+        <p class="buch-meta">Roman von Frau A. · gelesen im August 2026</p>
+        <p>Ein Dorf baut ein Haus, in dem niemand allein alt werden muss. Erzählt von einem blauen Flamingo, mit Café, Garten und einem Huhn namens Lore.</p>
+        <a href="rezension-lebenshaus-1.html" class="weiter-btn">Zur Rezension →</a>
+      </div>
     </div>
+
+    <div class="buch-teaser">
+      <img src="stefan-roeser-herz-zorn.jpg" alt="Buchcover Ein Herz, das keinen Zorn mehr trägt">
+      <div class="buch-text">
+        <h2>Ein Herz, das keinen Zorn mehr trägt</h2>
+        <p class="buch-meta">Roman von Stefan Röser · gelesen im Juli 2026</p>
+        <p>Ein Buch, das man nicht durchliest, sondern durchgeht: Gerüche, Geräusche und leise Verletzungen, die schwerer wiegen als jeder Schlag.</p>
+        <a href="rezension-herz-zorn.html" class="weiter-btn">Zur Rezension →</a>
+      </div>
+    </div>
+
   </div>
 
   <a href="lesetipps.html" class="back-btn">← Zu den Lesetipps</a>

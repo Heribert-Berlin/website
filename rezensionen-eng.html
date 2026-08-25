@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta property="og:title" content="Reading Tips – Authors I Recommend · Heribert Lange" />
-  <meta property="og:description" content="Fellow authors whose books deserve more attention. Personal recommendations by Heribert Lange." />
+  <meta property="og:title" content="Reviews – Books I have read · Heribert Lange" />
+  <meta property="og:description" content="Books I have read, honestly reviewed. Personal reviews by Heribert Lange." />
   <meta property="og:image" content="https://www.heribert-berlin.de/images/og-lesetipps.jpg" />
-  <meta property="og:url" content="https://www.heribert-berlin.de/lesetipps-eng.html" />
+  <meta property="og:url" content="https://www.heribert-berlin.de/rezensionen-eng.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://www.heribert-berlin.de/images/og-lesetipps.jpg" />
   <meta property="og:type" content="website" />
@@ -13,7 +13,7 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Heribert Lange – Reading Tips</title>
+  <title>Heribert Lange – Reviews</title>
   <style>
     :root {
       --bg: #423624;
@@ -36,35 +36,34 @@
     .container { padding: 40px 100px 40px 20px; max-width: 1100px; margin: 0 auto; }
 
     .intro-card { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; margin-bottom: 32px; }
-    .intro-card h2 { color: var(--accent); font-size: 1.4rem; font-weight: normal; letter-spacing: 1px; margin-bottom: 16px; text-align: center; }
     .intro-card p { line-height: 1.9; margin-bottom: 12px; }
     .intro-card p:last-child { margin-bottom: 0; }
 
-    .lang-switch { text-align: right; margin-bottom: 12px; }
-    .lang-switch a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; font-style: italic; transition: color 0.2s; }
-    .lang-switch a:hover { color: var(--accent); }
-
-    .autoren-liste { display: flex; flex-direction: column; gap: 24px; }
-    .autor-teaser { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; }
-    .autor-teaser h2 { color: var(--accent); font-size: 1.5rem; font-weight: normal; letter-spacing: 1px; margin-bottom: 4px; }
-    .autor-genre { color: var(--text-muted); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-    .autor-teaser p { line-height: 1.9; margin-bottom: 18px; }
+    .buch-liste { display: flex; flex-direction: column; gap: 24px; }
+    .buch-teaser { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; display: flex; gap: 26px; align-items: flex-start; }
+    .buch-teaser img { width: 120px; flex-shrink: 0; border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
+    .buch-text { flex: 1; }
+    .buch-teaser h2 { color: var(--accent); font-size: 1.5rem; font-weight: normal; font-style: italic; letter-spacing: 1px; margin-bottom: 4px; }
+    .buch-meta { color: var(--text-muted); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .buch-teaser p { line-height: 1.9; margin-bottom: 18px; }
     .weiter-btn { display: inline-block; padding: 9px 20px; border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); text-decoration: none; font-size: 0.88rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; }
     .weiter-btn:hover { background: var(--accent); color: var(--header-bg); }
 
-    .back-btn { display: inline-block; margin-top: 32px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s; }
+    .back-btn { display: inline-block; margin-top: 32px; margin-right: 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s; }
     .back-btn:hover { color: var(--accent); }
 
     @media (max-width: 700px) {
       .container { padding: 24px 16px; }
       .lang-buttons { position: static; transform: none; flex-direction: row; justify-content: center; padding: 14px 0 0; }
+      .buch-teaser { flex-direction: column; align-items: center; text-align: center; }
+      .buch-teaser img { width: 160px; }
     }
   </style>
 </head>
 <body>
 <header>
-  <h1>Reading Tips</h1>
-  <p>Authors I recommend</p>
+  <h1>Reviews</h1>
+  <p>Books I have read</p>
 </header>
 
 <div class="lang-buttons">
@@ -78,7 +77,7 @@
     <span class="lang-label">Home</span>
   </div>
   <div class="lang-wrap">
-    <a href="lesetipps.html" class="lang-btn" title="Deutsch">
+    <a href="rezensionen.html" class="lang-btn" title="Deutsch">
       <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="56" height="18.7" fill="#000000"/>
         <rect x="0" y="18.7" width="56" height="18.7" fill="#DD0000"/>
@@ -92,46 +91,35 @@
 <div class="container">
 
   <div class="intro-card">
-    <h2>Why this page?</h2>
-    <p>Anyone who writes without a big publisher knows the problem: the stories are there, but hardly anyone gets to hear about them. So this is where I introduce fellow authors whose books, in my opinion, deserve more attention. Each author has a page of their own; one click on the introduction takes you there.</p>
-    <p>No paid advertising, nothing in return: just a personal recommendation from one reader to another.</p>
+    <p>On the reading tips pages I introduce fellow authors. Here I go one step further: books I have read myself, with my honest impression. No stars, no grades, just what stayed with me.</p>
+    <p>These books are published in German, so the reviews are written in German as well.</p>
   </div>
 
-  <div class="autoren-liste">
+  <div class="buch-liste">
 
-    <div class="autor-teaser">
-      <h2>David C. Lerner</h2>
-      <p class="autor-genre">Science fiction · Artificial intelligence and consciousness</p>
-      <p>Science fiction in the tradition of Clarke, Lem and Asimov: the MONOLYYTH universe asks what happens when intelligence stops being artificial. Available in English and German.</p>
-      <a href="lesetipps-david-c-lerner-eng.html" class="weiter-btn">Read the introduction →</a>
-      <a href="lesetipps-david-c-lerner.html" class="weiter-btn" style="margin-left:10px;">Auf Deutsch →</a>
+    <div class="buch-teaser">
+      <img src="lebenshaus-band-1.jpg" alt="Book cover Das Lebenshaus, volume 1">
+      <div class="buch-text">
+        <h2>Das Lebenshaus, volume 1</h2>
+        <p class="buch-meta">Novel by Frau A. · read in August 2026</p>
+        <p>A village builds a house where nobody has to grow old alone. Narrated by a blue flamingo, with a café, a garden and a hen called Lore.</p>
+        <a href="rezension-lebenshaus-1.html" class="weiter-btn">Read the review (in German) →</a>
+      </div>
     </div>
 
-    <div class="autor-teaser">
-      <h2>Perry Payne</h2>
-      <p class="autor-genre">Novels and guidebooks · From Thuringia to Paraguay</p>
-      <p>Around thirty books, from psychological thrillers to guidebooks with a wink. Perry Payne emigrated to Paraguay and helps fellow authors on the way to the finished book with his author services. His books are available in German.</p>
-      <a href="lesetipps-perry-payne.html" class="weiter-btn">Read the introduction (in German) →</a>
-    </div>
-
-    <div class="autor-teaser">
-      <div class="lang-switch"><a href="https://www.stefan-roeser.de/lesetipps.html" target="_blank" rel="noopener">Stefan recommends my books on his site →</a></div>
-      <h2>Stefan Röser</h2>
-      <p class="autor-genre">Historical novels · German history</p>
-      <p>Novels set in the years after the First World War: no great battles, but the everyday lives of ordinary people on the farm, in the village and in the Berlin of the late Weimar Republic. His books are available in German.</p>
-      <a href="lesetipps-stefan-roeser.html" class="weiter-btn">Read the introduction (in German) →</a>
-      <a href="rezension-herz-zorn.html" class="weiter-btn" style="margin-left:10px;">Read my review (in German) →</a>
-    </div>
-
-    <div class="autor-teaser">
-      <h2>Reviews</h2>
-      <p class="autor-genre">Books I have read</p>
-      <p>This is where I review books I have read myself, with my honest impression. So far there are two: Stefan Röser's novel "Ein Herz, das keinen Zorn mehr trägt" and "Das Lebenshaus" by Frau A.</p>
-      <a href="rezensionen-eng.html" class="weiter-btn">Go to the reviews →</a>
+    <div class="buch-teaser">
+      <img src="stefan-roeser-herz-zorn.jpg" alt="Book cover Ein Herz, das keinen Zorn mehr trägt">
+      <div class="buch-text">
+        <h2>Ein Herz, das keinen Zorn mehr trägt</h2>
+        <p class="buch-meta">Novel by Stefan Röser · read in July 2026</p>
+        <p>A book you do not read through, you walk through it: smells, sounds and quiet injuries that weigh more than any blow.</p>
+        <a href="rezension-herz-zorn.html" class="weiter-btn">Read the review (in German) →</a>
+      </div>
     </div>
 
   </div>
 
+  <a href="lesetipps-eng.html" class="back-btn">← Back to the reading tips</a>
   <a href="home-eng.html" class="back-btn">⌂ Home</a>
 </div>
 
