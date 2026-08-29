@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta property="og:title" content="Leserstimmen – Wie meine Bücher rezensiert werden · Heribert Lange" />
-  <meta property="og:description" content="Was Leserinnen und Leser über 'Ein letzter Cà phê' schreiben, in ihren eigenen Worten." />
+  <meta property="og:description" content="Was Leserinnen und Leser über meine Bücher schreiben, in ihren eigenen Worten." />
   <meta property="og:image" content="https://www.heribert-berlin.de/images/og-lesetipps.jpg" />
   <meta property="og:url" content="https://www.heribert-berlin.de/leserstimmen.html" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -35,18 +35,23 @@
     .lang-wrap { display: flex; flex-direction: column; align-items: center; gap: 3px; }
     .container { padding: 40px 100px 40px 20px; max-width: 1100px; margin: 0 auto; }
 
-    .intro-card { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; margin-bottom: 32px; display: flex; gap: 26px; align-items: center; }
-    .intro-card img { width: 100px; flex-shrink: 0; border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
+    .intro-card { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; margin-bottom: 32px; }
     .intro-card p { line-height: 1.9; }
-    .intro-card a { color: var(--accent); }
+
+    .buch-abschnitt { margin-bottom: 40px; }
+    .buch-abschnitt:last-of-type { margin-bottom: 0; }
+    .buch-kopf { display: flex; gap: 20px; align-items: center; margin-bottom: 20px; }
+    .buch-kopf img { width: 90px; flex-shrink: 0; border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
+    .buch-kopf h2 { color: var(--accent); font-size: 1.5rem; font-weight: normal; font-style: italic; letter-spacing: 1px; margin-bottom: 10px; }
 
     .review-liste { display: flex; flex-direction: column; gap: 24px; }
     .review-card { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; }
     .review-stars { color: var(--accent); font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 8px; }
-    .review-card h2 { color: var(--accent); font-size: 1.25rem; font-weight: normal; font-style: italic; letter-spacing: 0.5px; margin-bottom: 8px; line-height: 1.4; }
+    .review-card h3 { color: var(--accent); font-size: 1.25rem; font-weight: normal; font-style: italic; letter-spacing: 0.5px; margin-bottom: 8px; line-height: 1.4; }
     .review-meta { color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 18px; text-transform: uppercase; }
     .review-meta .verified { color: var(--accent); }
-    .review-card p.review-text { line-height: 1.9; margin-bottom: 18px; }
+    .review-card p.review-text { line-height: 1.9; margin-bottom: 14px; }
+    .review-card p.review-text:last-of-type { margin-bottom: 18px; }
     .weiter-btn { display: inline-block; padding: 9px 20px; border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); text-decoration: none; font-size: 0.88rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; }
     .weiter-btn:hover { background: var(--accent); color: var(--header-bg); }
 
@@ -56,7 +61,7 @@
     @media (max-width: 700px) {
       .container { padding: 24px 16px; }
       .lang-buttons { position: static; transform: none; flex-direction: row; justify-content: center; padding: 14px 0 0; }
-      .intro-card { flex-direction: column; text-align: center; }
+      .buch-kopf { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -81,31 +86,73 @@
 <div class="container">
 
   <div class="intro-card">
-    <img src="ELC-DEU-Cover.jpg" alt="Buchcover Ein letzter Cà phê">
-    <p>Was Leserinnen und Leser über <em>„Ein letzter Cà phê“</em> schreiben, unverändert und in ihren eigenen Worten. Rezensionen wie sie bei Amazon.de erschienen sind.</p>
+    <p>Was Leserinnen und Leser über meine Bücher schreiben, unverändert und in ihren eigenen Worten. Rezensionen wie sie bei Amazon.de erschienen sind.</p>
   </div>
 
-  <div class="review-liste">
-
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <h2>Ein umfangreicher und vielschichtiger Roman, für den man sich Zeit nehmen sollte.</h2>
-      <p class="review-meta">Frau A. · Bewertet in Deutschland am 29. August 2026 · Kindle · <span class="verified">Verifizierter Kauf</span></p>
-      <p class="review-text">„Ein letzter Cà phê“ ist kein Buch, das man mal eben zwischendurch liest. Heribert Lange erzählt ausführlich und mit viel Liebe zum Detail. Er nimmt seine Leser mit an unterschiedliche Orte, stellt zahlreiche Charaktere mit ihren Lebensgeschichten vor und lässt daraus nach und nach verschiedene Handlungsstränge entstehen. Besonders die Schauplätze werden so detailliert beschrieben, dass man beim Lesen tatsächlich das Gefühl bekommt, mit den Figuren unterwegs zu sein. Beziehungen und persönliche Schicksale treffen dabei auf kriminalistische Elemente und sorgen für eine Geschichte auf vielen verschiedenen Ebenen. Wer schnelle Geschichten mit geradliniger Handlung bevorzugt, muss sich auf die ausführliche Erzählweise einlassen. Wer dagegen gerne tief in eine Geschichte eintaucht, viele Charaktere kennenlernt und Freude an Details und unterschiedlichen Schauplätzen hat, bekommt hier sehr viel zu lesen. Ein umfangreicher und vielschichtiger Roman, für den man sich Zeit nehmen sollte.</p>
-      <a href="https://www.amazon.de/portal/customer-reviews/srp/-/R3R2B0QFTMX0R5/ref=cm_cr_dp_d_rvw_ttl?_encoding=UTF8&ie=UTF8" target="_blank" rel="noopener" class="weiter-btn">Auf Amazon ansehen →</a>
+  <div class="buch-abschnitt">
+    <div class="buch-kopf">
+      <img src="ELC-DEU-Cover.jpg" alt="Buchcover Ein letzter Cà phê">
+      <div>
+        <h2>Ein letzter Cà phê</h2>
+        <a href="roman.html" class="weiter-btn">Zum Buch →</a>
+      </div>
     </div>
 
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <h2>Toll</h2>
-      <p class="review-meta">Bettina Reitz · Bewertet in Deutschland am 28. August 2026 · Taschenbuch</p>
-      <p class="review-text">Ein Buch das man nicht mal eben so liest, man geniesst es und gerät in einen Pool aus Liebe, Kriminalität und vielen Wendungen auf mehreren Ebenen. Die handelnden Personen sind sehr authentisch und man hat Bilder im Kopf beim Lesen. Der Schreibstil ist überzeugend und vereinnehmend. Über den Inhalt verrat ich nichts, einen Einblick gibt der Klappentext. Ich kann das Buch nur empfehlen.</p>
-      <a href="https://www.amazon.de/portal/customer-reviews/srp/-/R3UEEGN1SOQ5LO/ref=cm_cr_dp_d_rvw_ttl?_encoding=UTF8&ie=UTF8" target="_blank" rel="noopener" class="weiter-btn">Auf Amazon ansehen →</a>
-    </div>
+    <div class="review-liste">
 
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <h3>Ein umfangreicher und vielschichtiger Roman, für den man sich Zeit nehmen sollte.</h3>
+        <p class="review-meta">Frau A. · Bewertet in Deutschland am 29. August 2026 · Kindle · <span class="verified">Verifizierter Kauf</span></p>
+        <p class="review-text">„Ein letzter Cà phê“ ist kein Buch, das man mal eben zwischendurch liest. Heribert Lange erzählt ausführlich und mit viel Liebe zum Detail. Er nimmt seine Leser mit an unterschiedliche Orte, stellt zahlreiche Charaktere mit ihren Lebensgeschichten vor und lässt daraus nach und nach verschiedene Handlungsstränge entstehen. Besonders die Schauplätze werden so detailliert beschrieben, dass man beim Lesen tatsächlich das Gefühl bekommt, mit den Figuren unterwegs zu sein. Beziehungen und persönliche Schicksale treffen dabei auf kriminalistische Elemente und sorgen für eine Geschichte auf vielen verschiedenen Ebenen. Wer schnelle Geschichten mit geradliniger Handlung bevorzugt, muss sich auf die ausführliche Erzählweise einlassen. Wer dagegen gerne tief in eine Geschichte eintaucht, viele Charaktere kennenlernt und Freude an Details und unterschiedlichen Schauplätzen hat, bekommt hier sehr viel zu lesen. Ein umfangreicher und vielschichtiger Roman, für den man sich Zeit nehmen sollte.</p>
+        <a href="https://www.amazon.de/portal/customer-reviews/srp/-/R3R2B0QFTMX0R5/ref=cm_cr_dp_d_rvw_ttl?_encoding=UTF8&ie=UTF8" target="_blank" rel="noopener" class="weiter-btn">Auf Amazon ansehen →</a>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <h3>Toll</h3>
+        <p class="review-meta">Bettina Reitz · Bewertet in Deutschland am 28. August 2026 · Taschenbuch</p>
+        <p class="review-text">Ein Buch das man nicht mal eben so liest, man geniesst es und gerät in einen Pool aus Liebe, Kriminalität und vielen Wendungen auf mehreren Ebenen. Die handelnden Personen sind sehr authentisch und man hat Bilder im Kopf beim Lesen. Der Schreibstil ist überzeugend und vereinnehmend. Über den Inhalt verrat ich nichts, einen Einblick gibt der Klappentext. Ich kann das Buch nur empfehlen.</p>
+        <a href="https://www.amazon.de/portal/customer-reviews/srp/-/R3UEEGN1SOQ5LO/ref=cm_cr_dp_d_rvw_ttl?_encoding=UTF8&ie=UTF8" target="_blank" rel="noopener" class="weiter-btn">Auf Amazon ansehen →</a>
+      </div>
+
+    </div>
   </div>
 
-  <a href="roman-deu-detail.html" class="back-btn">← Zum Buch</a>
+  <div class="buch-abschnitt">
+    <div class="buch-kopf">
+      <img src="PAK-DEU-Cover.jpg" alt="Buchcover Pakistan – Ein Reisebericht 1993">
+      <div>
+        <h2>Pakistan – Ein Reisebericht 1993</h2>
+        <a href="pakistan-deu.html" class="weiter-btn">Zum Buch →</a>
+      </div>
+    </div>
+
+    <div class="review-liste">
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <h3>Absolute Empfehlung!</h3>
+        <p class="review-meta">Stefan Röser · Bewertet in Deutschland am 31. Juli 2026 · Gebundenes Buch</p>
+        <p class="review-text">Heribert Langes Reisebericht hebt sich wohltuend von den üblichen Reiseführern oder dramatisierten Abenteuerromanen ab.</p>
+        <p class="review-text">Das Buch nimmt einen mit auf eine Reise ins Pakistan (und China) des Jahres 1993 – ehrlich, nahbar und ganz ohne verklärte Touristenbrille.</p>
+        <p class="review-text">Besonders fasziniert hat mich die Mischung aus spontaner Entschlossenheit und den ungefilterten Eindrücken vor Ort. Wo andere Pläne platzen oder vor den Herausforderungen zurückschrecken, entstehen hier persönliche Begegnungen mit Menschen im Spannungsfeld zwischen Tradition und Umbruch. Man spürt auf jeder Seite, wie tief diese Erlebnisse den Autor geprägt haben.</p>
+        <p class="review-text">Ein lesenswertes Buch für alle, die echte Geschichten schätzen und Freude daran haben, fremde Kulturen durch die Augen eines aufmerksamen, reflektierten Beobachters kennenzulernen. Absolute Empfehlung!</p>
+        <a href="https://www.amazon.de/portal/customer-reviews/srp/-/ROF1NN362KKC3/ref=cm_cr_dp_d_rvw_ttl?_encoding=UTF8&ie=UTF8" target="_blank" rel="noopener" class="weiter-btn">Auf Amazon ansehen →</a>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <h3>Pakistan, weit mehr als ein Reisebericht</h3>
+        <p class="review-meta">Pepa · Bewertet in Deutschland am 10. April 2026 · Gebundenes Buch</p>
+        <p class="review-text">Der Reisebericht ist ein wertvolles Dokument für alle, die verstehen wollen, was Pakistan im Kern ausmacht. Er schafft es, eine Brücke zwischen dem Fremden und dem Vertrauten zu schlagen, ohne dabei in Kitsch abzugleiten. Eine absolute Empfehlung für Entdecker, die nach dem echten Funken in der Reiseliteratur suchen.</p>
+        <p class="review-text">Hier schreibt jemand, der keine „perfekte Kopie“ von Reiseerlebnissen abliefert, sondern echte, unverfälschte Eindrücke teilt. Jede Zeile atmet den Geist des Aufbruchs und der ehrlichen Neugier. Der Schreibstil wirkt wie eine ordnende Resonanz auf das Chaos und die Schönheit, die Pakistan gleichzeitig ausmachen. Heribert Lange beschreibt die Gastfreundschaft und die menschliche Wärme in Pakistan mit einer Intensität, die das Land greifbar macht.</p>
+        <a href="https://www.amazon.de/portal/customer-reviews/srp/-/R1JSBTYXJHY0YA/ref=cm_cr_dp_d_rvw_ttl?_encoding=UTF8&ie=UTF8" target="_blank" rel="noopener" class="weiter-btn">Auf Amazon ansehen →</a>
+      </div>
+
+    </div>
+  </div>
+
   <a href="lesetipps.html" class="back-btn">← Zu den Lesetipps</a>
   <a href="home.html" class="back-btn">⌂ Zur Hauptseite</a>
 </div>
