@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta property="og:title" content="Leserstimmen – Wie meine Bücher rezensiert werden · Heribert Lange" />
+  <meta property="og:description" content="Was Leserinnen und Leser über 'Ein letzter Cà phê' schreiben, in ihren eigenen Worten." />
+  <meta property="og:image" content="https://www.heribert-berlin.de/images/og-lesetipps.jpg" />
+  <meta property="og:url" content="https://www.heribert-berlin.de/leserstimmen.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.heribert-berlin.de/images/og-lesetipps.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Heribert Lange" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heribert Lange – Leserstimmen</title>
+  <style>
+    :root {
+      --bg: #423624;
+      --card: #4b4134;
+      --text: #e8dcc8;
+      --text-muted: #a89880;
+      --accent: #c8a96e;
+      --header-bg: #3a2f18;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { background: var(--header-bg); color: var(--accent); padding: 40px 20px; text-align: center; border-bottom: 1px solid #3a3020; letter-spacing: 2px; }
+    header h1 { font-size: 2.2rem; font-weight: normal; }
+    header p { color: var(--text-muted); margin-top: 8px; font-size: 0.95rem; letter-spacing: 3px; }
+    .lang-buttons { position: fixed; right: 18px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 16px; z-index: 100; }
+    .lang-btn { width: 56px; height: 56px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid rgba(255,255,255,0.15); box-shadow: 0 3px 12px rgba(0,0,0,0.5); transition: transform 0.2s, border-color 0.2s; text-decoration: none; display: block; position: relative; }
+    .lang-btn:hover { transform: scale(1.08); border-color: var(--accent); }
+    .lang-label { font-size: 0.72rem; letter-spacing: 1px; color: var(--accent); font-family: Georgia, serif; line-height: 1; }
+    .lang-wrap { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .container { padding: 40px 100px 40px 20px; max-width: 1100px; margin: 0 auto; }
+
+    .intro-card { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; margin-bottom: 32px; display: flex; gap: 26px; align-items: center; }
+    .intro-card img { width: 100px; flex-shrink: 0; border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
+    .intro-card p { line-height: 1.9; }
+    .intro-card a { color: var(--accent); }
+
+    .review-liste { display: flex; flex-direction: column; gap: 24px; }
+    .review-card { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #3a3020; }
+    .review-stars { color: var(--accent); font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 8px; }
+    .review-card h2 { color: var(--accent); font-size: 1.25rem; font-weight: normal; font-style: italic; letter-spacing: 0.5px; margin-bottom: 8px; line-height: 1.4; }
+    .review-meta { color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 18px; text-transform: uppercase; }
+    .review-meta .verified { color: var(--accent); }
+    .review-card p.review-text { line-height: 1.9; margin-bottom: 18px; }
+    .weiter-btn { display: inline-block; padding: 9px 20px; border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); text-decoration: none; font-size: 0.88rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; }
+    .weiter-btn:hover { background: var(--accent); color: var(--header-bg); }
+
+    .back-btn { display: inline-block; margin-top: 32px; margin-right: 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s; }
+    .back-btn:hover { color: var(--accent); }
+
+    @media (max-width: 700px) {
+      .container { padding: 24px 16px; }
+      .lang-buttons { position: static; transform: none; flex-direction: row; justify-content: center; padding: 14px 0 0; }
+      .intro-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Leserstimmen</h1>
+  <p>Wie meine Bücher rezensiert werden</p>
+</header>
+
+<div class="lang-buttons">
+  <div class="lang-wrap">
+    <a href="home.html" class="lang-btn" title="Home" style="background:var(--card,#222);display:flex;align-items:center;justify-content:center;">
+      <svg viewBox="0 0 56 56" width="42" height="42" xmlns="http://www.w3.org/2000/svg">
+        <path d="M28 10 L50 30 H44 V48 H12 V30 H6 Z" fill="var(--accent)"/>
+        <rect x="23" y="34" width="10" height="14" rx="1" fill="var(--card,#222)"/>
+      </svg>
+    </a>
+    <span class="lang-label">Home</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="intro-card">
+    <img src="ELC-DEU-Cover.jpg" alt="Buchcover Ein letzter Cà phê">
+    <p>Was Leserinnen und Leser über <em>„Ein letzter Cà phê“</em> schreiben, unverändert und in ihren eigenen Worten. Rezensionen wie sie bei Amazon.de erschienen sind.</p>
+  </div>
+
+  <div class="review-liste">
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <h2>Ein umfangreicher und vielschichtiger Roman, für den man sich Zeit nehmen sollte.</h2>
+      <p class="review-meta">Frau A. · Bewertet in Deutschland am 29. August 2026 · Kindle · <span class="verified">Verifizierter Kauf</span></p>
+      <p class="review-text">„Ein letzter Cà phê“ ist kein Buch, das man mal eben zwischendurch liest. Heribert Lange erzählt ausführlich und mit viel Liebe zum Detail. Er nimmt seine Leser mit an unterschiedliche Orte, stellt zahlreiche Charaktere mit ihren Lebensgeschichten vor und lässt daraus nach und nach verschiedene Handlungsstränge entstehen. Besonders die Schauplätze werden so detailliert beschrieben, dass man beim Lesen tatsächlich das Gefühl bekommt, mit den Figuren unterwegs zu sein. Beziehungen und persönliche Schicksale treffen dabei auf kriminalistische Elemente und sorgen für eine Geschichte auf vielen verschiedenen Ebenen. Wer schnelle Geschichten mit geradliniger Handlung bevorzugt, muss sich auf die ausführliche Erzählweise einlassen. Wer dagegen gerne tief in eine Geschichte eintaucht, viele Charaktere kennenlernt und Freude an Details und unterschiedlichen Schauplätzen hat, bekommt hier sehr viel zu lesen. Ein umfangreicher und vielschichtiger Roman, für den man sich Zeit nehmen sollte.</p>
+      <a href="https://www.amazon.de/portal/customer-reviews/srp/-/R3R2B0QFTMX0R5/ref=cm_cr_dp_d_rvw_ttl?_encoding=UTF8&ie=UTF8" target="_blank" rel="noopener" class="weiter-btn">Auf Amazon ansehen →</a>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <h2>Toll</h2>
+      <p class="review-meta">Bettina Reitz · Bewertet in Deutschland am 28. August 2026 · Taschenbuch</p>
+      <p class="review-text">Ein Buch das man nicht mal eben so liest, man geniesst es und gerät in einen Pool aus Liebe, Kriminalität und vielen Wendungen auf mehreren Ebenen. Die handelnden Personen sind sehr authentisch und man hat Bilder im Kopf beim Lesen. Der Schreibstil ist überzeugend und vereinnehmend. Über den Inhalt verrat ich nichts, einen Einblick gibt der Klappentext. Ich kann das Buch nur empfehlen.</p>
+      <a href="https://www.amazon.de/portal/customer-reviews/srp/-/R3UEEGN1SOQ5LO/ref=cm_cr_dp_d_rvw_ttl?_encoding=UTF8&ie=UTF8" target="_blank" rel="noopener" class="weiter-btn">Auf Amazon ansehen →</a>
+    </div>
+
+  </div>
+
+  <a href="roman-deu-detail.html" class="back-btn">← Zum Buch</a>
+  <a href="lesetipps.html" class="back-btn">← Zu den Lesetipps</a>
+  <a href="home.html" class="back-btn">⌂ Zur Hauptseite</a>
+</div>
+
+<footer style="border-top: 1px solid #3a3020; padding: 20px; text-align: center; margin-top: 32px;">
+  <a href="datenschutz.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;">Datenschutz</a>
+</footer>
+</body>
+</html>
