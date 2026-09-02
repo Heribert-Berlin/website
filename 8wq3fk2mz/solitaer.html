@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <!-- Solitär · Version 2.1 · Stand 19.08.2026 · Fassung für das Rundbrief-Archiv (Langzeichen, Links mit ../)
      2.1: Die vier Ablagen haben feste Farben in der Reihenfolge Kreuz, Pik, Herz, Karo.
-          Punkteabzuege werden als Schuld gemerkt, damit sich an der Nullgrenze keine Punkte erzeugen lassen. -->
+          Punkteabzuege werden als Schuld gemerkt, damit sich an der Nullgrenze keine Punkte erzeugen lassen.
+     2.2: Neue Partien starten mit "Ziehen: 1"; der Umschalter bleibt. -->
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="version" content="Solitaer 2.1 (2026-08-19)">
+  <meta name="version" content="Solitaer 2.2 (2026-09-02)">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Solitär · Heribert Lange</title>
   <meta name="robots" content="noindex">
@@ -328,7 +329,7 @@
       <button class="btn" id="btnUndo">Zurück</button>
       <button class="btn" id="btnHint">Tipp</button>
       <button class="btn" id="btnAuto">Auto</button>
-      <button class="btn" id="btnDraw">Ziehen: 3</button>
+      <button class="btn" id="btnDraw">Ziehen: 1</button>
       <button class="btn" id="btnSound">🔊 Ton</button>
       <button class="btn" id="btnGuide">Anleitung</button>
     </div>
@@ -473,7 +474,7 @@ function newDeck(){
 }
 
 function newGame(keepDraw){
-  const drawN = keepDraw && S ? S.draw : 3;
+  const drawN = keepDraw && S ? S.draw : 1;      // Standard beim ersten Start: eine Karte ziehen
   const deck = newDeck();
   S = {stock:[],waste:[],foundations:[[],[],[],[]],tableau:[[],[],[],[],[],[],[]], debt:0,
        draw:drawN, moves:0, score:0, started:false};
@@ -499,7 +500,7 @@ function load(){
     const o = JSON.parse(raw);
     if(!o||!o.S||!o.S.tableau) return false;
     S=o.S; seconds=o.seconds||0;
-    if(typeof S.draw!=="number") S.draw=3;
+    if(typeof S.draw!=="number") S.draw=1;
     if(typeof S.debt!=="number") S.debt=0;
     // Ältere Spielstände haben die Ablagen in beliebiger Reihenfolge, hier auf die feste Farbe rücken
     const sortiert=[[],[],[],[]];
@@ -637,7 +638,7 @@ function render(){
 
 function updateButtons(){
   const t=I18N[lang];
-  if(!S){ document.getElementById("btnDraw").textContent = t.draw+": 3"; return; }
+  if(!S){ document.getElementById("btnDraw").textContent = t.draw+": 1"; return; }
   document.getElementById("btnUndo").disabled = history.length===0;
   document.getElementById("btnDraw").textContent = t.draw+": "+S.draw;
   document.getElementById("moves").textContent = S.moves;
