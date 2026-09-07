@@ -13,8 +13,8 @@ from pathlib import Path
 
 BASE = "https://www.heribert-berlin.de/"
 LANGS = {"eng": "en", "chi": "zh", "deu": "de"}
-# Weiterleitungsseite und Google-Bestaetigungsdatei gehoeren nicht in die Sitemap
-SKIP = {"index.html"}
+# home.html ist nur noch ein Alias mit canonical auf /, die Startseite ist index.html
+SKIP = {"home.html"}
 
 root = Path(__file__).parent
 files = subprocess.run(["git", "ls-files", "*.html"], cwd=root,
@@ -29,13 +29,16 @@ for f in files:
 
 groups = defaultdict(dict)
 for f in pages:
+    if f == "index.html":          # Startseite laeuft unter / und gehoert zur Gruppe home
+        groups["home"]["de"] = ""
+        continue
     parts = f[:-5].split("-")
     lang = next((LANGS[p] for p in parts if p in LANGS), "de")
     key = "-".join(p for p in parts if p not in LANGS)
     groups[key][lang] = f
 
 def lastmod(f):
-    return subprocess.run(["git", "log", "-1", "--format=%ad", "--date=short", "--", f],
+    return subprocess.run(["git", "log", "-1", "--format=%ad", "--date=short", "--", f or "index.html"],
                           cwd=root, capture_output=True, text=True, check=True).stdout.strip()
 
 out = ['<?xml version="1.0" encoding="UTF-8"?>',

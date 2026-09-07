@@ -277,7 +277,7 @@
     </svg></span></button>
     <button data-lang="zh" title="&#32321;&#39636;&#20013;&#25991;"><span class="fl fl-zh"><span class="st">&#9733;</span><span class="st2"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span></span></button>
   </span>
-  <a href="../home.html" class="lang-home" id="t-langhome" title="Home">
+  <a href="/" class="lang-home" id="t-langhome" title="Home">
     <svg viewBox="0 0 56 56" width="38" height="38" xmlns="http://www.w3.org/2000/svg">
       <path d="M28 10 L50 30 H44 V48 H12 V30 H6 Z" fill="var(--accent)"/>
       <rect x="23" y="34" width="10" height="14" rx="1" fill="var(--header-bg)"/>
@@ -607,7 +607,7 @@ const I18N={
       mode:"Modus", mode1:"Allein", mode2:"Zu zweit", p1:"Spieler 1", p2:"Spieler 2",
       turn:"{name} ist dran", wins:"{name} gewinnt!", tie:"Unentschieden!",
       renamePrompt:"Wie heißt du?", platform:"⌂ Spielezimmer",
-      back:"← Startseite", home:"../home.html",
+      back:"← Startseite", home:"/",
       guideTitle:"So spielst du Memory", close:"Schließen", speak:"▶ Vorlesen", stopSpeak:"■ Stopp",
       guide:["Ziel: Finde alle Paare. Jedes Bauwerk gibt es genau zweimal.",
              "Die Karten liegen dicht übereinander, wie hingeworfen. Du kannst jede Karte anklicken, auch eine halb verdeckte: Sie schiebt sich dann nach vorne.",
@@ -1179,7 +1179,7 @@ initGuard();
    Liest nur die aktive Sprache aus, greift nicht in die Spiel-Logik ein. */
 (function(){
   var T = {
-    de:{home:"../home.html", label:"Startseite",
+    de:{home:"/", label:"Startseite",
         note:"Einbahnstra\u00dfe: Von der Homepage f\u00fchrt kein Weg hierher zur\u00fcck. Am besten als Lesezeichen speichern."},
     en:{home:"../home-eng.html", label:"Home",
         note:"A one-way street: there is no way back here from the homepage. Best to bookmark this page."},
