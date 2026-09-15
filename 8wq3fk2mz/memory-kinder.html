@@ -120,7 +120,7 @@
     color:var(--accent); text-shadow:0 2px 10px rgba(255,255,255,0.8), 0 0 20px rgba(90,125,60,0.4);
     opacity:0; pointer-events:none; z-index:60; letter-spacing:1px; text-align:center; white-space:nowrap;
   }
-  .namepop.show{animation:namepop 1.7s ease forwards;}
+  .namepop.show{animation:namepop 2.9s ease forwards;}
   @keyframes namepop{
     0%{opacity:0; transform:translate(-50%,10px) scale(.7);}
     18%{opacity:1; transform:translate(-50%,0) scale(1.06);}
@@ -251,7 +251,7 @@
     </svg></span></button>
     <button data-lang="zh" title="&#32321;&#39636;&#20013;&#25991;"><span class="fl fl-zh"><span class="st">&#9733;</span><span class="st2"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span></span></button>
   </span>
-  <a href="../home.html" class="lang-home" id="t-langhome" title="Home">
+  <a href="/" class="lang-home" id="t-langhome" title="Home">
     <svg viewBox="0 0 56 56" width="38" height="38" xmlns="http://www.w3.org/2000/svg">
       <path d="M28 10 L50 30 H44 V48 H12 V30 H6 Z" fill="var(--accent)"/>
       <rect x="23" y="34" width="10" height="14" rx="1" fill="var(--header-bg)"/>
@@ -381,7 +381,7 @@ const I18N = {
       mode:"Modus", mode1:"Allein", mode2:"Zu zweit", p1:"Spieler 1", p2:"Spieler 2",
       turn:"{name} ist dran", wins:"{name} gewinnt!", tie:"Unentschieden!",
       renamePrompt:"Wie heißt du?", platform:"⌂ Spielezimmer",
-      back:"← Startseite", home:"../home.html",
+      back:"← Startseite", home:"/",
       guideTitle:"So spielst du", close:"Schließen", speak:"▶ Vorlesen", stopSpeak:"■ Stopp",
       sizes:{s6:"6 Paare", s8:"8 Paare", s12:"12 Paare", s16:"16 Paare", s20:"Alle 20"},
       guide:["Finde die Tier-Paare. Jedes Tier gibt es zweimal: einmal als echtes Foto und einmal als lustige Waldemar-Zeichnung.",
@@ -565,10 +565,10 @@ function onCard(c){
       pairCount++; $("pairs").textContent = pairCount + " / " + (cards.length/2);
       if(mode === 2){ scores[current]++; updateDuel(); }
       beep(784, 0.09); setTimeout(()=>beep(1046, 0.12), 95);
-      namePop(NAMES[sym] ? NAMES[sym][lang] : "");
+      namePop(NAMES[sym] ? NAMES[sym][lang] : "", sym);
       busy = false;
-      /* kleine Pause, damit man das letzte Tier und seinen Namen noch sieht */
-      if(cards.every(x=>x.removed)) setTimeout(win, 1800);
+      /* kleine Pause, damit man das letzte Tier und seinen Namen noch sieht und hoert */
+      if(cards.every(x=>x.removed)) setTimeout(win, 3100);
     }, 480);
   } else {
     a.el.classList.add("wrong"); b.el.classList.add("wrong");
@@ -649,11 +649,22 @@ function beep(freq, dur){
 
 /* ---------- Name-Einblendung + Toast ---------- */
 let popId = null;
-function namePop(msg){
+/* Tiernamen-Clips (aus Simons Sammelaufnahme an den Sprechpausen geschnitten).
+   Fehlt eine Datei, bleibt es einfach still. */
+let nameAudio = null;
+function speakName(sym){
+  if(!soundOn || !sym) return;
+  if(!nameAudio) nameAudio = new Audio();
+  nameAudio.src = "namen/" + sym + "-" + lang + ".mp3";
+  const p = nameAudio.play();
+  if(p && p.catch) p.catch(()=>{});
+}
+function namePop(msg, sym){
   if(!msg) return;
   const p = $("namepop");
   p.textContent = msg; p.classList.remove("show"); void p.offsetWidth; p.classList.add("show");
-  clearTimeout(popId); popId = setTimeout(()=>p.classList.remove("show"), 1750);
+  speakName(sym);
+  clearTimeout(popId); popId = setTimeout(()=>p.classList.remove("show"), 2950);
 }
 let toastId = null;
 function toast(msg){
@@ -937,7 +948,7 @@ initGuard();
    Liest nur die aktive Sprache aus, greift nicht in die Spiel-Logik ein. */
 (function(){
   var T = {
-    de:{home:"../home.html", label:"Startseite",
+    de:{home:"/", label:"Startseite",
         note:"Einbahnstra\u00dfe: Von der Homepage f\u00fchrt kein Weg hierher zur\u00fcck. Am besten als Lesezeichen speichern."},
     en:{home:"../home-eng.html", label:"Home",
         note:"A one-way street: there is no way back here from the homepage. Best to bookmark this page."},
