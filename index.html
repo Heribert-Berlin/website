@@ -314,6 +314,39 @@
       transform: translateX(0);
     }
 
+    .card-stretched-link {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .card-sublinks {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .card-sublink {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 12px;
+      border: 1px solid rgba(212,184,122,0.35);
+      border-radius: 14px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .card-sublink:hover { border-color: var(--accent); color: var(--accent); }
+
     .card-border-accent {
       position: absolute;
       top: 0; left: 0;
@@ -539,18 +572,23 @@
     </a>
 
     <!-- Kinderbücher -->
-    <a href="kinderbuch.html" class="card card-3">
+    <div class="card card-3">
+      <a href="kinderbuch.html" class="card-stretched-link" aria-label="Kinderbücher"></a>
       <div class="card-border-accent"></div>
       <div class="neu-badge-green"><span class="blink-star">★</span> Band 01-07 ist erschienen</div>
       <img src="Buchfächer-Kinderbuch.jpg" style="position:absolute;top:16px;right:16px;width:96px;height:96px;object-fit:cover;border-radius:6px;opacity:0.7;pointer-events:none;">
       <span class="card-icon">🦉</span>
       <div class="card-title">Kinderbücher</div>
       <div class="card-desc">Uhu Waldemar und seine Freunde – Abenteuer im Wald für kleine Leser.</div>
+      <div class="card-sublinks">
+        <a href="https://www.youtube.com/@heribertskinderkanal" target="_blank" rel="noopener" class="card-sublink">▶ hier direkt zum YouTube · Heribert's Kinderkanal</a>
+      </div>
       <span class="card-arrow">→</span>
-    </a>
+    </div>
 
     <!-- YouTube -->
-    <a href="youtube-reise-asien.html" class="card card-4">
+    <div class="card card-4">
+      <a href="youtube-reise-asien.html" class="card-stretched-link" aria-label="YouTube"></a>
       <div class="card-border-accent"></div>
       <svg width="96" height="96" viewBox="0 0 96 96" style="position:absolute;top:16px;right:16px;border-radius:6px;opacity:0.9;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
 <defs>
@@ -637,8 +675,12 @@
       <span class="card-icon">▶</span>
       <div class="card-title">YouTube</div>
       <div class="card-desc">Reisedokumentationen und Geschichten in 13 Sprachen für eine internationale Gemeinschaft.</div>
+      <div class="card-sublinks">
+        <a href="https://www.youtube.com/@heri_berlin" target="_blank" rel="noopener" class="card-sublink">▶ hier direkt zum YouTube · Heribert's Hauptkanal</a>
+        <a href="https://www.youtube.com/@HeribertsTransportFever" target="_blank" rel="noopener" class="card-sublink">▶ hier direkt zum YouTube · Heribert's TransportFeverKanal</a>
+      </div>
       <span class="card-arrow">→</span>
-    </a>
+    </div>
 
   </div>
 
