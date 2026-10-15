@@ -302,6 +302,11 @@
       <button class="btn" id="btnMode1">Allein</button>
       <button class="btn" id="btnMode2">Zu zweit</button>
     </div>
+    <div class="group" id="setGroup">
+      <span class="label" id="t-set">Motive</span>
+      <button class="btn" id="btnSetA">A</button>
+      <button class="btn" id="btnSetF">Fahnen</button>
+    </div>
     <div class="group" id="sizeGroup"><span class="label" id="t-size">Feld</span></div>
     <div class="stats">
       <span class="pchip" id="chip0" style="display:none;"><button class="pname" id="pname0">Spieler 1</button> <b id="score0">0</b></span>
@@ -598,6 +603,37 @@ const NAMES = {
   ulm:           {de:"Ulmer Münster", en:"Ulm Minster", zh:"烏爾姆大教堂"}
 };
 
+/* ====== Zweites Motivset: Länder-Fahnen (Bilder und Namen liegen extern in fahnen/) ====== */
+const FLAG_NAMES = {"afghanistan": {"de": "Afghanistan", "en": "Afghanistan", "zh": "阿富汗"}, "albanien": {"de": "Albanien", "en": "Albania", "zh": "阿爾巴尼亞"}, "andorra": {"de": "Andorra", "en": "Andorra", "zh": "安道爾"}, "armenien": {"de": "Armenien", "en": "Armenia", "zh": "亞美尼亞"}, "aserbaidschan": {"de": "Aserbaidschan", "en": "Azerbaijan", "zh": "亞塞拜然"}, "australien": {"de": "Australien", "en": "Australia", "zh": "澳洲"}, "bahrain": {"de": "Bahrain", "en": "Bahrain", "zh": "巴林"}, "bangladesch": {"de": "Bangladesch", "en": "Bangladesh", "zh": "孟加拉"}, "belarus": {"de": "Belarus", "en": "Belarus", "zh": "白俄羅斯"}, "belgien": {"de": "Belgien", "en": "Belgium", "zh": "比利時"}, "bhutan": {"de": "Bhutan", "en": "Bhutan", "zh": "不丹"}, "bosnien-und-herzegowina": {"de": "Bosnien und Herzegowina", "en": "Bosnia and Herzegovina", "zh": "波士尼亞與赫塞哥維納"}, "brunei": {"de": "Brunei", "en": "Brunei", "zh": "汶萊"}, "bulgarien": {"de": "Bulgarien", "en": "Bulgaria", "zh": "保加利亞"}, "china": {"de": "China", "en": "China", "zh": "中國"}, "cookinseln": {"de": "Cookinseln", "en": "Cook Islands", "zh": "庫克群島"}, "deutschland": {"de": "Deutschland", "en": "Germany", "zh": "德國"}, "daenemark": {"de": "Dänemark", "en": "Denmark", "zh": "丹麥"}, "england": {"de": "England", "en": "England", "zh": "英格蘭"}, "estland": {"de": "Estland", "en": "Estonia", "zh": "愛沙尼亞"}, "fidschi": {"de": "Fidschi", "en": "Fiji", "zh": "斐濟"}, "finnland": {"de": "Finnland", "en": "Finland", "zh": "芬蘭"}, "frankreich": {"de": "Frankreich", "en": "France", "zh": "法國"}, "faeroeer": {"de": "Färöer", "en": "Faroe Islands", "zh": "法羅群島"}, "foederierte-staaten-von-mikronesien": {"de": "Mikronesien", "en": "Micronesia", "zh": "密克羅尼西亞"}, "georgien": {"de": "Georgien", "en": "Georgia", "zh": "喬治亞"}, "griechenland": {"de": "Griechenland", "en": "Greece", "zh": "希臘"}, "groenland": {"de": "Grönland", "en": "Greenland", "zh": "格陵蘭"}, "hongkong": {"de": "Hongkong", "en": "Hong Kong", "zh": "香港"}, "indien": {"de": "Indien", "en": "India", "zh": "印度"}, "indonesien": {"de": "Indonesien", "en": "Indonesia", "zh": "印尼"}, "irak": {"de": "Irak", "en": "Iraq", "zh": "伊拉克"}, "iran": {"de": "Iran", "en": "Iran", "zh": "伊朗"}, "irland": {"de": "Irland", "en": "Ireland", "zh": "愛爾蘭"}, "island": {"de": "Island", "en": "Iceland", "zh": "冰島"}, "israel": {"de": "Israel", "en": "Israel", "zh": "以色列"}, "italien": {"de": "Italien", "en": "Italy", "zh": "義大利"}, "japan": {"de": "Japan", "en": "Japan", "zh": "日本"}, "jemen": {"de": "Jemen", "en": "Yemen", "zh": "葉門"}, "jordanien": {"de": "Jordanien", "en": "Jordan", "zh": "約旦"}, "kambodscha": {"de": "Kambodscha", "en": "Cambodia", "zh": "柬埔寨"}, "kanada": {"de": "Kanada", "en": "Canada", "zh": "加拿大"}, "kasachstan": {"de": "Kasachstan", "en": "Kazakhstan", "zh": "哈薩克"}, "katar": {"de": "Katar", "en": "Qatar", "zh": "卡達"}, "kirgisistan": {"de": "Kirgisistan", "en": "Kyrgyzstan", "zh": "吉爾吉斯"}, "kiribati": {"de": "Kiribati", "en": "Kiribati", "zh": "吉里巴斯"}, "kosovo": {"de": "Kosovo", "en": "Kosovo", "zh": "科索沃"}, "kroatien": {"de": "Kroatien", "en": "Croatia", "zh": "克羅埃西亞"}, "kuwait": {"de": "Kuwait", "en": "Kuwait", "zh": "科威特"}, "laos": {"de": "Laos", "en": "Laos", "zh": "寮國"}, "lettland": {"de": "Lettland", "en": "Latvia", "zh": "拉脫維亞"}, "libanon": {"de": "Libanon", "en": "Lebanon", "zh": "黎巴嫩"}, "liechtenstein": {"de": "Liechtenstein", "en": "Liechtenstein", "zh": "列支敦斯登"}, "litauen": {"de": "Litauen", "en": "Lithuania", "zh": "立陶宛"}, "luxemburg": {"de": "Luxemburg", "en": "Luxembourg", "zh": "盧森堡"}, "macau": {"de": "Macau", "en": "Macau", "zh": "澳門"}, "malaysia": {"de": "Malaysia", "en": "Malaysia", "zh": "馬來西亞"}, "malediven": {"de": "Malediven", "en": "Maldives", "zh": "馬爾地夫"}, "malta": {"de": "Malta", "en": "Malta", "zh": "馬爾他"}, "marshallinseln": {"de": "Marshallinseln", "en": "Marshall Islands", "zh": "馬紹爾群島"}, "mexiko": {"de": "Mexiko", "en": "Mexico", "zh": "墨西哥"}, "moldau": {"de": "Moldau", "en": "Moldova", "zh": "摩爾多瓦"}, "monaco": {"de": "Monaco", "en": "Monaco", "zh": "摩納哥"}, "mongolei": {"de": "Mongolei", "en": "Mongolia", "zh": "蒙古"}, "montenegro": {"de": "Montenegro", "en": "Montenegro", "zh": "蒙特內哥羅"}, "myanmar": {"de": "Myanmar", "en": "Myanmar", "zh": "緬甸"}, "nauru": {"de": "Nauru", "en": "Nauru", "zh": "諾魯"}, "nepal": {"de": "Nepal", "en": "Nepal", "zh": "尼泊爾"}, "neuseeland": {"de": "Neuseeland", "en": "New Zealand", "zh": "紐西蘭"}, "niederlande": {"de": "Niederlande", "en": "Netherlands", "zh": "荷蘭"}, "nordirland": {"de": "Nordirland", "en": "Northern Ireland", "zh": "北愛爾蘭"}, "nordkorea": {"de": "Nordkorea", "en": "North Korea", "zh": "北韓"}, "nordmazedonien": {"de": "Nordmazedonien", "en": "North Macedonia", "zh": "北馬其頓"}, "norwegen": {"de": "Norwegen", "en": "Norway", "zh": "挪威"}, "oman": {"de": "Oman", "en": "Oman", "zh": "阿曼"}, "osttimor": {"de": "Osttimor", "en": "East Timor", "zh": "東帝汶"}, "pakistan": {"de": "Pakistan", "en": "Pakistan", "zh": "巴基斯坦"}, "palau": {"de": "Palau", "en": "Palau", "zh": "帛琉"}, "polen": {"de": "Polen", "en": "Poland", "zh": "波蘭"}, "portugal": {"de": "Portugal", "en": "Portugal", "zh": "葡萄牙"}, "rumaenien": {"de": "Rumänien", "en": "Romania", "zh": "羅馬尼亞"}, "russland": {"de": "Russland", "en": "Russia", "zh": "俄羅斯"}, "salomonen": {"de": "Salomonen", "en": "Solomon Islands", "zh": "索羅門群島"}, "samoa": {"de": "Samoa", "en": "Samoa", "zh": "薩摩亞"}, "san-marino": {"de": "San Marino", "en": "San Marino", "zh": "聖馬利諾"}, "saudi-arabien": {"de": "Saudi-Arabien", "en": "Saudi Arabia", "zh": "沙烏地阿拉伯"}, "schottland": {"de": "Schottland", "en": "Scotland", "zh": "蘇格蘭"}, "schweden": {"de": "Schweden", "en": "Sweden", "zh": "瑞典"}, "schweiz": {"de": "Schweiz", "en": "Switzerland", "zh": "瑞士"}, "serbien": {"de": "Serbien", "en": "Serbia", "zh": "塞爾維亞"}, "singapur": {"de": "Singapur", "en": "Singapore", "zh": "新加坡"}, "slowakei": {"de": "Slowakei", "en": "Slovakia", "zh": "斯洛伐克"}, "slowenien": {"de": "Slowenien", "en": "Slovenia", "zh": "斯洛維尼亞"}, "spanien": {"de": "Spanien", "en": "Spain", "zh": "西班牙"}, "sri-lanka": {"de": "Sri Lanka", "en": "Sri Lanka", "zh": "斯里蘭卡"}, "syrien": {"de": "Syrien", "en": "Syria", "zh": "敘利亞"}, "suedkorea": {"de": "Südkorea", "en": "South Korea", "zh": "南韓"}, "tadschikistan": {"de": "Tadschikistan", "en": "Tajikistan", "zh": "塔吉克"}, "taiwan": {"de": "Taiwan", "en": "Taiwan", "zh": "台灣"}, "thailand": {"de": "Thailand", "en": "Thailand", "zh": "泰國"}, "tonga": {"de": "Tonga", "en": "Tonga", "zh": "東加"}, "tschechien": {"de": "Tschechien", "en": "Czech Republic", "zh": "捷克"}, "tuvalu": {"de": "Tuvalu", "en": "Tuvalu", "zh": "吐瓦魯"}, "tuerkei": {"de": "Türkei", "en": "Turkey", "zh": "土耳其"}, "usa": {"de": "USA", "en": "United States", "zh": "美國"}, "ukraine": {"de": "Ukraine", "en": "Ukraine", "zh": "烏克蘭"}, "ungarn": {"de": "Ungarn", "en": "Hungary", "zh": "匈牙利"}, "usbekistan": {"de": "Usbekistan", "en": "Uzbekistan", "zh": "烏茲別克"}, "vanuatu": {"de": "Vanuatu", "en": "Vanuatu", "zh": "萬那杜"}, "vatikan": {"de": "Vatikan", "en": "Vatican City", "zh": "梵蒂岡"}, "vereinigte-arabische-emirate": {"de": "Vereinigte Arabische Emirate", "en": "United Arab Emirates", "zh": "阿拉伯聯合大公國"}, "vietnam": {"de": "Vietnam", "en": "Vietnam", "zh": "越南"}, "wales": {"de": "Wales", "en": "Wales", "zh": "威爾斯"}, "zypern": {"de": "Zypern", "en": "Cyprus", "zh": "賽普勒斯"}, "aegypten": {"de": "Ägypten", "en": "Egypt", "zh": "埃及"}, "oesterreich": {"de": "Österreich", "en": "Austria", "zh": "奧地利"}};
+const FLAG_IDS = Object.keys(FLAG_NAMES);
+const SET_I18N = {"de": {"set": "Motive", "a": "Bauwerke", "f": "Fahnen", "sizeF": null, "allF": "20 Paare"}, "en": {"set": "Pictures", "a": "Landmarks", "f": "Flags", "sizeF": null, "allF": "20 pairs"}, "zh": {"set": "圖案", "a": "建築", "f": "國旗", "sizeF": null, "allF": "20 對"}};
+let motifSet = "a";
+try{ if(localStorage.getItem("mem_set") === "fahnen") motifSet = "fahnen"; }catch(e){}
+function isFlags(){ return motifSet === "fahnen"; }
+function nameOf(sym){ const n = (isFlags() ? FLAG_NAMES : NAMES)[sym]; return n ? n[lang] : ""; }
+function recKey(){ return (isFlags() ? "f_" : "") + size; }
+function applySetLang(){
+  const s = SET_I18N[lang];
+  $("t-set").textContent = s.set; $("btnSetA").textContent = s.a; $("btnSetF").textContent = s.f;
+  $("btnSetA").classList.toggle("active", !isFlags()); $("btnSetF").classList.toggle("active", isFlags());
+  if(isFlags() && s.sizeF) $("t-size").textContent = s.sizeF;
+  const g = $("t-gname");
+  if(g){ if(isFlags()) g.textContent = s.f; else if(I18N[lang].gname) g.textContent = I18N[lang].gname; }
+}
+function setMotifSet(m){
+  if(m === motifSet) return;
+  motifSet = m; try{ localStorage.setItem("mem_set", m); }catch(e){}
+  applyLang(); newGame();
+}
+const motifKeys = () => isFlags() ? FLAG_IDS : Object.keys(IMG);
+/* Bei den Fahnen wird der Ländername vorgelesen, wenn der Ton an ist. */
+let flagAudio = null;
+function speakFlag(sym){
+  if(!soundOn || !isFlags()) return;
+  if(!flagAudio) flagAudio = new Audio();
+  flagAudio.src = "fahnen/namen/" + sym + "-" + lang + ".mp3";
+  const p = flagAudio.play(); if(p && p.catch) p.catch(()=>{});
+}
 const I18N={
   de:{gname:"Bauwerke", title:"Memory", neu:"Neues Spiel", sound:"Ton", guideBtn:"Anleitung",
       size:"Feld", sizes:{klein:"Klein", mittel:"Mittel", gross:"Groß", riesig:"Riesig", wahnsinn:"Wahnsinn"},
@@ -615,6 +651,7 @@ const I18N={
              "Passen sie nicht, dreht sich beides wieder um. Merk dir, was wo lag.",
              "Das ist der Kniff: Die Karten liegen nicht im sauberen Raster. Du musst dir merken, welche Karte unter welcher hervorschaut.",
              "Oben wählst du die Größe des Feldes. Deine Bestzeit wird für jede Größe einzeln gespeichert.",
+             "Oben bei „Motive“ wählst du, womit du spielst: „Bauwerke“ zeigt die Bleistiftzeichnungen, „Fahnen“ bringt 116 Länderfahnen ins Spiel, und bei jedem Paar hörst du den Namen des Landes. Bestzeiten werden für beide Motivsets getrennt geführt.",
              "Zu zweit: Stell oben auf „Zu zweit“. Ihr wechselt euch ab, wer ein Paar findet, ist gleich nochmal dran. Ein Klick auf die Namen trägt eure eigenen ein. Gewonnen hat, wer mehr Paare sammelt."],
       parentTitle:"Für Erwachsene",
       guardDesc:"Zeitschutz für Kinder: nach 1 Stunde ein Hinweis, nach 70 Minuten eine Pause, nach 3 Stunden eine 30-Minuten-Sperre. Zum Ausschalten eine Rechenaufgabe lösen.",
@@ -640,6 +677,7 @@ const I18N={
              "If they do not match, both turn back. Remember what was where.",
              "That is the twist: the cards do not sit in a tidy grid. You have to remember which card peeks out from under which.",
              "Choose the board size above. Your best time is stored separately for each size.",
+             "At the top under \"Pictures\" you choose what you play with: \"Landmarks\" shows the pencil drawings, \"Flags\" brings 116 country flags into the game, and with every pair you hear the name of the country. Best times are kept separately for each set.",
              "Two players: switch to \"Two players\" above. You take turns; whoever finds a pair goes again. Click the names to enter your own. Whoever collects more pairs wins."],
       parentTitle:"For grown-ups",
       guardDesc:"Time limit for children: a reminder after 1 hour, a break after 70 minutes, a 30-minute lock after 3 hours. Solve a little sum to switch it off.",
@@ -665,6 +703,7 @@ const I18N={
              "如果不一樣，兩張牌都會翻回去。記住哪張牌在哪裡。",
              "這就是巧妙之處：卡牌不是整齊排列的。你得記住哪張牌是從哪張牌下面露出來的。",
              "在上方選擇棋盤大小。每種大小的最佳時間會分別保存。",
+             "在上方的「圖案」可以選擇要玩什麼：「建築」是鉛筆畫，「國旗」則有 116 面國旗，每配對成功一次就會聽到國名。兩種圖案的最佳紀錄分開保存。",
              "雙人模式：在上方選擇“雙人”。兩人輪流翻牌，找到一對的人可以再翻一次。點擊名字可以填上自己的名字。收集配對更多的人獲勝。"],
       parentTitle:"給家長",
       guardDesc:"兒童時間保護：1 小時後提示，70 分鐘後暫停，3 小時後鎖定 30 分鐘。解一道算術題即可關閉。",
@@ -692,7 +731,7 @@ const LAYOUTS = {
 };
 
 const ORDER = ["klein","mittel","gross","riesig","wahnsinn"];
-function available(){ return ORDER.filter(k => LAYOUTS[k].motifs <= Object.keys(IMG).length); }
+function available(){ return ORDER.filter(k => LAYOUTS[k].motifs <= motifKeys().length); }
 
 /* ---------- Zustand ---------- */
 let size = localStorage.getItem("mem_size") || "gross";
@@ -735,7 +774,7 @@ function shuffle(a){
 
 function deal(){
   const L = LAYOUTS[size];
-  const motifs = shuffle(Object.keys(IMG)).slice(0, L.motifs);
+  const motifs = shuffle(motifKeys().slice()).slice(0, L.motifs);
   const bag = shuffle(motifs.concat(motifs));
   cards = L.pos.map((p,i)=>({id:i, x:p[0], y:p[1], z:p[2], sym:bag[i], removed:false, up:false, el:null}));
 }
@@ -757,7 +796,7 @@ function render(){
     el.innerHTML =
       '<div class="inner">' +
         '<div class="face back"></div>' +
-        '<div class="face front"><img alt="" src="' + IMG[c.sym] + '"></div>' +
+        '<div class="face front"><img alt="" src="' + (isFlags() ? "fahnen/" + c.sym + ".webp" : IMG[c.sym]) + '"></div>' +
       '</div>';
     el.addEventListener("click", ()=>onCard(c));
     board.appendChild(el);
@@ -802,7 +841,7 @@ function onCard(c){
       pairCount++; $("pairs").textContent = pairCount + " / " + (cards.length/2);
       if(mode === 2){ scores[current]++; updateDuel(); }
       beep(880, 0.08); setTimeout(()=>beep(1180, 0.1), 90);
-      toast(NAMES[sym] ? NAMES[sym][lang] : "");
+      toast(nameOf(sym)); speakFlag(sym);
       busy = false;
       /* kleine Pause, damit man das letzte Bauwerk und seinen Namen noch sieht */
       if(cards.every(x=>x.removed)) setTimeout(win, 1800);
@@ -843,16 +882,16 @@ function win(){
   const secs = elapsed();
   $("winTime").textContent = fmt(secs);
   $("winMoves").textContent = moveCount;
-  const old = bestTimes[size];
+  const old = bestTimes[recKey()];
   const better = !old || secs < old;
   if(better){
-    bestTimes[size] = secs;
+    bestTimes[recKey()] = secs;
     try{ localStorage.setItem("mem_best", JSON.stringify(bestTimes)); }catch(e){}
   }
-  const oldM = bestMoves[size];
+  const oldM = bestMoves[recKey()];
   const betterM = !oldM || moveCount < oldM;
   if(betterM){
-    bestMoves[size] = moveCount;
+    bestMoves[recKey()] = moveCount;
     try{ localStorage.setItem("mem_bestmoves", JSON.stringify(bestMoves)); }catch(e){}
   }
   if(better || betterM) showBest();
@@ -870,7 +909,7 @@ function elapsed(){ return Math.floor((Date.now() - t0) / 1000); }
 function fmt(s){ return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0"); }
 function startTimer(){ t0 = Date.now(); timerId = setInterval(()=>{ $("time").textContent = fmt(elapsed()); }, 500); }
 function stopTimer(){ if(timerId){ clearInterval(timerId); timerId = null; } }
-function showBest(){ const b = bestTimes[size]; $("best").textContent = b ? fmt(b) : "–"; const m = bestMoves[size]; $("bestmoves").textContent = m ? m : "–"; }
+function showBest(){ const b = bestTimes[recKey()]; $("best").textContent = b ? fmt(b) : "–"; const m = bestMoves[recKey()]; $("bestmoves").textContent = m ? m : "–"; }
 
 /* ---------- Ton ---------- */
 let actx = null;
@@ -1000,7 +1039,7 @@ function applyLang(){
   $("t-platform").textContent = t.platform;
   { const wp = document.getElementById("t-winPlatform"); if(wp) wp.textContent = t.platform; }
   document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active", b.dataset.lang === lang));
-  buildSizes(); buildGuide(); updateDuel();
+  buildSizes(); buildGuide(); updateDuel(); applySetLang();
   applyGuardLang();
 }
 
@@ -1157,7 +1196,7 @@ $("btnGateCancel").addEventListener("click", gateCancel);
 $("gateInput").addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); gateSubmit(); } });
 $("btnResetBest").addEventListener("click", ()=>{
   if(!confirm(I18N[lang].resetBestConfirm)) return;
-  delete bestTimes[size]; delete bestMoves[size];
+  delete bestTimes[recKey()]; delete bestMoves[recKey()];
   try{ localStorage.setItem("mem_best", JSON.stringify(bestTimes)); }catch(e){}
   try{ localStorage.setItem("mem_bestmoves", JSON.stringify(bestMoves)); }catch(e){}
   showBest();
@@ -1170,6 +1209,8 @@ document.querySelectorAll(".lang button").forEach(b=>{
 window.addEventListener("resize", fitBoard);
 $("guideModal").addEventListener("click", e=>{ if(e.target === $("guideModal")) $("btnGuideClose").click(); });
 
+$("btnSetA").addEventListener("click", ()=>setMotifSet("a"));
+$("btnSetF").addEventListener("click", ()=>setMotifSet("fahnen"));
 applyLang();
 newGame();
 initGuard();
