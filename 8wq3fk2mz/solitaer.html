@@ -6,7 +6,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="version" content="Solitaer 2.2 (2026-09-02)">
+  <meta name="version" content="Solitaer 2.3 (2026-09-20)">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Solitär · Heribert Lange</title>
   <meta name="robots" content="noindex">
@@ -218,7 +218,17 @@
       padding:10px 18px; border-radius:24px; font-size:0.95rem; opacity:0; pointer-events:none; cursor:pointer;
       width:max-content; max-width:min(92vw,520px); text-align:center; line-height:1.35;
       transition:opacity .3s, transform .3s; box-shadow:0 8px 30px rgba(0,0,0,.5);}
-    .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+    .toast.show{opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto;}
+    /* Knopf in der Sackgassen-Meldung: nimmt die verlorenen Zuege auf einen Schlag zurueck */
+    .toast-btn{margin-left:12px; font-family:inherit; font-size:0.9rem; padding:5px 14px;
+      border-radius:16px; border:1px solid var(--accent); background:var(--accent);
+      color:var(--header-bg); cursor:pointer; white-space:nowrap;}
+    .toast-btn:hover{filter:brightness(1.08);}
+    /* Der Zug, der die Partie gekostet hat: blinkt dreimal rot auf */
+    .card.blunder .face{box-shadow:0 0 0 3px #d8695a,0 2px 5px rgba(0,0,0,0.4); animation:blunderPulse .62s ease-in-out 3;}
+    .slot.blunder .placeholder{border-color:#d8695a; box-shadow:0 0 0 3px rgba(216,105,90,0.55); animation:blunderPulse .62s ease-in-out 3;}
+    @keyframes blunderPulse{50%{box-shadow:0 0 0 9px #d8695a,0 2px 5px rgba(0,0,0,0.4);}}
+    @media (prefers-reduced-motion:reduce){ .card.blunder .face,.slot.blunder .placeholder{animation:none;} }
     .toast.blink{animation:toastBlink 1.1s ease-in-out 9;}   /* rund 10 Sekunden blinken, dann ruhig stehen bleiben */
     @keyframes toastBlink{
       0%,100%{opacity:1; border-color:var(--accent); box-shadow:0 8px 30px rgba(0,0,0,.5);}
@@ -385,8 +395,9 @@ const I18N = {
       nomoves:"Keine Züge mehr. Nimm einen Zug zurück oder starte ein neues Spiel.",
       stillwin:"Nichts geht mehr? Doch, zu schaffen ist es noch. Du musst nur richtig kombinieren, notfalls Karten von den Ablagen zurückholen.",
       dead:"Diese Stellung ist verloren, von hier aus geht nichts mehr. Zeit für ein neues Spiel.",
-      deadAgo:"Diese Stellung ist verloren. Zu gewinnen war die Partie noch vor {n} Zügen, so weit bringt dich „Zurück“.",
-      deadAgo1:"Diese Stellung ist verloren. Der letzte Zug hat sie gekostet, ein „Zurück“ holt sie sich wieder.",
+      deadAgo:"Diese Stellung ist verloren. Zu gewinnen war die Partie noch vor {n} Zügen.",
+      deadAgo1:"Diese Stellung ist verloren. Der letzte Zug hat sie gekostet.",
+      rescue:"↩ {n} Züge zurück", rescue1:"↩ Einen Zug zurück",
       deadStart:"Diese Stellung ist verloren. Dieses Blatt war schon beim Austeilen nicht zu gewinnen, da hilft nur ein neues Spiel.",
       guide:["Ziel: Lege alle 52 Karten auf die vier Ablagen oben rechts, je Farbe aufsteigend von Ass bis König.",
              "Im Spielfeld werden Karten absteigend und in abwechselnder Farbe gestapelt (rot auf schwarz, schwarz auf rot).",
@@ -405,8 +416,9 @@ const I18N = {
       nomoves:"No moves left. Undo a move or start a new game.",
       stillwin:"Looks stuck, but this deal can still be won. Combine cleverly, and take cards back off the foundations if you must.",
       dead:"This position is lost, there is no way on from here. Time for a new game.",
-      deadAgo:"This position is lost. The game was still winnable {n} moves ago, that is how far “Undo” takes you.",
-      deadAgo1:"This position is lost. The last move cost you the game, one “Undo” wins it back.",
+      deadAgo:"This position is lost. The game was still winnable {n} moves ago.",
+      deadAgo1:"This position is lost. The last move cost you the game.",
+      rescue:"↩ Go back {n} moves", rescue1:"↩ Go back one move",
       deadStart:"This position is lost. This deal could not be won from the very start, so start a new game.",
       guide:["Goal: move all 52 cards onto the four foundations (top right), each suit ascending from Ace to King.",
              "On the tableau, cards stack in descending order and alternating colour (red on black, black on red).",
@@ -425,8 +437,9 @@ const I18N = {
       nomoves:"沒有可走的牌了，請撤銷一步或開始新遊戲。",
       stillwin:"看似無路可走，其實還有解。只要走對順序，必要時把牌從基礎堆取回。",
       dead:"當前局面已經無法取勝，從這裡再也走不通了。開始新遊戲吧。",
-      deadAgo:"當前局面已經無法取勝。{n} 步之前這局還有解，用「撤銷」可以退回去。",
-      deadAgo1:"當前局面已經無法取勝。就是上一步葬送了這局，撤銷一步就能救回來。",
+      deadAgo:"當前局面已經無法取勝。{n} 步之前這局還有解。",
+      deadAgo1:"當前局面已經無法取勝。就是上一步葬送了這局。",
+      rescue:"↩ 回退 {n} 步", rescue1:"↩ 回退一步",
       deadStart:"當前局面已經無法取勝。這副牌從發牌起就贏不了，開始新遊戲吧。",
       guide:["目標：把全部 52 張牌按花色從 A 到 K 依次疊到右上角的四個基礎堆。",
              "在牌桌上，牌要按從大到小、紅黑交替的順序疊放。",
@@ -1275,10 +1288,58 @@ function lastWinnableAgo(budgetMs){
   return sure ? 0 : -1;
 }
 
+/* ===================== Rettung aus der Sackgasse =====================
+   Der Loeser weiss, wie viele Zuege zurueck die Partie zuletzt zu gewinnen war.
+   Dieser Knopf nimmt genau diese Zuege zurueck und laest den Zug, der sie gekostet
+   hat, dreimal aufblinken. */
+function kartenOrte(z){                      // Karten-Id -> Stapel, in dem sie liegt
+  const o={};
+  z.waste.forEach(c=>o[c.id]="waste");
+  z.stock.forEach(c=>o[c.id]="stock");
+  z.foundations.forEach((p,i)=>p.forEach(c=>o[c.id]="foundation"+i));
+  z.tableau.forEach((p,i)=>p.forEach(c=>o[c.id]="tableau"+i));
+  return o;
+}
+function fehlzugKarten(vorher,nachher){      // welche Karten hat der Fehlzug bewegt?
+  const a=kartenOrte(vorher), b=kartenOrte(nachher);
+  return Object.keys(a).filter(id=>a[id]!==b[id]);
+}
+function blinkeFehlzug(ids){
+  const els=[];
+  ids.forEach(id=>{ const el=document.querySelector(".card[data-id='"+id+"']"); if(el) els.push(el); });
+  if(!els.length){                           // nichts zu sehen: dann war es ein Zug vom Talon
+    const st=document.getElementById("stock");
+    if(st){ st.classList.add("blunder"); setTimeout(()=>st.classList.remove("blunder"),2200); }
+    return;
+  }
+  els.forEach(el=>el.classList.add("blunder"));
+  setTimeout(()=>els.forEach(el=>el.classList.remove("blunder")),2200);
+}
+function rescueMoves(n){
+  if(n<=0 || history.length<n) return;
+  const i=history.length-n;
+  const vorher=JSON.parse(history[i]);
+  const nachher=(i+1<history.length) ? JSON.parse(history[i+1]) : S;
+  const ids=fehlzugKarten(vorher,nachher);
+  history.length=i;                          // die verlorenen Zuege fallen weg
+  S=vorher;
+  hideToast(); stuckKey=""; stuckVerdict=null; stuckAgo=0;
+  render(); save();
+  sfx("reveal");
+  blinkeFehlzug(ids);
+}
+
 let toastT=null;
-function showToast(msg,ms,blink){
+function showToast(msg,ms,blink,aktion){
   const el=document.getElementById("toast"); if(!el) return;
-  el.textContent=msg; el.classList.toggle("blink",!!blink); el.classList.add("show");
+  el.textContent=msg;
+  if(aktion){                                  // Knopf rechts neben dem Text
+    const b=document.createElement("button");
+    b.className="toast-btn"; b.type="button"; b.textContent=aktion.label;
+    b.addEventListener("click",ev=>{ ev.stopPropagation(); aktion.fn(); });
+    el.appendChild(b);
+  }
+  el.classList.toggle("blink",!!blink); el.classList.add("show");
   clearTimeout(toastT); toastT = ms ? setTimeout(hideToast,ms) : null;   // ms=0: bleibt stehen
 }
 function hideToast(){
@@ -1289,23 +1350,29 @@ function hideToast(){
 /* Die Sackgassen-Meldung bleibt stehen, solange die Lage unverändert festgefahren ist.
    Talon durchblättern ändert Spielfeld und Fundamente nicht, deshalb reichen die als Kennung
    und das Urteil muss nicht jedes Mal neu berechnet werden. */
-let stuckKey="", stuckVerdict=null;
+let stuckKey="", stuckVerdict=null, stuckAgo=0;
 const stuckSig=()=>JSON.stringify(S.tableau)+"#"+JSON.stringify(S.foundations)+"#"+S.draw;
 
 /* Anzeigedauer der Sackgassen-Meldung. Sie verschwindet danach, damit die Fusszeile
    mit dem Weg ins Spielezimmer wieder frei liegt. Das Urteil selbst bleibt bestehen und
    wird bei der naechsten Aktion erneut eingeblendet. */
 const STUCK_MS = 12000;
+function rettungsKnopf(n){
+  const t=I18N[lang];
+  return {label:(n===1?t.rescue1:t.rescue.replace("{n}",n)), fn:()=>rescueMoves(n)};
+}
 function checkStuck(){
   if(suppressCues) return;
   // Gewonnen ist keine Sackgasse: alle Karten liegen ab, es gibt nichts mehr zu melden
   if(checkWin() || hasAnyMove()){ stuckKey=""; stuckVerdict=null; hideToast(); return; }
   const key=stuckSig(), t=I18N[lang];
   if(key===stuckKey){                     // gleiche Sackgasse: nur wieder einblenden, ohne Ton
-    if(stuckVerdict) showToast(stuckVerdict==="win"?t.stillwin : stuckVerdict==="dead"?t.dead : t.nomoves,STUCK_MS,false);
+    if(stuckVerdict==="dead" && stuckAgo>0)
+      showToast(stuckAgo===1?t.deadAgo1:t.deadAgo.replace("{n}",stuckAgo),STUCK_MS,false,rettungsKnopf(stuckAgo));
+    else if(stuckVerdict) showToast(stuckVerdict==="win"?t.stillwin : stuckVerdict==="dead"?t.dead : t.nomoves,STUCK_MS,false);
     return;
   }
-  stuckKey=key; stuckVerdict=null;
+  stuckKey=key; stuckVerdict=null; stuckAgo=0;
   setTimeout(()=>{                        // erst zeichnen lassen, dann rechnen
     if(stuckKey!==key) return;            // inzwischen weitergespielt
     const r=solveFromCurrent(); stuckVerdict=r;
@@ -1315,7 +1382,8 @@ function checkStuck(){
       if(history.length) setTimeout(()=>{           // danach: ab wann war es verloren?
         if(stuckKey!==key) return;
         const n=lastWinnableAgo(1500);
-        if(n>0) showToast(n===1?t.deadAgo1:t.deadAgo.replace("{n}",n),STUCK_MS,true);
+        stuckAgo=n>0?n:0;
+        if(n>0) showToast(n===1?t.deadAgo1:t.deadAgo.replace("{n}",n),STUCK_MS,true,rettungsKnopf(n));
         else if(n===0) showToast(t.deadStart,STUCK_MS,true);
       },80);
     }
