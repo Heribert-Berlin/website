@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta property="og:title" content="Reader Reviews · Heribert Lange" />
+  <meta property="og:description" content="What readers write about my books, in their own words." />
+  <meta property="og:image" content="https://www.heribert-berlin.de/images/og-lesetipps.jpg" />
+  <meta property="og:url" content="https://www.heribert-berlin.de/leserstimmen-eng.html" />
+  <link rel="canonical" href="https://www.heribert-berlin.de/leserstimmen-eng.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.heribert-berlin.de/images/og-lesetipps.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Heribert Lange" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heribert Lange – Reader Reviews</title>
+  <style>
+    :root {
+      --bg: #212d45;
+      --card: #313b4e;
+      --text: #dce4f0;
+      --text-muted: #8898b0;
+      --accent: #a8c0d8;
+      --header-bg: #1d273a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { background: var(--header-bg); color: var(--accent); padding: 40px 20px; text-align: center; border-bottom: 1px solid #2a3a50; letter-spacing: 2px; }
+    header h1 { font-size: 2.2rem; font-weight: normal; }
+    header p { color: var(--text-muted); margin-top: 8px; font-size: 0.95rem; letter-spacing: 3px; }
+    .lang-buttons { position: fixed; right: 18px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 16px; z-index: 100; }
+    .lang-btn { width: 56px; height: 56px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid rgba(255,255,255,0.15); box-shadow: 0 3px 12px rgba(0,0,0,0.5); transition: transform 0.2s, border-color 0.2s; text-decoration: none; display: block; position: relative; }
+    .lang-btn:hover { transform: scale(1.08); border-color: var(--accent); }
+    .lang-label { font-size: 0.72rem; letter-spacing: 1px; color: var(--accent); font-family: Georgia, serif; line-height: 1; }
+    .lang-wrap { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .flag-de { background: #000; }
+    .flag-de svg, .flag-en-us svg { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+    .flag-en-us { background: #012169; }
+    .flag-cn { background: #DE2910; position: relative; display: flex; align-items: center; justify-content: center; }
+    .flag-cn .stars { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 22px; color: #FFDE00; }
+    .flag-cn .small-stars { position: absolute; top: 6px; right: 6px; font-size: 9px; color: #FFDE00; display: flex; flex-direction: column; gap: 1px; align-items: center; }
+    .container { padding: 40px 100px 40px 20px; max-width: 1100px; margin: 0 auto; }
+
+    .intro-card { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #2a3a50; margin-bottom: 32px; }
+    .intro-card p { line-height: 1.9; }
+
+    .buch-abschnitt { margin-bottom: 40px; }
+    .buch-abschnitt:last-of-type { margin-bottom: 0; }
+    .buch-kopf { display: flex; gap: 20px; align-items: center; margin-bottom: 20px; }
+    .buch-kopf img { width: 90px; flex-shrink: 0; border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
+    .buch-kopf h2 { color: var(--accent); font-size: 1.5rem; font-weight: normal; font-style: italic; letter-spacing: 1px; margin-bottom: 10px; }
+
+    .review-liste { display: flex; flex-direction: column; gap: 24px; }
+    .review-card { background: var(--card); padding: 26px 30px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); border: 1px solid #2a3a50; }
+    .review-stars { color: var(--accent); font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 8px; }
+    .review-card h3 { color: var(--accent); font-size: 1.25rem; font-weight: normal; font-style: italic; letter-spacing: 0.5px; margin-bottom: 8px; line-height: 1.4; }
+    .review-meta { color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 18px; text-transform: uppercase; }
+    .review-meta .verified { color: var(--accent); }
+    .review-card p.review-text { line-height: 1.9; margin-bottom: 14px; }
+    .review-card p.review-text:last-of-type { margin-bottom: 18px; }
+    .weiter-btn { display: inline-block; padding: 9px 20px; border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); text-decoration: none; font-size: 0.88rem; letter-spacing: 1px; transition: background 0.2s, color 0.2s; }
+    .weiter-btn:hover { background: var(--accent); color: var(--header-bg); }
+
+    .back-btn { display: inline-block; margin-top: 32px; margin-right: 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s; }
+    .back-btn:hover { color: var(--accent); }
+
+    @media (max-width: 700px) {
+      .container { padding: 24px 16px; }
+      .lang-buttons { position: static; transform: none; flex-direction: row; justify-content: center; padding: 14px 0 0; }
+      .buch-kopf { flex-direction: column; text-align: center; }
+    }
+    .review-note { color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1px; font-style: italic; margin-top: 4px; }
+    .unavailable { background: rgba(139,26,26,0.2); border: 1px solid #5a1a1a; border-radius: 6px; padding: 14px 18px; font-size: 0.95rem; color: var(--text-muted); line-height: 2; letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Reader Reviews</h1>
+  <p>How my books are reviewed</p>
+</header>
+
+<div class="lang-buttons">
+  <a href="leserstimmen.html" class="lang-btn flag-de" title="Deutsch">
+    <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="56" height="19" fill="#000000"/>
+      <rect x="0" y="19" width="56" height="19" fill="#DD0000"/>
+      <rect x="0" y="38" width="56" height="18" fill="#FFCE00"/>
+    </svg>
+  </a>
+  <a href="leserstimmen-chi.html" class="lang-btn flag-cn" title="中文">
+    <div class="stars">★</div>
+    <div class="small-stars"><span style="font-size:8px">★</span><span style="font-size:8px">★</span><span style="font-size:8px">★</span><span style="font-size:8px">★</span></div>
+  </a>
+  <div class="lang-wrap">
+    <a href="home-eng.html" class="lang-btn" title="Home" style="background:var(--card,#222);display:flex;align-items:center;justify-content:center;">
+      <svg viewBox="0 0 56 56" width="42" height="42" xmlns="http://www.w3.org/2000/svg">
+        <path d="M28 10 L50 30 H44 V48 H12 V30 H6 Z" fill="var(--accent)"/>
+        <rect x="23" y="34" width="10" height="14" rx="1" fill="var(--card,#222)"/>
+      </svg>
+    </a>
+    <span class="lang-label">Home</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="intro-card">
+    <p>What readers write about my books, in their own words. The reviews appeared on Amazon.de in German; the English versions here are translations.</p>
+  </div>
+
+  <div class="buch-abschnitt">
+    <div class="buch-kopf">
+      <img src="ELC-ENG-Cover.jpg" alt="Book cover One Last Cà phê">
+      <div>
+        <h2>One Last Cà phê</h2>
+        <a href="roman-eng.html" class="weiter-btn">To the book →</a>
+      </div>
+    </div>
+
+    <div class="review-liste">
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <h3>An extensive, multi-layered novel that deserves your time.</h3>
+        <p class="review-meta">Mrs. A. · Reviewed in Germany on August 29, 2026 · Kindle · <span class="verified">Verified purchase</span></p>
+        <p class="review-text">“One Last Cà phê” is not a book you read in passing. Heribert Lange tells his story at length and with great love of detail. He takes his readers to different places, introduces numerous characters with their life stories, and gradually lets several plot threads grow out of them. The settings in particular are described in such detail that you really feel as if you were travelling with the characters. Relationships and personal fates meet elements of crime fiction, creating a story on many different levels. Those who prefer fast stories with a straightforward plot will have to get used to the detailed narrative style. Those who like to dive deep into a story, get to know many characters and enjoy details and different settings, will find plenty to read here. An extensive, multi-layered novel that deserves your time.</p>
+        <p class="review-note">Translated from the German original</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <h3>Great</h3>
+        <p class="review-meta">Bettina Reitz · Reviewed in Germany on August 28, 2026 · Paperback</p>
+        <p class="review-text">A book you don’t just read in passing. You savour it and find yourself in a pool of love, crime and many twists on several levels. The characters are very authentic and you have pictures in your head while reading. The writing style is convincing and captivating. I won’t give anything away about the content; the blurb offers a glimpse. I can only recommend the book.</p>
+        <p class="review-note">Translated from the German original</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="buch-abschnitt">
+    <div class="buch-kopf">
+      <img src="PAK-ENG-Cover.jpg" alt="Book cover Pakistan – A Travel Report 1993">
+      <div>
+        <h2>Pakistan – A Travel Report 1993</h2>
+        <a href="pakistan-eng.html" class="weiter-btn">To the book →</a>
+      </div>
+    </div>
+
+    <div class="review-liste">
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <h3>Pakistan, far more than a travel report</h3>
+        <p class="review-meta">Pepa · Reviewed in Germany on April 10, 2026 · Hardcover</p>
+        <p class="review-text">The travel report is a valuable document for everyone who wants to understand what Pakistan is at its core. It manages to build a bridge between the foreign and the familiar without sliding into kitsch. A firm recommendation for explorers looking for the real spark in travel literature.</p>
+        <p class="review-text">Here someone writes who does not deliver a “perfect copy” of travel experiences but shares genuine, unfiltered impressions. Every line breathes the spirit of setting out and honest curiosity. The writing style feels like an ordering resonance to the chaos and the beauty that together make up Pakistan. Heribert Lange describes the hospitality and human warmth in Pakistan with an intensity that makes the country tangible.</p>
+        <p class="review-note">Translated from the German original</p>
+      </div>
+
+    </div>
+  </div>
+
+  <a href="home-eng.html" class="back-btn">⌂ Home</a>
+</div>
+
+<footer style="border-top: 1px solid #2a3a50; padding: 20px; text-align: center; margin-top: 32px;">
+  <a href="datenschutz-eng.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;">Privacy Policy</a>
+</footer>
+</body>
+</html>
